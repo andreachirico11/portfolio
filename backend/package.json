@@ -1,7 +1,8 @@
 {
   "name": "portfolio-be",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "andrea chirico",
   "dependencies": {

@@ -12,8 +12,12 @@ app.use(cors());
 
 app.get('/cv', tokenController, pdfController);
 
+app.get('/test', (_, res) => {
+  res.status(200).json('App working');
+});
+
 app.get('/', (_, res) => {
   res.status(500).json('Not Found');
 });
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}...`));
+app.listen(PORT || 8080, () => console.log(`Server started on port ${PORT}...`));
