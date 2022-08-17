@@ -1,4 +1,4 @@
-const { PORT, FILE_URL, GITHUB_TOKEN, TOKEN } = process.env;
+const { PORT, FILE_URL, GITHUB_TOKEN, TOKEN, FRONTEND_URL } = process.env;
 const TEMPORARY_PDF_NAME = 'temp.pdf';
 const FILE_OPTIONS = {
   format: 'A4',
@@ -9,4 +9,12 @@ const FILE_OPTIONS = {
   },
 };
 
-module.exports = { PORT, FILE_URL, GITHUB_TOKEN, TEMPORARY_PDF_NAME, FILE_OPTIONS, TOKEN };
+module.exports = {
+  PORT,
+  FILE_URL,
+  GITHUB_TOKEN,
+  TEMPORARY_PDF_NAME,
+  FILE_OPTIONS,
+  TOKEN,
+  FRONTEND_URL,
+};
