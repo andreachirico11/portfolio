@@ -4,12 +4,13 @@ const express = require('express');
 const cors = require('cors');
 const pdfController = require('./pdfController');
 const { PORT } = require('./environments');
+const tokenController = require('./tokenController');
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-app.get('/cv', pdfController);
+app.get('/cv', tokenController, pdfController);
 
 app.get('/', (_, res) => {
   res.status(500).json('Not Found');
