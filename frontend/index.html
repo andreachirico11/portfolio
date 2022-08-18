@@ -23,103 +23,117 @@
 
 <body>
     <nav
-        class="bg-custom-red font-os text-sm uppercase tracking-widest text-custom-white drop-shadow-custom">
+        class="bg-custom-red font-os text-sm uppercase tracking-widest text-custom-white drop-shadow-custom flex justify-between p-5 fixed top-0 z-10 min-w-full">
         <a href="#works">works</a>
         <a href="#about">about</a>
         <a href="#contact">contact</a>
     </nav>
 
-    <section id="home" class="bg-custom-green">
+    <section id="home"
+        class="bg-custom-green min-h-screen flex items-center flex-col justify-center px-[6rem]">
         <h1
-            class="font-code text-3xl uppercase tracking-widest text-custom-yellow drop-shadow-custom">
+            class="font-code text-4xl uppercase tracking-widest text-custom-yellow drop-shadow-custom text-center mb-5">
             andrea chirico</h1>
         <h4
-            class="font-os text-xl capitalize text-custom-white drop-shadow-custom">
+            class="font-os text-xl capitalize text-custom-white drop-shadow-custom text-center">
             software developer</h4>
     </section>
 
-    <section id="works" class="bg-custom-blue">
-        <div class="bg-custom-grey">
+    <section id="works"
+        class="bg-custom-blue min-h-screen flex items-center flex-col justify-between px-3 py-10">
+        <div class="bg-custom-grey py-4 px-8 rounded-custom">
             <h4
-                class="font-code text-custom-yellow drop-shadow-custom capitalize text-xl tracking-widest">
+                class="font-code text-custom-yellow drop-shadow-custom capitalize text-xl tracking-widest text-center">
                 students manager</h4>
             <p
-                class="font-os text-xs tracking-widest text-custom-white text-center">
+                class="font-os text-xs tracking-widest text-custom-white text-center my-4">
                 A full-stack web app for managing students lessons, print
                 receipts and so on...
             </p>
-            <div>
+            <div class="flex justify-between px-10">
                 <a href="https://github.com/andreachirico11/Students_Manager">
-                    <img src="./assets/github.png" alt="github">
+                    <img src="./assets/github.png" alt="github"
+                        class="h-7 w-auto">
                 </a>
                 <a href="https://studentsmanager.netlify.app/">
-                    <img src="./assets/website.png" alt="web">
+                    <img src="./assets/website.png" alt="web"
+                        class="h-7 w-auto">
                 </a>
             </div>
         </div>
-        <div class="bg-custom-grey">
+        <div class="bg-custom-grey py-4 px-8 rounded-custom">
             <h4
-                class="font-code text-custom-yellow drop-shadow-custom capitalize text-xl tracking-widest">
+                class="font-code text-custom-yellow drop-shadow-custom capitalize text-xl tracking-widest text-center">
                 eredi casassa</h4>
             <p
-                class="font-os text-xs tracking-widest text-custom-white text-center">
+                class="font-os text-xs tracking-widest text-custom-white text-center my-4">
                 A nice shop website, with an old marine flavour
             </p>
-            <div>
+            <div class="flex justify-between px-10">
                 <a href="https://github.com/andreachirico11/Eredi-Casassa">
-                    <img src="./assets/github.png" alt="github">
+                    <img src="./assets/github.png" alt="github"
+                        class="h-7 w-auto">
                 </a>
                 <a href="https://www.eredicasassa.com/">
-                    <img src="./assets/website.png" alt="web">
+                    <img src="./assets/website.png" alt="web"
+                        class="h-7 w-auto">
                 </a>
             </div>
         </div>
-        <div class="bg-custom-grey">
+        <div class="bg-custom-grey py-4 px-8 rounded-custom">
             <h4
-                class="font-code text-custom-yellow drop-shadow-custom capitalize text-xl tracking-widest">
+                class="font-code text-custom-yellow drop-shadow-custom capitalize text-xl tracking-widest text-center">
                 my portfolio</h4>
             <p
-                class="font-os text-xs tracking-widest text-custom-white text-center">
+                class="font-os text-xs tracking-widest text-custom-white text-center my-4">
                 Who says that portfolios are always static websites? This one
                 has backend too
             </p>
-            <div>
+            <div class="flex justify-between px-10">
                 <a href="https://github.com/andreachirico11/portfolio">
-                    <img src="./assets/github.png" alt="github">
+                    <img src="./assets/github.png" alt="github"
+                        class="h-7 w-auto">
                 </a>
                 <a href="https://www.andreachirico.com/">
-                    <img src="./assets/website.png" alt="web">
+                    <img src="./assets/website.png" alt="web"
+                        class="h-7 w-auto">
                 </a>
             </div>
         </div>
-        <div class="bg-custom-grey">
+        <div
+            class="bg-custom-grey rounded-custom px-7 py-2 flex justify-center items-center border border-custom-yellow">
             <a href="https://github.com/andreachirico11"
-                class="font-os text-xs tracking-widest text-custom-white text-center">
+                class="font-os text-xs tracking-widest text-custom-white">
                 And many more on my Github page
             </a>
         </div>
     </section>
 
-    <section id="about" class="bg-custom-yellow">
-        <img src="./assets/mypic.png" alt="my pic">
+    <section id="about"
+        class="bg-custom-yellow min-h-screen flex flex-col justify-evenly items-center">
+        <img src="./assets/mypic.png" alt="my pic" class="w-2/&">
         <h4
             class="font-code text-xl capitalize text-custom-red drop-shadow-custom text-center">
             hey!</h4>
-        <p class="font-os text-xs tracking-widest text-custom-blue text-center">
+        <p
+            class="font-os text-xs tracking-widest text-custom-blue text-center px-8 leading-5">
             I write <span class="text-custom-red">code</span> and it’s what I
-            want to do. I worked
-            mainly as Frontend developer with <span
+            want to do.
+            <br>
+            I worked mainly as Frontend developer with <span
                 class="text-custom-red">Angular</span> but I’m also
             pretty decent working with Backend mainly in <span
-                class="text-custom-red">Node.js</span>. I
-            live in Italy but I’m passionate about Nordic countries. You can
-            contact me and also ask for a <span
+                class="text-custom-red">Node.js</span>.
+            <br>
+            I live in Italy but I’m passionate about Nordic countries.
+            <br>
+            You can contact me and also ask for a <span
                 class="text-custom-red">passcode</span> to download my
             resume from this website
         </p>
     </section>
 
-    <section id="contact" class="bg-custom-blue">
+    <section id="contact" class="bg-custom-blue min-h-screen">
         <form action="">
             <h4 class="font-code text-xl text-custom-yellow text-center">Ask for
                 my Resume!</h4>
