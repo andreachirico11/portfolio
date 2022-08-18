@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Source+Code+Pro:wght@600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&family=Source+Code+Pro:wght@600&display=swap"
         rel="stylesheet">
     <style>
         @tailwind base;
@@ -22,21 +22,29 @@
 </head>
 
 <body>
-    <nav class="bg-custom-red font-os">
+    <nav
+        class="bg-custom-red font-os text-sm uppercase tracking-widest text-custom-white drop-shadow-custom">
         <a href="#works">works</a>
         <a href="#about">about</a>
         <a href="#contact">contact</a>
     </nav>
 
     <section id="home" class="bg-custom-green">
-        <h1 class="font-code">andrea chirico</h1>
-        <h4 class="font-os">software developer</h4>
+        <h1
+            class="font-code text-3xl uppercase tracking-widest text-custom-yellow drop-shadow-custom">
+            andrea chirico</h1>
+        <h4
+            class="font-os text-xl capitalize text-custom-white drop-shadow-custom">
+            software developer</h4>
     </section>
 
     <section id="works" class="bg-custom-blue">
-        <div>
-            <h4 class="font-code">students manager</h4>
-            <p class="font-os">
+        <div class="bg-custom-grey">
+            <h4
+                class="font-code text-custom-yellow drop-shadow-custom capitalize text-xl tracking-widest">
+                students manager</h4>
+            <p
+                class="font-os text-xs tracking-widest text-custom-white text-center">
                 A full-stack web app for managing students lessons, print
                 receipts and so on...
             </p>
@@ -49,9 +57,12 @@
                 </a>
             </div>
         </div>
-        <div>
-            <h4 class="font-code">eredi casassa</h4>
-            <p class="font-os">
+        <div class="bg-custom-grey">
+            <h4
+                class="font-code text-custom-yellow drop-shadow-custom capitalize text-xl tracking-widest">
+                eredi casassa</h4>
+            <p
+                class="font-os text-xs tracking-widest text-custom-white text-center">
                 A nice shop website, with an old marine flavour
             </p>
             <div>
@@ -63,9 +74,12 @@
                 </a>
             </div>
         </div>
-        <div>
-            <h4 class="font-code">my portfolio</h4>
-            <p class="font-os">
+        <div class="bg-custom-grey">
+            <h4
+                class="font-code text-custom-yellow drop-shadow-custom capitalize text-xl tracking-widest">
+                my portfolio</h4>
+            <p
+                class="font-os text-xs tracking-widest text-custom-white text-center">
                 Who says that portfolios are always static websites? This one
                 has backend too
             </p>
@@ -78,8 +92,9 @@
                 </a>
             </div>
         </div>
-        <div>
-            <a href="" class="font-os">
+        <div class="bg-custom-grey">
+            <a href="https://github.com/andreachirico11"
+                class="font-os text-xs tracking-widest text-custom-white text-center">
                 And many more on my Github page
             </a>
         </div>
@@ -87,33 +102,44 @@
 
     <section id="about" class="bg-custom-yellow">
         <img src="./assets/mypic.png" alt="my pic">
-        <h4 class="font-code">hey!</h4>
-        <p class="font-os">
-            I write <span>code</span> and it’s what I want to do. I worked
-            mainly as Frontend developer with <span>Angular</span> but I’m also
-            pretty decent working with Backend mainly in <span>Node.js</span>. I
+        <h4
+            class="font-code text-xl capitalize text-custom-red drop-shadow-custom text-center">
+            hey!</h4>
+        <p class="font-os text-xs tracking-widest text-custom-blue text-center">
+            I write <span class="text-custom-red">code</span> and it’s what I
+            want to do. I worked
+            mainly as Frontend developer with <span
+                class="text-custom-red">Angular</span> but I’m also
+            pretty decent working with Backend mainly in <span
+                class="text-custom-red">Node.js</span>. I
             live in Italy but I’m passionate about Nordic countries. You can
-            contact me and also ask for a <span>passcode</span> to download my
+            contact me and also ask for a <span
+                class="text-custom-red">passcode</span> to download my
             resume from this website
         </p>
     </section>
 
     <section id="contact" class="bg-custom-blue">
         <form action="">
-            <h3 class="font-code">Ask for my Resume!</h3>
+            <h4 class="font-code text-xl text-custom-yellow text-center">Ask for
+                my Resume!</h4>
             <input type="text" placeholder="Passcode" name="passcode"
-                class="font-os">
-            <button type="submit" class="font-code">Download!</button>
+                class="font-os text-xs text-custom-grey">
+            <button type="submit"
+                class="font-code text-custom-red text-center text-sm">Download!</button>
         </form>
         <form action="">
-            <h3 class="font-code">Contact Me!</h3>
+            <h4 class="font-code text-xl text-custom-yellow text-center">Contact
+                Me!</h4>
             <input type="text" placeholder="Your Name" name="name"
-                class="font-os">
+                class="font-os text-xs text-custom-grey">
             <input type="text" placeholder="Your Email" name="email"
-                class="font-os">
-            <textarea name="message" cols="30" rows="10" class="font-os"
+                class="font-os text-xs text-custom-grey">
+            <textarea name="message" cols="30" rows="10"
+                class="font-os text-xs text-custom-grey"
                 placeholder="Your Message"></textarea>
-            <button type="submit" class="font-code">Send!</button>
+            <button type="submit"
+                class="font-code text-custom-red text-center text-sm">Send!</button>
         </form>
     </section>
 

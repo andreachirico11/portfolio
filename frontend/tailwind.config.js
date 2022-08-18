@@ -301,6 +301,7 @@ module.exports = {
       xl: ['0 20px 13px rgb(0 0 0 / 0.03)', '0 8px 5px rgb(0 0 0 / 0.08)'],
       '2xl': '0 25px 25px rgb(0 0 0 / 0.15)',
       none: '0 0 #0000',
+      custom: '3px 3px 0 rgb(0 0 0 / 0.25)',
     },
     fill: ({ theme }) => theme('colors'),
     grayscale: {
