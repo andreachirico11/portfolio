@@ -5,14 +5,128 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Andrea Chirico - Software Developer</title>
 </head>
+<style>
+    @tailwind base;
+    @tailwind utilities;
+    @tailwind components;
+
+</style>
+<link rel="stylesheet" href="main.css">
 
 <body>
+    <nav>
+        <a href="#works">works</a>
+        <a href="#about">about</a>
+        <a href="#contact">contact</a>
+    </nav>
 
-    <input type="text" placeholder="token" id="token">
+    <section id="home">
+        <h1>andrea chirico</h1>
+        <h4>software developer</h4>
+    </section>
+
+    <section id="works">
+        <div>
+            <h4>students manager</h4>
+            <p>
+                A full-stack web app for managing students lessons, print
+                receipts and so on...
+            </p>
+            <div>
+                <a href="https://github.com/andreachirico11/Students_Manager">
+                    <img src="./assets/github.png" alt="github">
+                </a>
+                <a href="https://studentsmanager.netlify.app/">
+                    <img src="./assets/website.png" alt="web">
+                </a>
+            </div>
+        </div>
+        <div>
+            <h4>eredi casassa</h4>
+            <p>
+                A nice shop website, with an old marine flavour
+            </p>
+            <div>
+                <a href="https://github.com/andreachirico11/Eredi-Casassa">
+                    <img src="./assets/github.png" alt="github">
+                </a>
+                <a href="https://www.eredicasassa.com/">
+                    <img src="./assets/website.png" alt="web">
+                </a>
+            </div>
+        </div>
+        <div>
+            <h4>my portfolio</h4>
+            <p>
+                Who says that portfolios are always static websites? This one
+                has backend too
+            </p>
+            <div>
+                <a href="https://github.com/andreachirico11/portfolio">
+                    <img src="./assets/github.png" alt="github">
+                </a>
+                <a href="https://www.andreachirico.com/">
+                    <img src="./assets/website.png" alt="web">
+                </a>
+            </div>
+        </div>
+        <div>
+            <a href="">
+                And many more on my Github page
+            </a>
+        </div>
+    </section>
+
+    <section id="about">
+        <img src="./assets/mypic.png" alt="my pic">
+        <h4>hey!</h4>
+        <p>
+            I write <span>code</span> and it’s what I want to do. I worked
+            mainly as Frontend developer with <span>Angular</span> but I’m also
+            pretty decent working with Backend mainly in <span>Node.js</span>. I
+            live in Italy but I’m passionate about Nordic countries. You can
+            contact me and also ask for a <span>passcode</span> to download my
+            resume from this website
+        </p>
+    </section>
+
+    <section id="contact">
+        <form action="">
+            <h3>Ask for my Resume!</h3>
+            <input type="text" placeholder="Passcode" name="passcode">
+            <button type="submit">Download!</button>
+        </form>
+        <form action="">
+            <h3>Contact Me!</h3>
+            <input type="text" placeholder="Your Name" name="name">
+            <input type="text" placeholder="Your Email" name="email">
+            <textarea name="message" cols="30" rows="10"
+                placeholder="Your Message"></textarea>
+            <button type="submit">Send!</button>
+        </form>
+    </section>
+
+    <footer>
+        <a href="https://www.linkedin.com/in/andrea-chirico-b5b98b143/">
+            <img src="./assets/linkedin.png" alt="linkedin">
+        </a>
+        <a href="https://github.com/andreachirico11">
+            <img src="./assets/github.png" alt="github">
+        </a>
+        <a href="https://www.facebook.com/andrea.chirico.927">
+            <img src="./assets/facebook.png" alt="facebook">
+        </a>
+    </footer>
+
+
+
+
+    <!-- <input type="text" placeholder="token" id="token"
+        value="download_my_cv_123">
     <button type="button" id="submitBtn">Get the cv</button>
-    <a id="downloadAnchor" style="display: none"></a>
+    <a id="downloadAnchor" style="display: none"></a> -->
 
     <script src="./dev.js"></script>
     <script src="./prod.js"></script>

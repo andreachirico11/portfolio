@@ -1,5 +1,10 @@
 {
   "name": "portfolio-fe",
-  "scripts": {},
-  "author": "andrea chirico"
+  "scripts": {
+    "tailwind": "npx tailwindcss -o ./main.css --watch"
+  },
+  "author": "andrea chirico",
+  "devDependencies": {
+    "tailwindcss": "^3.1.8"
+  }
 }
