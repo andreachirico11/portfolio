@@ -6,31 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andrea Chirico - Software Developer</title>
-</head>
-<style>
-    @tailwind base;
-    @tailwind utilities;
-    @tailwind components;
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Source+Code+Pro:wght@600&display=swap"
+        rel="stylesheet">
+    <style>
+        @tailwind base;
+        @tailwind utilities;
+        @tailwind components;
 
-</style>
-<link rel="stylesheet" href="main.css">
+    </style>
+    <link rel="stylesheet" href="main.css">
+
+</head>
 
 <body>
-    <nav>
+    <nav class="bg-custom-red font-os">
         <a href="#works">works</a>
         <a href="#about">about</a>
         <a href="#contact">contact</a>
     </nav>
 
-    <section id="home">
-        <h1>andrea chirico</h1>
-        <h4>software developer</h4>
+    <section id="home" class="bg-custom-green">
+        <h1 class="font-code">andrea chirico</h1>
+        <h4 class="font-os">software developer</h4>
     </section>
 
-    <section id="works">
+    <section id="works" class="bg-custom-blue">
         <div>
-            <h4>students manager</h4>
-            <p>
+            <h4 class="font-code">students manager</h4>
+            <p class="font-os">
                 A full-stack web app for managing students lessons, print
                 receipts and so on...
             </p>
@@ -44,8 +50,8 @@
             </div>
         </div>
         <div>
-            <h4>eredi casassa</h4>
-            <p>
+            <h4 class="font-code">eredi casassa</h4>
+            <p class="font-os">
                 A nice shop website, with an old marine flavour
             </p>
             <div>
@@ -58,8 +64,8 @@
             </div>
         </div>
         <div>
-            <h4>my portfolio</h4>
-            <p>
+            <h4 class="font-code">my portfolio</h4>
+            <p class="font-os">
                 Who says that portfolios are always static websites? This one
                 has backend too
             </p>
@@ -73,16 +79,16 @@
             </div>
         </div>
         <div>
-            <a href="">
+            <a href="" class="font-os">
                 And many more on my Github page
             </a>
         </div>
     </section>
 
-    <section id="about">
+    <section id="about" class="bg-custom-yellow">
         <img src="./assets/mypic.png" alt="my pic">
-        <h4>hey!</h4>
-        <p>
+        <h4 class="font-code">hey!</h4>
+        <p class="font-os">
             I write <span>code</span> and it’s what I want to do. I worked
             mainly as Frontend developer with <span>Angular</span> but I’m also
             pretty decent working with Backend mainly in <span>Node.js</span>. I
@@ -92,23 +98,26 @@
         </p>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="bg-custom-blue">
         <form action="">
-            <h3>Ask for my Resume!</h3>
-            <input type="text" placeholder="Passcode" name="passcode">
-            <button type="submit">Download!</button>
+            <h3 class="font-code">Ask for my Resume!</h3>
+            <input type="text" placeholder="Passcode" name="passcode"
+                class="font-os">
+            <button type="submit" class="font-code">Download!</button>
         </form>
         <form action="">
-            <h3>Contact Me!</h3>
-            <input type="text" placeholder="Your Name" name="name">
-            <input type="text" placeholder="Your Email" name="email">
-            <textarea name="message" cols="30" rows="10"
+            <h3 class="font-code">Contact Me!</h3>
+            <input type="text" placeholder="Your Name" name="name"
+                class="font-os">
+            <input type="text" placeholder="Your Email" name="email"
+                class="font-os">
+            <textarea name="message" cols="30" rows="10" class="font-os"
                 placeholder="Your Message"></textarea>
-            <button type="submit">Send!</button>
+            <button type="submit" class="font-code">Send!</button>
         </form>
     </section>
 
-    <footer>
+    <footer class="bg-custom-red">
         <a href="https://www.linkedin.com/in/andrea-chirico-b5b98b143/">
             <img src="./assets/linkedin.png" alt="linkedin">
         </a>

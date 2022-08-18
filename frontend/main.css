@@ -550,3 +550,35 @@ video {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+
+.static {
+  position: static;
+}
+
+.bg-custom-red {
+  --tw-bg-opacity: 1;
+  background-color: rgb(247 108 88 / var(--tw-bg-opacity));
+}
+
+.bg-custom-green {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 160 120 / var(--tw-bg-opacity));
+}
+
+.bg-custom-blue {
+  --tw-bg-opacity: 1;
+  background-color: rgb(44 49 61 / var(--tw-bg-opacity));
+}
+
+.bg-custom-yellow {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 250 135 / var(--tw-bg-opacity));
+}
+
+.font-code {
+  font-family: Source Code Pro, monospace;
+}
+
+.font-os {
+  font-family: Open Sans, sans-serif;
+}
