@@ -1,21 +1,16 @@
-const fs = require('fs');
-const { GITHUB_TOKEN, FILE_URL, TEMPORARY_PDF_NAME } = require('./environments');
+const { GITHUB_TOKEN, FILE_URL } = require('./environments');
 const GithubUtil = require('./githubUtil');
 const htmlParser = require('./htmlParser');
 const pdfGenerator = require('./pdfGenerator');
+const { SharedService } = require('./sharedService');
 
 async function pdfController(req, res) {
   try {
     const resp = await new GithubUtil(GITHUB_TOKEN).getCvFileFromGithub(FILE_URL);
-    const parsed = htmlParser(resp.data);
-    const pdfFile = await pdfGenerator(parsed);
-    res.setHeader('Content-Type', 'application/pdf');
-    res.sendFile(pdfFile.filename, function (err) {
-      if (err) {
-        console.log(err);
-      }
-      fs.unlinkSync(TEMPORARY_PDF_NAME);
-    });
+    SharedService.generatedHtml = htmlParser(resp.data);
+    const buffer = await pdfGenerator();
+    res.type('application/pdf');
+    res.send(buffer);
   } catch (e) {
     console.error(e);
     if (e.response && e.response.data && e.response.data.message) {

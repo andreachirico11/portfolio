@@ -1,13 +1,11 @@
-const { TEMPORARY_PDF_NAME, FILE_OPTIONS } = require('./environments');
-const pdf = require('html-pdf');
+const { PORT } = require('./environments');
+const puppeteer = require('puppeteer');
 
-module.exports = function (parsed) {
-  return new Promise((res, rej) => {
-    pdf.create(parsed, FILE_OPTIONS).toFile(TEMPORARY_PDF_NAME, function (err, file) {
-      if (err) {
-        rej('error during pdf creation');
-      }
-      res(file);
-    });
-  });
+module.exports = async function () {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto(`http://localhost:${PORT}/temp-html`);
+  const result = await page.pdf({ format: 'A4' });
+  browser.close();
+  return result;
 };
