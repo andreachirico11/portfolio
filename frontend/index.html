@@ -16,6 +16,22 @@
         @tailwind utilities;
         @tailwind components;
 
+        ::-webkit-scrollbar {
+            width: 6px;
+            background-color: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #2C313D;
+            border-radius: 20px;
+        }
+
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: #2C313D transparent;
+        }
+
+
         .down {
             transform: translateY(150px);
             opacity: 0;
@@ -228,9 +244,12 @@
                 class="w-full px-3 py-2 mb-5 text-xs bg-transparent border outline-none sm:text-sm md:text-base border-custom-grey font-os text-custom-white placeholder-custom-grey rounded-custom">
             <input type="email" placeholder="Your Email" name="email"
                 class="w-full px-3 py-2 mb-5 text-xs bg-transparent border outline-none sm:text-sm md:text-base border-custom-grey font-os text-custom-white placeholder-custom-grey rounded-custom">
-            <textarea name="message"
-                class="w-full px-3 pt-10 pb-6 mb-5 text-xs bg-transparent border outline-none resize-none md:text-base sm:text-sm border-custom-grey font-os text-custom-white placeholder-custom-grey rounded-custom"
-                placeholder="Your Message"></textarea>
+            <div
+                class="w-full px-3 py-6 mb-5 border border-custom-grey rounded-custom">
+                <textarea name="message"
+                    class="w-full text-xs bg-transparent outline-none resize-none placeholder-custom-grey font-os md:text-base sm:text-sm text-custom-white"
+                    placeholder="Your Message"></textarea>
+            </div>
             <button type="button" id="email-submit"
                 class="w-full px-3 py-2 text-sm text-center transition duration-300 ease-in-out border-transparent focus:outline-none hover:tracking-widest focus:tracking-widest sm:text-lg md:text-xl font-code text-custom-red bg-custom-grey rounded-custom">Send!</button>
         </form>

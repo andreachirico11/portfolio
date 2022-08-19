@@ -1,5 +1,6 @@
 const cvUrl = (prodUrl || devUrl) + '/cv';
 const NO_TOKEN = 'No token';
+const emailReg = new RegExp('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$');
 
 document.getElementById('token-submit').addEventListener('click', async function () {
   startLoadingBar();
@@ -18,6 +19,13 @@ document.getElementById('token-submit').addEventListener('click', async function
     }
   } finally {
     stopLoadingBar();
+  }
+});
+
+document.getElementById('email-submit').addEventListener('click', function () {
+  const [_, name, email, message] = this.parentElement.children;
+  if (isFormValid(name.value, email.value, message.value)) {
+    console.log('valid');
   }
 });
 
@@ -55,15 +63,15 @@ function downloadFile(blob) {
 }
 
 function openModal(title, message) {
-  document.getElementById('modal-title').textContent = title;
-  document.getElementById('modal-message').textContent = message;
+  document.getElementById('modal-title').innerHTML = title;
+  document.getElementById('modal-message').innerHTML = message;
   document.body.classList.add('show-modal');
 }
 
 function closeModal() {
   document.body.classList.remove('show-modal');
-  document.getElementById('modal-title').textContent = '';
-  document.getElementById('modal-message').textContent = '';
+  document.getElementById('modal-title').innerHTML = '';
+  document.getElementById('modal-message').innerHTML = '';
 }
 
 function startLoadingBar() {
@@ -72,4 +80,26 @@ function startLoadingBar() {
 
 function stopLoadingBar() {
   document.body.classList.remove('show-loading');
+}
+
+function isFormValid(name, email, message) {
+  const title = 'There are errors in the form';
+  let errorMessage = '';
+  if (!name) {
+    errorMessage += '<li>The name field must contain a value</li>';
+  }
+  if (!email) {
+    errorMessage += '<li>The email field must contain a value</li>';
+  }
+  if (!message) {
+    errorMessage += '<li>The message field must contain a value</li>';
+  }
+  if (email && !emailReg.test(email)) {
+    errorMessage += '<li>The provided email is invalid</li>';
+  }
+  if (errorMessage === '') {
+    return true;
+  }
+  openModal(title, errorMessage);
+  return false;
 }
