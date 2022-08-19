@@ -2,10 +2,12 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
-const pdfController = require('./pdfController');
 const { PORT, FRONTEND_URL } = require('./environments');
-const tokenController = require('./tokenController');
-const htmlResultController = require('./htmlResultController');
+const pdfController = require('./controllers/pdfController');
+const tokenController = require('./controllers/tokenController');
+const htmlResultController = require('./controllers/htmlResultController');
+const emailValidatorController = require('./controllers/emailValidatorController');
+const emailController = require('./controllers/emailController');
 const app = express();
 const { initializeSharedService } = require('./sharedService');
 initializeSharedService();
@@ -21,9 +23,7 @@ app.get('/cv', tokenController, pdfController);
 
 app.get('/temp-html', htmlResultController);
 
-app.get('/test', (_, res) => {
-  res.status(200).json('App working');
-});
+app.post('/email', emailValidatorController, emailController);
 
 app.get('/', (_, res) => {
   res.status(500).json('Not Found');

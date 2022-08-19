@@ -1,4 +1,5 @@
 const cvUrl = (prodUrl || devUrl) + '/cv';
+const emailUrl = (prodUrl || devUrl) + '/email';
 const NO_TOKEN = 'No token';
 const emailReg = new RegExp('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$');
 
@@ -22,10 +23,27 @@ document.getElementById('token-submit').addEventListener('click', async function
   }
 });
 
-document.getElementById('email-submit').addEventListener('click', function () {
-  const [_, name, email, message] = this.parentElement.children;
-  if (isFormValid(name.value, email.value, message.value)) {
-    console.log('valid');
+document.getElementById('email-submit').addEventListener('click', async function () {
+  const [_, name, email, { firstElementChild: message }] = this.parentElement.children;
+  const [invalid, errMsg] = isFormInvalid(name.value, email.value, message.value);
+  if (invalid) {
+    openModal('There are errors in the form', errMsg);
+    return;
+  }
+  startLoadingBar();
+  try {
+    await sendMail(name.value, email.value, message.value);
+    openModal('Thank you', "I'll answer ASAP!!!");
+    name.value = null;
+    email.value = null;
+    message.value = null;
+  } catch (error) {
+    openModal(
+      "There was a problem and the mail wasn't sent",
+      `Please contact me at ${error.ownerMail}`
+    );
+  } finally {
+    stopLoadingBar();
   }
 });
 
@@ -43,6 +61,27 @@ function fetchFile(token) {
     }
     return res.blob();
   });
+}
+
+function sendMail(name, email, message) {
+  return fetch(emailUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name, email, message }),
+  })
+    .then((res) => {
+      if (res.status === 202) {
+        return;
+      }
+      return res.json();
+    })
+    .then((e) => {
+      if (e) {
+        throw e;
+      }
+    });
 }
 
 function downloadFile(blob) {
@@ -82,9 +121,9 @@ function stopLoadingBar() {
   document.body.classList.remove('show-loading');
 }
 
-function isFormValid(name, email, message) {
-  const title = 'There are errors in the form';
-  let errorMessage = '';
+function isFormInvalid(name, email, message) {
+  let errorMessage = '',
+    invalid = false;
   if (!name) {
     errorMessage += '<li>The name field must contain a value</li>';
   }
@@ -97,9 +136,8 @@ function isFormValid(name, email, message) {
   if (email && !emailReg.test(email)) {
     errorMessage += '<li>The provided email is invalid</li>';
   }
-  if (errorMessage === '') {
-    return true;
+  if (errorMessage !== '') {
+    invalid = true;
   }
-  openModal(title, errorMessage);
-  return false;
+  return [invalid, errorMessage];
 }

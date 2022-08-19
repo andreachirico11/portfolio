@@ -1,4 +1,4 @@
-const { PORT } = require('./environments');
+const { PORT } = require('../environments');
 const puppeteer = require('puppeteer');
 
 module.exports = async function () {

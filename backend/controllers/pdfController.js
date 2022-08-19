@@ -1,8 +1,8 @@
-const { GITHUB_TOKEN, FILE_URL } = require('./environments');
-const GithubUtil = require('./githubUtil');
-const htmlParser = require('./htmlParser');
-const pdfGenerator = require('./pdfGenerator');
-const { SharedService } = require('./sharedService');
+const { GITHUB_TOKEN, FILE_URL } = require('../environments');
+const GithubUtil = require('../utils/githubUtil');
+const htmlParser = require('../utils/htmlParser');
+const pdfGenerator = require('../utils/pdfGenerator');
+const { SharedService } = require('../sharedService');
 
 async function pdfController(req, res) {
   try {

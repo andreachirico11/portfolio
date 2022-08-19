@@ -1,4 +1,4 @@
-const { PERSONAL_MAIL, PERSONAL_TRANSPORT_MAIL } = require('./environments');
+const { PERSONAL_MAIL, PERSONAL_TRANSPORT_MAIL } = require('../environments');
 
 module.exports = function (name, email, message) {
   return {
