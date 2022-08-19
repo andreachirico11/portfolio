@@ -821,6 +821,11 @@ video {
   padding-right: 0.75rem;
 }
 
+.py-20 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
 .pt-\[5rem\] {
   padding-top: 5rem;
 }
@@ -1045,6 +1050,10 @@ video {
 }
 
 @media (min-width: 1024px) {
+  .lg\:mb-20 {
+    margin-bottom: 5rem;
+  }
+
   .lg\:w-10 {
     width: 2.5rem;
   }
@@ -1086,6 +1095,11 @@ video {
     padding-right: 0px;
   }
 
+  .lg\:py-\[8rem\] {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
   .lg\:text-left {
     text-align: left;
   }
@@ -1098,5 +1112,22 @@ video {
   .lg\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:py-10 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .xl\:py-\[8rem\] {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  .xl\:py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 }
