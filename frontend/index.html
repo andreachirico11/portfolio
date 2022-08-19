@@ -23,7 +23,7 @@
 
 <body>
     <nav
-        class="fixed top-0 z-10 flex justify-between min-w-full p-5 text-sm tracking-widest uppercase sm:justify-evenly sm:text-base md:text-lg bg-custom-red font-os text-custom-white drop-shadow-custom">
+        class="fixed top-0 z-10 flex justify-between min-w-full p-5 text-sm tracking-widest uppercase lg:text-2xl sm:justify-evenly sm:text-base md:text-lg bg-custom-red font-os text-custom-white drop-shadow-custom">
         <a href="#works">works</a>
         <a href="#about">about</a>
         <a href="#contact">contact</a>
@@ -32,7 +32,7 @@
     <section id="home"
         class="bg-custom-green min-h-screen flex items-center flex-col justify-center px-[6rem]">
         <h1
-            class="mb-5 text-4xl tracking-widest text-center uppercase sm:text-7xl md:text-8xl font-code text-custom-yellow drop-shadow-custom">
+            class="mb-5 text-4xl tracking-widest text-center uppercase md:mb-10 sm:text-7xl md:text-8xl font-code text-custom-yellow drop-shadow-custom">
             andrea chirico</h1>
         <h4
             class="text-xl text-center capitalize sm:text-3xl md:text-4xl font-os text-custom-white drop-shadow-custom">
@@ -134,32 +134,35 @@
     </section>
 
     <section id="about"
-        class="flex flex-col items-center justify-center min-h-screen py-10 bg-custom-yellow">
+        class="flex flex-col items-center justify-center min-h-screen py-10 bg-custom-yellow lg:flex-row-reverse">
         <img src="./assets/mypic.png" alt="my pic" class="w-3/5 max-w-xs">
-        <h4
-            class="my-10 text-3xl text-center capitalize sm:text-5xl md:text-6xl font-code text-custom-red drop-shadow-custom">
-            hey</h4>
-        <p
-            class="px-8 text-xs leading-5 tracking-widest text-center sm:leading-8 font-os text-custom-blue sm:text-sm md:text-base md:leading-10">
-            I write <span class="text-custom-red">code</span> and it’s what I
-            want to do.
-            <br>
-            I worked mainly as Frontend developer with <span
-                class="text-custom-red">Angular</span> but I’m also
-            pretty decent working with Backend mainly in <span
-                class="text-custom-red">Node.js</span>.
-            <br>
-            I live in Italy but I’m passionate about Nordic countries.
-            <br>
-            You can contact me and also ask for a <span
-                class="text-custom-red">passcode</span> to download my
-            resume from this website
-        </p>
+        <div class="max-w-2xl px-8 text-center lg:text-left">
+            <h4
+                class="my-10 text-3xl capitalize sm:text-5xl md:text-6xl font-code text-custom-red drop-shadow-custom">
+                hey</h4>
+            <p
+                class="text-xs leading-5 tracking-widest sm:leading-8 font-os text-custom-blue sm:text-sm md:text-base md:leading-10">
+                I write <span class="text-custom-red">code</span> and it’s what
+                I
+                want to do.
+                <br>
+                I worked mainly as Frontend developer with <span
+                    class="text-custom-red">Angular</span> but I’m also
+                pretty decent working with Backend mainly in <span
+                    class="text-custom-red">Node.js</span>.
+                <br>
+                I live in Italy but I’m passionate about Nordic countries.
+                <br>
+                You can contact me and also ask for a <span
+                    class="text-custom-red">passcode</span> to download my
+                resume from this website
+            </p>
+        </div>
     </section>
 
     <section id="contact"
-        class="min-h-screen bg-custom-blue  py-[5rem] flex flex-col justify-center items-center">
-        <form class="w-3/4 max-w-xl mb-28">
+        class="min-h-screen bg-custom-blue  py-[5rem] flex flex-col justify-center items-center lg:flex-row lg:justify-evenly">
+        <form class="w-3/4 max-w-xl mb-28 lg:w-96">
             <h4
                 class="text-xl text-center mb-7 font-code text-custom-yellow sm:text-3xl md:text-4xl">
                 Ask for
@@ -169,7 +172,7 @@
             <button type="button" id="submitBtn"
                 class="w-full px-3 py-2 text-sm text-center sm:text-lg md:text-xl font-code text-custom-red bg-custom-grey rounded-custom">Download!</button>
         </form>
-        <form action="" class="w-3/4 max-w-xl">
+        <form action="" class="w-3/4 max-w-xl lg:w-96">
             <h4
                 class="text-xl text-center mb-7 font-code text-custom-yellow sm:text-3xl md:text-4xl">
                 Contact
