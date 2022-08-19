@@ -567,19 +567,9 @@ video {
   z-index: 10;
 }
 
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
 .my-3 {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
-}
-
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .mb-5 {
@@ -594,20 +584,16 @@ video {
   display: flex;
 }
 
+.hidden {
+  display: none;
+}
+
 .h-7 {
   height: 1.75rem;
 }
 
 .h-10 {
   height: 2.5rem;
-}
-
-.h-5 {
-  height: 1.25rem;
-}
-
-.h-8 {
-  height: 2rem;
 }
 
 .h-9 {
@@ -622,12 +608,12 @@ video {
   width: auto;
 }
 
-.w-full {
-  width: 100%;
-}
-
 .w-3\/4 {
   width: 75%;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .min-w-full {
@@ -656,10 +642,6 @@ video {
 
 .justify-evenly {
   justify-content: space-evenly;
-}
-
-.overflow-hidden {
-  overflow: hidden;
 }
 
 .rounded-custom {
@@ -709,20 +691,8 @@ video {
   background-color: transparent;
 }
 
-.bg-none {
-  background-image: none;
-}
-
 .p-5 {
   padding: 1.25rem;
-}
-
-.p-\[6rem\] {
-  padding: 6rem;
-}
-
-.p-\[3rem\] {
-  padding: 3rem;
 }
 
 .px-\[6rem\] {
@@ -733,6 +703,11 @@ video {
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+}
+
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .px-8 {
@@ -760,19 +735,9 @@ video {
   padding-right: 1.75rem;
 }
 
-.py-\[3rem\] {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-.py-\[6rem\] {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-}
-
-.py-10 {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
+.py-\[5rem\] {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
 .px-2 {
@@ -785,42 +750,12 @@ video {
   padding-bottom: 0.25rem;
 }
 
-.py-\[5rem\] {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
-.py-5 {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-
-.pt-\[6rem\] {
-  padding-top: 6rem;
-}
-
-.pb-2 {
-  padding-bottom: 0.5rem;
-}
-
-.pb-10 {
-  padding-bottom: 2.5rem;
-}
-
 .pt-\[5rem\] {
   padding-top: 5rem;
 }
 
-.pt-\[10rem\] {
-  padding-top: 10rem;
-}
-
 .pt-10 {
   padding-top: 2.5rem;
-}
-
-.pb-5 {
-  padding-bottom: 1.25rem;
 }
 
 .pb-6 {
@@ -869,18 +804,6 @@ video {
 
 .leading-5 {
   line-height: 1.25rem;
-}
-
-.leading-tight {
-  line-height: 1.25;
-}
-
-.leading-none {
-  line-height: 1;
-}
-
-.leading-\[50\%\] {
-  line-height: 50%;
 }
 
 .tracking-widest {
