@@ -601,6 +601,21 @@ module.exports = {
           animationTimingFunction: 'cubic-bezier(0,0,0.2,1)',
         },
       },
+      loading: {
+        '0%': {
+          width: '0',
+          left: '0',
+          right: 'unset',
+        },
+        '50%': {
+          width: '100%',
+        },
+        '100%': {
+          left: 'unset',
+          right: '0',
+          width: '0',
+        },
+      },
     },
     letterSpacing: {
       tighter: '-0.05em',

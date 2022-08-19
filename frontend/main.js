@@ -57,3 +57,11 @@ function downloadFile(blob) {
 function toggleModal() {
   document.body.classList.toggle('show-modal');
 }
+
+function startLoadingBar() {
+  document.getElementById('loading').style.display = 'visible';
+}
+
+function stopLoadingBar() {
+  document.getElementById('loading').style.display = 'none';
+}
