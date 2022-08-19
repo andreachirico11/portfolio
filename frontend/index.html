@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
@@ -15,6 +15,32 @@
         @tailwind base;
         @tailwind utilities;
         @tailwind components;
+
+        .down {
+            transform: translateY(150px);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+
+        .left {
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+
+        .right {
+            transform: translateX(50px);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+
+        .down.show,
+        .left.show,
+        .right.show {
+            transform: translateY(0);
+            transform: translateX(0);
+            opacity: 1;
+        }
 
     </style>
     <link rel="stylesheet" href="main.css">
@@ -42,7 +68,7 @@
     <section id="works"
         class="flex flex-col items-center justify-between min-h-screen px-5 bg-custom-blue py-[5rem] lg:py-[8rem]">
         <div
-            class="flex w-full max-w-2xl mb-10 overflow-hidden lg:mb-20 bg-custom-grey rounded-custom">
+            class="flex w-full max-w-2xl mb-10 overflow-hidden down lg:mb-20 bg-custom-grey rounded-custom">
             <div class="flex flex-col justify-center w-full px-8 py-6 sm:w-3/4">
                 <h4
                     class="text-xl tracking-widest text-center capitalize md:text-3xl sm:text-left sm:text-2xl font-code text-custom-yellow drop-shadow-custom">
@@ -70,7 +96,7 @@
             </div>
         </div>
         <div
-            class="flex w-full max-w-2xl mb-10 overflow-hidden lg:mb-20 bg-custom-grey rounded-custom">
+            class="flex w-full max-w-2xl mb-10 overflow-hidden down lg:mb-20 bg-custom-grey rounded-custom">
             <div class="flex flex-col justify-center w-full px-8 py-6 sm:w-3/4">
                 <h4
                     class="text-xl tracking-widest text-center capitalize md:text-3xl sm:text-left sm:text-2xl font-code text-custom-yellow drop-shadow-custom">
@@ -96,7 +122,7 @@
             </div>
         </div>
         <div
-            class="flex w-full max-w-2xl mb-10 overflow-hidden lg:mb-20 bg-custom-grey rounded-custom">
+            class="flex w-full max-w-2xl mb-10 overflow-hidden down lg:mb-20 bg-custom-grey rounded-custom">
             <div class="flex flex-col justify-center w-full px-8 py-6 sm:w-3/4">
                 <h4
                     class="text-xl tracking-widest text-center capitalize md:text-3xl sm:text-left sm:text-2xl font-code text-custom-yellow drop-shadow-custom">
@@ -124,7 +150,7 @@
         </div>
 
         <div
-            class="flex items-center justify-center py-2 border bg-custom-grey rounded-custom px-7 border-custom-yellow">
+            class="flex items-center justify-center py-2 border bg-custom-grey down rounded-custom px-7 border-custom-yellow">
             <a href="https://github.com/andreachirico11"
                 class="text-xs tracking-widest text-center sm:text-sm font-os text-custom-white">
                 And many more on my Github page
@@ -134,9 +160,9 @@
     </section>
 
     <section id="about"
-        class="flex flex-col items-center justify-center min-h-screen py-20 bg-custom-yellow lg:flex-row-reverse">
-        <img src="./assets/mypic.png" alt="my pic" class="w-3/5 max-w-xs">
-        <div class="max-w-2xl px-8 text-center lg:text-left">
+        class="flex flex-col items-center justify-center min-h-screen px-10 py-20 bg-custom-yellow lg:flex-row-reverse">
+        <img src="./assets/mypic.png" alt="my pic" class="w-3/5 max-w-xs right">
+        <div class="max-w-2xl px-8 text-center lg:text-left left">
             <h4
                 class="my-10 text-3xl capitalize sm:text-5xl md:text-6xl font-code text-custom-red drop-shadow-custom">
                 hey</h4>
@@ -162,7 +188,7 @@
 
     <section id="contact"
         class="min-h-screen bg-custom-blue  py-[5rem] flex flex-col justify-center items-center lg:flex-row lg:justify-evenly">
-        <form class="w-3/4 max-w-xl mb-28 lg:w-96">
+        <form class="w-3/4 max-w-xl mb-28 lg:w-96 right">
             <h4
                 class="text-xl text-center mb-7 font-code text-custom-yellow sm:text-3xl md:text-4xl">
                 Ask for
@@ -172,7 +198,7 @@
             <button type="button" id="submitBtn"
                 class="w-full px-3 py-2 text-sm text-center sm:text-lg md:text-xl font-code text-custom-red bg-custom-grey rounded-custom">Download!</button>
         </form>
-        <form action="" class="w-3/4 max-w-xl lg:w-96">
+        <form action="" class="w-3/4 max-w-xl lg:w-96 left">
             <h4
                 class="text-xl text-center mb-7 font-code text-custom-yellow sm:text-3xl md:text-4xl">
                 Contact
@@ -209,6 +235,7 @@
     <script src="./dev.js"></script>
     <script src="./prod.js"></script>
     <script src="./main.js"></script>
+    <script src="./scroll.js"></script>
 </body>
 
 </html>
