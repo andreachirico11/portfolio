@@ -1,4 +1,13 @@
-const { PORT, FILE_URL, GITHUB_TOKEN, TOKEN, FRONTEND_URL } = process.env;
+const {
+  PORT,
+  FILE_URL,
+  GITHUB_TOKEN,
+  TOKEN,
+  FRONTEND_URL,
+  SENDGRID_API_KEY,
+  PERSONAL_MAIL,
+  PERSONAL_TRANSPORT_MAIL,
+} = process.env;
 
 module.exports = {
   PORT,
@@ -6,4 +15,7 @@ module.exports = {
   GITHUB_TOKEN,
   TOKEN,
   FRONTEND_URL,
+  SENDGRID_API_KEY,
+  PERSONAL_MAIL,
+  PERSONAL_TRANSPORT_MAIL,
 };
