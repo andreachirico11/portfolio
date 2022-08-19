@@ -1,7 +1,7 @@
 const cvUrl = (prodUrl || devUrl) + '/cv';
 const NO_TOKEN = 'No token';
 
-document.getElementById('submitBtn').addEventListener('click', async function () {
+document.getElementById('token-submit').addEventListener('click', async function () {
   try {
     const input = document.getElementById('token');
     if (!input.value) {
@@ -17,6 +17,10 @@ document.getElementById('submitBtn').addEventListener('click', async function ()
     console.error(e);
   }
 });
+
+document.getElementById('modal-button').addEventListener('click', toggleModal);
+
+document.getElementById('email-submit').addEventListener('click', toggleModal);
 
 function fetchFile(token) {
   return fetch(cvUrl, {
@@ -48,4 +52,8 @@ function downloadFile(blob) {
   } finally {
     URL.revokeObjectURL(objUrl);
   }
+}
+
+function toggleModal() {
+  document.body.classList.toggle('show-modal');
 }

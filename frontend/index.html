@@ -46,6 +46,11 @@
             color: #2C313D;
         }
 
+        .show-modal #modal {
+            display: flex;
+            opacity: 1;
+        }
+
     </style>
     <link rel="stylesheet" href="main.css">
 
@@ -203,10 +208,10 @@
                 my Resume!</h4>
             <input type="text" placeholder="Passcode" name="passcode" id="token"
                 class="w-full px-3 py-2 mb-5 text-xs bg-transparent border outline-none sm:text-sm md:text-base border-custom-grey font-os text-custom-white placeholder-custom-grey rounded-custom">
-            <button type="button" id="submitBtn"
+            <button type="button" id="token-submit"
                 class="w-full px-3 py-2 text-sm text-center transition duration-300 ease-in-out focus:outline-none hover:tracking-widest focus:tracking-widest sm:text-lg md:text-xl font-code text-custom-red bg-custom-grey rounded-custom">Download!</button>
         </form>
-        <form action="" class="w-3/4 max-w-xl lg:w-96 left">
+        <form class="w-3/4 max-w-xl lg:w-96 left">
             <h4
                 class="text-xl text-center mb-7 font-code text-custom-yellow sm:text-3xl md:text-4xl">
                 Contact
@@ -218,7 +223,7 @@
             <textarea name="message"
                 class="w-full px-3 pt-10 pb-6 mb-5 text-xs bg-transparent border outline-none resize-none md:text-base sm:text-sm border-custom-grey font-os text-custom-white placeholder-custom-grey rounded-custom"
                 placeholder="Your Message"></textarea>
-            <button type="submit"
+            <button type="button" id="email-submit"
                 class="w-full px-3 py-2 text-sm text-center transition duration-300 ease-in-out border-transparent focus:outline-none hover:tracking-widest focus:tracking-widest sm:text-lg md:text-xl font-code text-custom-red bg-custom-grey rounded-custom">Send!</button>
         </form>
     </section>
@@ -241,12 +246,28 @@
 
 
 
-    <a id="downloadAnchor" class="hidden"></a>
+    <div class="fixed top-0 left-0 z-20 items-center justify-center hidden w-full h-full transition-opacity bg-black opacity-0 bg-opacity-70"
+        id="modal" tabindex="-1">
+        <div
+            class="flex flex-col justify-center w-3/4 max-w-2xl px-8 py-6 bg-custom-grey rounded-custom ">
+            <h4 id="modal-title"
+                class="text-xl tracking-widest text-center capitalize md:text-3xl sm:text-left sm:text-2xl font-code text-custom-yellow drop-shadow-custom">
+            </h4>
+            <p id="modal-message"
+                class="my-3 text-xs tracking-widest text-center md:text-base sm:my-6 sm:text-sm sm:text-left font-os text-custom-white">
+            </p>
+            <button type="button" id="modal-button"
+                class="w-full px-3 py-2 text-sm text-center transition duration-300 ease-in-out border border-custom-red focus:outline-none hover:tracking-widest focus:tracking-widest sm:text-lg md:text-xl font-code text-custom-red bg-custom-grey rounded-custom">Close</button>
+        </div>
+    </div>
 
-    <script src="./dev.js"></script>
-    <script src="./prod.js"></script>
-    <script src="./main.js"></script>
-    <script src="./scroll.js"></script>
+
+    <div <a id="downloadAnchor" class="hidden"></a>
+
+        <script src="./dev.js"></script>
+        <script src="./prod.js"></script>
+        <script src="./main.js"></script>
+        <script src="./scroll.js"></script>
 </body>
 
 </html>
