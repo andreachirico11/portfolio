@@ -24,15 +24,25 @@ document.getElementById('token-submit').addEventListener('click', async function
 });
 
 document.getElementById('email-submit').addEventListener('click', async function () {
-  const [_, name, email, { firstElementChild: message }] = this.parentElement.children;
-  const [invalid, errMsg] = isFormInvalid(name.value, email.value, message.value);
+  const [
+    _,
+    name,
+    email,
+    { firstElementChild: message },
+    {
+      firstElementChild: {
+        firstElementChild: { checked: policy },
+      },
+    },
+  ] = this.parentElement.children;
+  const [invalid, errMsg] = isFormInvalid(name.value, email.value, message.value, policy);
   if (invalid) {
     openModal('There are errors in the form', errMsg);
     return;
   }
   startLoadingBar();
   try {
-    await sendMail(name.value, email.value, message.value);
+    await sendMail(name.value, email.value, message.value, policy);
     openModal('Thank you', "I'll answer ASAP!!!");
     name.value = null;
     email.value = null;
@@ -63,13 +73,13 @@ function fetchFile(token) {
   });
 }
 
-function sendMail(name, email, message) {
+function sendMail(name, email, message, policy) {
   return fetch(emailUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ name, email, message }),
+    body: JSON.stringify({ name, email, message, policy }),
   })
     .then((res) => {
       if (res.status === 202) {
@@ -121,7 +131,7 @@ function stopLoadingBar() {
   document.body.classList.remove('show-loading');
 }
 
-function isFormInvalid(name, email, message) {
+function isFormInvalid(name, email, message, policy) {
   let errorMessage = '',
     invalid = false;
   if (!name) {
@@ -132,6 +142,9 @@ function isFormInvalid(name, email, message) {
   }
   if (!message) {
     errorMessage += '<li>The message field must contain a value</li>';
+  }
+  if (!policy) {
+    errorMessage += '<li>The privacy policy must be checked</li>';
   }
   if (email && !emailReg.test(email)) {
     errorMessage += '<li>The provided email is invalid</li>';
