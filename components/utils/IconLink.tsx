@@ -1,22 +1,18 @@
 import Image from 'next/image';
 import React from 'react';
+import { IIconLinkProps } from '../../types';
 
-interface Props {
-  href: string;
-  imageSrc: string;
-  alt: string;
-  width?: number;
-  height?: number;
-}
+interface Props extends IIconLinkProps {}
 
 const defaultDimension = 34;
 
-export const FooterLink: React.FC<Props> = ({
+export const IconLink: React.FC<Props> = ({
   href,
   imageSrc,
   alt,
   width = defaultDimension,
   height = defaultDimension,
+  classNames = '',
 }) => (
   <a href={href}>
     <Image
@@ -24,7 +20,7 @@ export const FooterLink: React.FC<Props> = ({
       height={height}
       src={imageSrc}
       alt={alt}
-      className='w-auto h-10 transition duration-300 ease-in-out hover:scale-110 hover:rotate-180'
+      className={`w-auto h-10 transition duration-300 ease-in-out hover:scale-110 hover:rotate-180 ${classNames}`}
     />
   </a>
 );
