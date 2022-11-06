@@ -1,13 +1,10 @@
 import Image from 'next/image';
 import React from 'react';
 
-interface Props extends React.ComponentPropsWithoutRef<'section'> {}
+interface Props {}
 
-export const WorksSection: React.FC<Props> = () => (
-  <section
-    id='works'
-    className='flex flex-col items-center justify-between min-h-screen px-5 bg-custom-blue py-[5rem] lg:py-[8rem]'
-  >
+export const Works: React.FC<Props> = () => (
+  <>
     <div className='flex w-full max-w-2xl mb-10 overflow-hidden down lg:mb-20 bg-custom-grey rounded-custom'>
       <div className='flex flex-col justify-center w-full px-8 py-6 sm:w-3/4'>
         <h4 className='text-xl tracking-widest text-center capitalize md:text-3xl sm:text-left sm:text-2xl font-code text-custom-yellow drop-shadow-custom'>
@@ -134,5 +131,5 @@ export const WorksSection: React.FC<Props> = () => (
         And many more on my Github page
       </a>
     </div>
-  </section>
+  </>
 );

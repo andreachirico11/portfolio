@@ -1,13 +1,10 @@
 import Image from 'next/image';
 import React from 'react';
 
-interface Props extends React.ComponentPropsWithoutRef<'section'> {}
+interface Props {}
 
-export const AboutSection: React.FC<Props> = () => (
-  <section
-    id='about'
-    className='flex flex-col items-center justify-center min-h-screen px-10 py-20 bg-custom-yellow lg:flex-row-reverse'
-  >
+export const About: React.FC<Props> = () => (
+  <>
     <Image
       width={1080}
       height={441}
@@ -33,5 +30,5 @@ export const AboutSection: React.FC<Props> = () => (
         download my resume from this website
       </p>
     </div>
-  </section>
+  </>
 );

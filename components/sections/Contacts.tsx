@@ -2,11 +2,8 @@ import React from 'react';
 
 interface Props extends React.ComponentPropsWithoutRef<'section'> {}
 
-export const ContactsSection: React.FC<Props> = () => (
-  <section
-    id='contact'
-    className='min-h-screen bg-custom-blue  py-[5rem] flex flex-col justify-center items-center lg:flex-row lg:justify-evenly'
-  >
+export const Contacts: React.FC<Props> = () => (
+  <>
     <form className='w-3/4 max-w-xl mb-28 lg:w-96 right'>
       <h4 className='text-xl text-center mb-7 font-code text-custom-yellow sm:text-3xl md:text-4xl'>
         Ask for my Resume!
@@ -71,5 +68,5 @@ export const ContactsSection: React.FC<Props> = () => (
         Send!
       </button>
     </form>
-  </section>
+  </>
 );
