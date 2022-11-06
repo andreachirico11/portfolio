@@ -21,6 +21,23 @@ module.exports = {
         code: ['Source Code Pro', 'monospace'],
         os: ['Open Sans', 'sans-serif'],
       },
+      keyframes: {
+        loading: {
+          '0%': {
+            width: '0',
+            left: '0',
+            right: 'unset',
+          },
+          '50%': {
+            width: '100%',
+          },
+          '100%': {
+            left: 'unset',
+            right: '0',
+            width: '0',
+          },
+        },
+      },
     },
   },
   plugins: [],
