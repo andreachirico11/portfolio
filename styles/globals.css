@@ -2,29 +2,80 @@
 @tailwind components; 
 @tailwind utilities;
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+::-webkit-scrollbar-thumb {
+  background: #2C313D;
+  border-radius: 20px;
 }
 
-* {
-  box-sizing: border-box;
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #2C313D transparent;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+/* 
+.down {
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.left {
+  transform: translateX(-50px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.right {
+  transform: translateX(50px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.down.show,
+.left.show,
+.right.show {
+  transform: translateY(0);
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.active {
+  color: #2C313D;
+}
+
+.show-modal #modal {
+  display: flex;
+  opacity: 1;
+}
+
+.show-loading #loading {
+  display: unset;
+} */
+
+
+label>input[type='checkbox']+*::before,
+label>input[type='checkbox']:checked+*::before {
+  content: '\00a0';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 0.1em;
+  border-color: #6F778A;
+  color: #FFFA87;
+  margin-right: 1em;
+  line-height: .7em;
+  text-align: center;
+  cursor: pointer;
+}
+
+label>input[type='checkbox']:checked+*::before {
+  content: '\2022';
 }
