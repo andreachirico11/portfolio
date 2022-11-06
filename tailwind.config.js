@@ -17,6 +17,10 @@ module.exports = {
       dropShadow: {
         custom: '3px 3px 0 rgb(0 0 0 / 0.25)',
       },
+      fontFamily: {
+        code: ['Source Code Pro', 'monospace'],
+        os: ['Open Sans', 'sans-serif'],
+      },
     },
   },
   plugins: [],
