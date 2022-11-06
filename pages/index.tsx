@@ -4,6 +4,13 @@ import { AboutSection } from '../components/sections/AboutSection';
 import { ContactsSection } from '../components/sections/ContactsSection';
 import { HomeSection } from '../components/sections/HomeSection';
 import { WorksSection } from '../components/sections/WorksSection';
+import { ISection } from '../types';
+
+const sections: ISection[] = [
+  { id: '#works', label: 'works' },
+  { id: '#about', label: 'about' },
+  { id: '#contacts', label: 'contacts' },
+];
 
 export default function Home() {
   return (
@@ -12,7 +19,7 @@ export default function Home() {
         id='loading'
         className='fixed z-20 h-1 bg-custom-white animate-[loading_2s_linear_infinite] hidden'
       ></div>
-      <Header />
+      <Header sections={sections} />
       <HomeSection />
       <WorksSection />
       <AboutSection />
