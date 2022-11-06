@@ -1,13 +1,11 @@
 import React from 'react';
+import { Form } from '../utils/Form';
 
 interface Props extends React.ComponentPropsWithoutRef<'section'> {}
 
 export const Contacts: React.FC<Props> = () => (
   <>
-    <form className='w-3/4 max-w-xl mb-28 lg:w-96 right'>
-      <h4 className='text-xl text-center mb-7 font-code text-custom-yellow sm:text-3xl md:text-4xl'>
-        Ask for my Resume!
-      </h4>
+    <Form title='Ask for my Resume!' buttonLabel='Download!' className='right'>
       <input
         type='text'
         placeholder='Passcode'
@@ -15,18 +13,8 @@ export const Contacts: React.FC<Props> = () => (
         id='token'
         className='w-full px-3 py-2 mb-5 text-xs bg-transparent border outline-none sm:text-sm md:text-base border-custom-grey font-os text-custom-white placeholder-custom-grey rounded-custom'
       />
-      <button
-        type='button'
-        id='token-submit'
-        className='w-full px-3 py-2 text-sm text-center transition duration-300 ease-in-out focus:outline-none hover:tracking-widest focus:tracking-widest sm:text-lg md:text-xl font-code text-custom-red bg-custom-grey rounded-custom'
-      >
-        Download!
-      </button>
-    </form>
-    <form className='w-3/4 max-w-xl lg:w-96 left'>
-      <h4 className='text-xl text-center mb-7 font-code text-custom-yellow sm:text-3xl md:text-4xl'>
-        Contact Me!
-      </h4>
+    </Form>
+    <Form title='Contact Me!' buttonLabel='Send!' className='left'>
       <input
         type='text'
         placeholder='Your Name'
@@ -60,13 +48,6 @@ export const Contacts: React.FC<Props> = () => (
           </span>
         </label>
       </div>
-      <button
-        type='button'
-        id='email-submit'
-        className='w-full px-3 py-2 text-sm text-center transition duration-300 ease-in-out border-transparent focus:outline-none hover:tracking-widest focus:tracking-widest sm:text-lg md:text-xl font-code text-custom-red bg-custom-grey rounded-custom'
-      >
-        Send!
-      </button>
-    </form>
+    </Form>
   </>
 );
