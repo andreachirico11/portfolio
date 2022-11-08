@@ -3,6 +3,7 @@ import { Form } from '../utils/Form';
 import { Input } from '../utils/Input';
 import { Textarea } from '../utils/Textarea';
 import { Checkbox } from '../sections/Checkbox';
+import Ennvironments from '../../environments';
 
 interface Props {}
 
@@ -13,7 +14,7 @@ export const EmailForm: React.FC<Props> = () => (
     <Textarea name='message' placeholder='Your Message' />
     <Checkbox name='privacy'>
       <a
-        href='https://www.iubenda.com/privacy-policy/59878709'
+        href={Ennvironments.IUBENDA_URL}
         className='text-xs tracking-widest text-center iubenda-white iubenda-noiframe iubenda-embed sm:text-sm font-os text-custom-grey focus:outline-none hover:text-custom-yellow focus:text-custom-yellow '
         title='Privacy Policy '
       >

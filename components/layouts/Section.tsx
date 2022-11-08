@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Colors, ISection } from '../../types';
+import { ISection } from '../../types';
 
 interface Props extends React.ComponentPropsWithoutRef<'section'> {
   children: ReactNode;
