@@ -57,25 +57,6 @@ html {
 .show-loading #loading {
   display: unset;
 } */
+/* 
 
-
-label>input[type='checkbox']+*::before,
-label>input[type='checkbox']:checked+*::before {
-  content: '\00a0';
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  border-radius: 50%;
-  border-style: solid;
-  border-width: 0.1em;
-  border-color: #6F778A;
-  color: #FFFA87;
-  margin-right: 1em;
-  line-height: .7em;
-  text-align: center;
-  cursor: pointer;
-}
-
-label>input[type='checkbox']:checked+*::before {
-  content: '\2022';
-}
+*/

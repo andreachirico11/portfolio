@@ -1,6 +1,6 @@
 import React from 'react';
-import { Form } from '../utils/Form';
-import { Input } from '../utils/Input';
+import { Form } from './Form';
+import { Input } from './controls/Input';
 
 interface Props {}
 
