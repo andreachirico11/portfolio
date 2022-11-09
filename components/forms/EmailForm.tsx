@@ -20,9 +20,9 @@ export const EmailForm: React.FC<Props> = () => {
 
   return (
     <Form title='Contact Me!' buttonLabel='Send!' className='left'>
-      <Input placeholder='Your Name' name='name' />
-      <Input type='email' placeholder='Your Email' name='email' />
-      <Textarea name='message' placeholder='Your Message' />
+      <Input placeholder='Your Name' name='name' onChange={onChange} />
+      <Input type='email' placeholder='Your Email' name='email' onChange={onChange} />
+      <Textarea name='message' placeholder='Your Message' onChange={onChange} />
       <Checkbox name='privacy' onChange={onChange} value={formState.privacy}>
         <a
           href={Ennvironments.IUBENDA_URL}
