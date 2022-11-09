@@ -9,6 +9,9 @@ interface Props {}
 
 export const EmailForm: React.FC<Props> = () => {
   const [formState, setFormState] = useState({
+    name: '',
+    email: '',
+    message: '',
     privacy: false,
   });
   const onChange = (name: string, value: any) => {
@@ -20,9 +23,20 @@ export const EmailForm: React.FC<Props> = () => {
 
   return (
     <Form title='Contact Me!' buttonLabel='Send!' className='left'>
-      <Input placeholder='Your Name' name='name' onChange={onChange} />
-      <Input type='email' placeholder='Your Email' name='email' onChange={onChange} />
-      <Textarea name='message' placeholder='Your Message' onChange={onChange} />
+      <Input placeholder='Your Name' name='name' onChange={onChange} value={formState.name} />
+      <Input
+        type='email'
+        placeholder='Your Email'
+        name='email'
+        onChange={onChange}
+        value={formState.email}
+      />
+      <Textarea
+        name='message'
+        placeholder='Your Message'
+        onChange={onChange}
+        value={formState.message}
+      />
       <Checkbox name='privacy' onChange={onChange} checked={formState.privacy}>
         <a
           href={Ennvironments.IUBENDA_URL}
