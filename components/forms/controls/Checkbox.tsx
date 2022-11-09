@@ -1,30 +1,30 @@
 import React, { ChangeEvent, ReactNode, useRef, useState, FC } from 'react';
+import { useFocus } from '../../../hooks';
+import { InputFieldProps } from '../../../types';
 
-interface Props {
+interface Props extends InputFieldProps {
   children?: ReactNode;
-  label?: string;
-  name: string;
-  onChange: (name: string, value: any) => void;
-  value: boolean;
+  stringLabel?: string;
+  checked: boolean;
 }
 
 const DefaultCheckMark: FC = () => <div className='w-3/5 rounded-full h-3/5 bg-custom-grey' />;
 
-export const Checkbox: FC<Props> = ({ children, label, name, onChange, value = false }) => {
+export const Checkbox: FC<Props> = ({
+  children,
+  stringLabel,
+  name = '',
+  onChange,
+  checked = false,
+}) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [checked, setChecked] = useState(value);
-  const [focused, setFocused] = useState(false);
+  const [isChecked, setChecked] = useState(checked);
+  const [focused, onFocus, onBlur] = useFocus(false);
   const toggle = () => {
     if (inputRef.current) {
       inputRef.current.checked = !inputRef.current.checked;
       setChecked(inputRef.current.checked);
     }
-  };
-  const onFocus = () => {
-    setFocused(true);
-  };
-  const onBlur = () => {
-    setFocused(false);
   };
   const onCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
     setChecked(e.target.checked);
@@ -42,19 +42,19 @@ export const Checkbox: FC<Props> = ({ children, label, name, onChange, value = f
             focused ? 'custom-yellow' : 'custom-grey'
           }`}
         >
-          {checked && <DefaultCheckMark />}
+          {isChecked && <DefaultCheckMark />}
         </div>
         <input
           ref={inputRef}
           onChange={onCheckboxChange}
-          checked={value}
+          checked={checked}
           onFocus={onFocus}
           onBlur={onBlur}
           type='checkbox'
           name={name}
           className='w-0 h-0 opacity-0'
         />
-        <span className='text-inherit'>{label || children}</span>
+        <span className='text-inherit'>{stringLabel || children}</span>
       </label>
     </div>
   );

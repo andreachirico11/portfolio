@@ -1,19 +1,14 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent } from 'react';
+import { useFocus } from '../../../hooks';
 import { TextareaFieldProps } from '../../../types';
 
 interface Props extends TextareaFieldProps {}
 
 export const Textarea: React.FC<Props> = ({ onChange, ...props }) => {
+  const [focused, onFocus, onBlur] = useFocus(false);
   const onValueChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     onChange(name, value);
-  };
-  const [focused, setFocused] = useState(false);
-  const onFocus = () => {
-    setFocused(true);
-  };
-  const onBlur = () => {
-    setFocused(false);
   };
   return (
     <div
