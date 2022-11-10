@@ -18,16 +18,13 @@ export const Checkbox: FC<Props> = ({
   checked = false,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [isChecked, setChecked] = useState(checked);
   const [focused, onFocus, onBlur] = useFocus(false);
   const toggle = () => {
     if (inputRef.current) {
       inputRef.current.checked = !inputRef.current.checked;
-      setChecked(inputRef.current.checked);
     }
   };
   const onCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setChecked(e.target.checked);
     onChange(name, e.target.checked);
   };
 
@@ -42,7 +39,7 @@ export const Checkbox: FC<Props> = ({
             focused ? 'custom-yellow' : 'custom-grey'
           }`}
         >
-          {isChecked && <DefaultCheckMark />}
+          {inputRef.current?.checked && <DefaultCheckMark />}
         </div>
         <input
           ref={inputRef}
