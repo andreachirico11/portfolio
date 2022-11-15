@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import React from 'react';
-import { IIconLinkProps } from '../../types';
 import { IconLink } from '../utils/IconLink';
 
 interface Props {

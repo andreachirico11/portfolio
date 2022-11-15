@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
-import { Form } from './Form';
-import { Input } from './controls/Input';
+import { FC } from 'react';
+import { FormState, MyForm, Input } from '../../myForm';
 
 interface Props {}
 
-export const TokenForm: React.FC<Props> = () => {
-  const [passCode, setPasscode] = useState('');
-  const onChange = (_: string, value: string) => {
-    setPasscode(value);
+export const TokenForm: FC<Props> = () => {
+  const onSubmit = (formState: FormState) => {
+    console.log(formState);
   };
 
   return (
-    <Form title='Ask for my Resume!' buttonLabel='Download!' className='right'>
-      <Input onChange={onChange} placeholder='Passcode' name='passcode' />
-    </Form>
+    <MyForm
+      title='Ask for my Resume!'
+      buttonLabel='Download!'
+      className='right'
+      formState={{ passcode: '' }}
+      onSubmit={onSubmit}
+    >
+      <Input placeholder='Passcode' name='passcode' />
+    </MyForm>
   );
 };
