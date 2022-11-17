@@ -4,6 +4,7 @@ import { Header } from '../components/navigation/Header';
 import { About } from '../components/sections/About';
 import { Contacts } from '../components/sections/Contacts';
 import { Intro } from '../components/sections/Intro';
+import { ModalsContainer } from '../components/sections/ModalsContainer';
 import { Works } from '../components/sections/Works';
 import { LoadBar } from '../components/utils/LoadBar';
 import { ISection } from '../types';
@@ -19,6 +20,7 @@ export default function Home() {
   return (
     <>
       <LoadBar />
+      <ModalsContainer />
       <Header sections={sections.slice(1)} />
       <Section section={sections[0]} className='px-[6rem] bg-custom-green'>
         <Intro />
