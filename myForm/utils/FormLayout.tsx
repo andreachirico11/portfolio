@@ -1,4 +1,5 @@
-import { FormEvent } from 'react';
+import { FormEvent, useContext } from 'react';
+import { LoadingContext } from '../../context/LoadingContext';
 import { FormProps } from '../types';
 
 interface Props extends FormProps {}
@@ -12,9 +13,14 @@ export const FormLayout: React.FC<Props> = ({
   onSubmit,
   ...formProps
 }) => {
+  const c = useContext(LoadingContext);
   const getWholeState = useFormContextMaster();
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    c.startLoading();
+    setTimeout(() => {
+      c.stopLoading();
+    }, 1000);
     onSubmit(getWholeState());
   };
   return (

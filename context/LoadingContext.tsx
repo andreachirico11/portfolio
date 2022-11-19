@@ -1,17 +1,12 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useRef, useState } from 'react';
+import { LoadBar } from '../components/utils/LoadBar';
 
 interface ILoadingContext {
-  isLoading: () => boolean;
   startLoading: () => void;
   stopLoading: () => void;
 }
 
-const defaultValue = false;
-
 const initialStatus: ILoadingContext = {
-  isLoading() {
-    return defaultValue;
-  },
   startLoading() {},
   stopLoading() {},
 };
@@ -19,13 +14,22 @@ const initialStatus: ILoadingContext = {
 const LoadingContext = createContext(initialStatus);
 
 const LoadingContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [_isLoading, setIsLoading] = useState(defaultValue);
-  const isLoading = () => _isLoading;
-  const startLoading = () => setIsLoading(true);
-  const stopLoading = () => setIsLoading(false);
+  const barStateRef = useRef<(isLoading: boolean) => any>();
+  const setRef = (cb: (isLoading: boolean) => any) => {
+    barStateRef.current = cb;
+  };
+  const startLoading = () => {
+    barStateRef.current!(true);
+  };
+  const stopLoading = () => {
+    barStateRef.current!(false);
+  };
   return (
-    <LoadingContext.Provider value={{ isLoading, startLoading, stopLoading }}>
-      {children}
+    <LoadingContext.Provider value={{ startLoading, stopLoading }}>
+      <>
+        <LoadBar subscriber={setRef} />
+        {children}
+      </>
     </LoadingContext.Provider>
   );
 };

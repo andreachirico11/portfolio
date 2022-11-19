@@ -1,15 +1,19 @@
-import React, { useContext } from 'react';
-import { LoadingContext } from '../../context/LoadingContext';
+import React, { FC, useContext, useEffect, useState } from 'react';
 
-interface Props {}
+interface Props {
+  subscriber: (cb: (isLoading: boolean) => any) => void;
+}
 
-export const LoadBar: React.FC<Props> = () => {
-  const { isLoading } = useContext(LoadingContext);
+export const LoadBar: FC<Props> = ({ subscriber }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    subscriber(setIsLoading);
+  }, []);
   return (
     <div
       id='loading'
       className={`fixed z-20 h-1 bg-custom-white animate-[loading_2s_linear_infinite] ${
-        isLoading() || 'hidden'
+        isLoading || 'hidden'
       }`}
     ></div>
   );

@@ -14,6 +14,7 @@ export const Input: FC<Props> = ({ useFormContext, name, ...props }) => {
   const { ref, onFocus, onBlur } = useFocusBorderRef<HTMLInputElement>();
   return (
     <input
+      className='w-full px-3 py-2 mb-5 text-xs bg-transparent border outline-none sm:text-sm md:text-base border-custom-grey font-os text-custom-white placeholder-custom-grey rounded-custom'
       {...props}
       onChange={onChange}
       value={value}
@@ -22,13 +23,6 @@ export const Input: FC<Props> = ({ useFormContext, name, ...props }) => {
       onBlur={onBlur}
       onMouseEnter={onFocus}
       onMouseLeave={onBlur}
-      className={`
-      w-full px-3 py-2 mb-5 text-xs 
-      bg-transparent border outline-none 
-      sm:text-sm md:text-base 
-      border-custom-grey
-      font-os text-custom-white
-    placeholder-custom-grey rounded-custom`}
     />
   );
 };
