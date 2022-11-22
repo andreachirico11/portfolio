@@ -1,6 +1,6 @@
 import React from 'react';
 import Environments from '../../environments';
-import { Checkbox, FormState, Input, MyForm, Textarea } from '../../myForm';
+import { Checkbox, FormState, Input, MyForm, Textarea, Validators } from '../../myForm';
 import { Anchor } from '../utils/Anchor';
 
 interface Props {
@@ -13,7 +13,30 @@ export const EmailForm: React.FC<Props> = ({ onSubmit }) => {
       title='Contact Me!'
       buttonLabel='Send!'
       className='left'
-      formState={{ name: '', email: '', message: '', privacy: false }}
+      config={{
+        name: {
+          initialvalue: '',
+          validators: [
+            Validators.required('Required Field'),
+            Validators.minLenght(4, 'The name is too short'),
+          ],
+        },
+        email: {
+          initialvalue: '',
+          validators: [
+            Validators.required('Required Field'),
+            Validators.email('The mail format is invalid'),
+          ],
+        },
+        message: {
+          initialvalue: '',
+          validators: [
+            Validators.required('Required Field'),
+            Validators.minLenght(20, 'Please write something more!'),
+          ],
+        },
+        privacy: { initialvalue: false, validators: [Validators.required('Required Field')] },
+      }}
       onSubmit={onSubmit}
     >
       <Input placeholder='Your Name' name='name' />

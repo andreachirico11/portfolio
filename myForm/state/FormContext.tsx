@@ -1,5 +1,12 @@
 import { ChangeEvent, createContext, ReactNode, useContext, useEffect, useState } from 'react';
-import { FormState, HtmlInputs, UseFormContextFieldType, UseFormStateType } from '../types';
+import {
+  ControlState,
+  FormState,
+  HtmlInputs,
+  UseFormContextFieldType,
+  UseFormStateType,
+  Validator,
+} from '../types';
 import useFormState from './useFormState';
 
 const isACheckBox = (element: HtmlInputs): element is HTMLInputElement =>
@@ -12,29 +19,41 @@ export default function createFormContext(formState: FormState) {
     return <FormContext.Provider value={useFormState(formState)}>{children}</FormContext.Provider>;
   };
 
-  const useFormContextField = (fieldName: string): UseFormContextFieldType => {
+  const useFormContextField = (
+    fieldName: string,
+    initialState: ControlState,
+    validators: Validator[] = []
+  ): UseFormContextFieldType => {
     const formState = useContext(FormContext);
 
     if (!formState) {
       throw new Error('no state');
     }
 
-    const [value, setValue] = useState(formState.get(fieldName));
+    const [controlState, setValue] = useState<ControlState>(initialState);
 
     const onChange = (event: ChangeEvent<HtmlInputs>) => {
-      formState.set(
-        fieldName,
-        isACheckBox(event.target) ? event.target.checked : event.target.value
-      );
+      // todo validators
+      const value = isACheckBox(event.target) ? event.target.checked : event.target.value;
+      let errors: string[] = [];
+      if (validators.length) {
+        validators.forEach((v) => {
+          const error = v(value);
+          if (error) {
+            errors.push(error);
+          }
+        });
+      }
+      formState.set(fieldName, { errors, value, isOnError: errors.length > 0 });
     };
 
     useEffect(() => {
-      return formState.subscribe(fieldName, () => {
+      return formState.subscribe(fieldName, initialState, () => {
         setValue(formState.get(fieldName));
       });
     }, []);
 
-    return [value, onChange];
+    return [controlState, onChange];
   };
 
   const useFormContextMaster = () => {
@@ -42,5 +61,19 @@ export default function createFormContext(formState: FormState) {
     return formState!.getWhole;
   };
 
-  return { Provider, useFormContextField, useFormContextMaster };
+  const useFormContextInvalidState = () => {
+    const formState = useContext(FormContext);
+    if (!formState) {
+      throw new Error('no state');
+    }
+    const [isFormInvalid, setIsFormInvalid] = useState(true);
+    useEffect(() => {
+      return formState.subscribeToInvalidity(() => {
+        setIsFormInvalid(formState.isFormInvalid);
+      });
+    }, []);
+    return isFormInvalid;
+  };
+
+  return { Provider, useFormContextField, useFormContextMaster, useFormContextInvalidState };
 }

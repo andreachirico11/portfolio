@@ -1,5 +1,6 @@
 import { FC, FormEvent } from 'react';
 import { FormProps } from '../types';
+import { SubmitButton } from './SubmitButton';
 
 interface Props extends FormProps {}
 
@@ -8,6 +9,7 @@ export const FormLayout: FC<Props> = ({
   title,
   buttonLabel,
   useFormContextMaster,
+  useFormContextInvalidState,
   onSubmit,
   className,
   ...formProps
@@ -23,12 +25,10 @@ export const FormLayout: FC<Props> = ({
         {title}
       </h4>
       {children}
-      <button
-        type='submit'
-        className='w-full px-3 py-2 text-sm text-center transition duration-300 ease-in-out focus:outline-none hover:tracking-widest focus:tracking-widest sm:text-lg md:text-xl font-code text-custom-red bg-custom-grey rounded-custom'
-      >
-        {buttonLabel}
-      </button>
+      <SubmitButton
+        useFormContextInvalidState={useFormContextInvalidState}
+        buttonLabel={buttonLabel}
+      />
     </form>
   );
 };

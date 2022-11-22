@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { FormState, MyForm, Input } from '../../myForm';
+import { FormState, MyForm, Input, Validators } from '../../myForm';
 
 interface Props {
   onSubmit: (formState: FormState) => void;
@@ -11,7 +11,9 @@ export const TokenForm: FC<Props> = ({ onSubmit }) => {
       title='Ask for my Resume!'
       buttonLabel='Download!'
       className='mb-28'
-      formState={{ passcode: '' }}
+      config={{
+        passcode: { initialvalue: '', validators: [Validators.required('Password is Required')] },
+      }}
       onSubmit={onSubmit}
     >
       <Input placeholder='Passcode' name='passcode' />

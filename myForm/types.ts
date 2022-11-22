@@ -4,10 +4,16 @@ import useFormState from './state/useFormState';
 export type HtmlInputs = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
 
 export type FormState = {
-  [key: string]: any;
+  [key: string]: ControlState;
 };
 
-export type UseFormContextFieldType = [any, (event: ChangeEvent<HtmlInputs>) => void];
+export type ControlState = {
+  value: any;
+  isOnError: boolean;
+  errors: string[];
+};
+
+export type UseFormContextFieldType = [ControlState, (event: ChangeEvent<HtmlInputs>) => void];
 
 export type UseFormContextMasterType = () => () => FormState;
 
@@ -21,10 +27,25 @@ export interface FormProps extends Omit<React.ComponentPropsWithoutRef<'form'>, 
   buttonLabel: string;
   onSubmit: (formState: FormState) => void;
   useFormContextMaster: UseFormContextMasterType;
-  classes?: string;
+  useFormContextInvalidState: () => boolean;
 }
 
 export interface FormFieldBaseProps {
   name: string;
-  useFormContext?: (fieldName: string) => UseFormContextFieldType;
+  initialState?: ControlState;
+  validators?: Validator[];
+  useFormContext?: (
+    fieldName: string,
+    initialState: ControlState,
+    validators?: Validator[]
+  ) => UseFormContextFieldType;
+}
+
+export type Validator = (value: any) => string | null;
+
+export interface FormConfig {
+  [key: string]: {
+    initialvalue?: any;
+    validators: Validator[];
+  };
 }
