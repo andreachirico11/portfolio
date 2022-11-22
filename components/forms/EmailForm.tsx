@@ -3,13 +3,11 @@ import Environments from '../../environments';
 import { Checkbox, FormState, Input, MyForm, Textarea } from '../../myForm';
 import { Anchor } from '../utils/Anchor';
 
-interface Props {}
+interface Props {
+  onSubmit: (formState: FormState) => void;
+}
 
-export const EmailForm: React.FC<Props> = () => {
-  const onSubmit = (formState: FormState) => {
-    console.log(formState);
-  };
-
+export const EmailForm: React.FC<Props> = ({ onSubmit }) => {
   return (
     <MyForm
       title='Contact Me!'

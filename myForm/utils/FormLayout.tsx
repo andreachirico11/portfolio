@@ -1,30 +1,24 @@
-import { FormEvent, useContext } from 'react';
-import { LoadingContext } from '../../context/LoadingContext';
+import { FC, FormEvent } from 'react';
 import { FormProps } from '../types';
 
 interface Props extends FormProps {}
 
-export const FormLayout: React.FC<Props> = ({
+export const FormLayout: FC<Props> = ({
   children,
-  className,
   title,
   buttonLabel,
   useFormContextMaster,
   onSubmit,
+  className,
   ...formProps
 }) => {
-  const c = useContext(LoadingContext);
   const getWholeState = useFormContextMaster();
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    c.startLoading();
-    setTimeout(() => {
-      c.stopLoading();
-    }, 1000);
     onSubmit(getWholeState());
   };
   return (
-    <form className={`w-3/4 max-w-xl mb-28 lg:w-96 ${className}`} {...formProps} onSubmit={submit}>
+    <form {...formProps} className={`w-3/4 max-w-xl lg:w-96 ${className}`} onSubmit={submit}>
       <h4 className='text-xl text-center mb-7 font-code text-custom-yellow sm:text-3xl md:text-4xl'>
         {title}
       </h4>

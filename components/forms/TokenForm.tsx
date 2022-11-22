@@ -1,18 +1,16 @@
 import { FC } from 'react';
 import { FormState, MyForm, Input } from '../../myForm';
 
-interface Props {}
+interface Props {
+  onSubmit: (formState: FormState) => void;
+}
 
-export const TokenForm: FC<Props> = () => {
-  const onSubmit = (formState: FormState) => {
-    console.log(formState);
-  };
-
+export const TokenForm: FC<Props> = ({ onSubmit }) => {
   return (
     <MyForm
       title='Ask for my Resume!'
       buttonLabel='Download!'
-      className='right'
+      className='mb-28'
       formState={{ passcode: '' }}
       onSubmit={onSubmit}
     >

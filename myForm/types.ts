@@ -21,6 +21,7 @@ export interface FormProps extends Omit<React.ComponentPropsWithoutRef<'form'>, 
   buttonLabel: string;
   onSubmit: (formState: FormState) => void;
   useFormContextMaster: UseFormContextMasterType;
+  classes?: string;
 }
 
 export interface FormFieldBaseProps {
