@@ -20,7 +20,7 @@ export const FormLayout: FC<Props> = ({
     onSubmit(getWholeState());
   };
   return (
-    <form {...formProps} className={`w-3/4 max-w-xl lg:w-96 ${className}`} onSubmit={submit}>
+    <form {...formProps} className={`w-100 ${className}`} onSubmit={submit}>
       <h4 className='text-xl text-center mb-7 font-code text-custom-yellow sm:text-3xl md:text-4xl'>
         {title}
       </h4>

@@ -6,6 +6,7 @@ import { Contacts } from '../components/sections/Contacts';
 import { Intro } from '../components/sections/Intro';
 import { ModalsContainer } from '../components/sections/ModalsContainer';
 import { Works } from '../components/sections/Works';
+import { useShowAnimationContextListener } from '../context/ShowAnimationContext';
 import { ISection } from '../types';
 
 const sections: ISection[] = [
@@ -16,8 +17,9 @@ const sections: ISection[] = [
 ];
 
 export default function Home() {
+  useShowAnimationContextListener();
   return (
-    <>
+    <div>
       <ModalsContainer />
       <Header sections={sections.slice(1)} />
       <Section section={sections[0]} className='px-[6rem] bg-custom-green'>
@@ -41,6 +43,6 @@ export default function Home() {
       </Section>
       <Footer />
       <a id='downloadAnchor' className='hidden'></a>
-    </>
+    </div>
   );
 }

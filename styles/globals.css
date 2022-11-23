@@ -18,7 +18,9 @@ html {
   scrollbar-color: #2C313D transparent;
 }
 
-/* 
+
+
+/* scrolling animations  */
 .down {
   transform: translateY(150px);
   opacity: 0;
@@ -40,23 +42,7 @@ html {
 .down.show,
 .left.show,
 .right.show {
-  transform: translateY(0);
-  transform: translateX(0);
-  opacity: 1;
+  transform: translateY(0) !important;
+  transform: translateX(0) !important;
+  opacity: 1 !important;
 }
-
-.active {
-  color: #2C313D;
-}
-
-.show-modal #modal {
-  display: flex;
-  opacity: 1;
-}
-
-.show-loading #loading {
-  display: unset;
-} */
-/* 
-
-*/
