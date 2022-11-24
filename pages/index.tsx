@@ -7,7 +7,7 @@ import { Intro } from '../components/sections/Intro';
 import { ModalsContainer } from '../components/sections/ModalsContainer';
 import { Works } from '../components/sections/Works';
 import useScrollContexts from '../hooks/useSrollContexts';
-import { sections } from './routes';
+import { sections } from '../utils/routes';
 
 export default function Home() {
   useScrollContexts();

@@ -5,7 +5,7 @@ import { LoadingContextProvider } from '../context/LoadingContext';
 import { ModalContextProvider } from '../context/ModalContext';
 import { ShowAnimationContextProvider } from '../context/ShowAnimationContext';
 import { ActiveLinkContextProvider } from '../context/ActiveLinkContext';
-import { sections } from '../pages/routes';
+import { sections } from '../utils/routes';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
