@@ -6,22 +6,15 @@ import { Contacts } from '../components/sections/Contacts';
 import { Intro } from '../components/sections/Intro';
 import { ModalsContainer } from '../components/sections/ModalsContainer';
 import { Works } from '../components/sections/Works';
-import { useShowAnimationContextListener } from '../context/ShowAnimationContext';
-import { ISection } from '../types';
-
-const sections: ISection[] = [
-  { id: 'intro', label: 'intro' },
-  { id: 'works', label: 'works' },
-  { id: 'about', label: 'about' },
-  { id: 'contacts', label: 'contacts' },
-];
+import useScrollContexts from '../hooks/useSrollContexts';
+import { sections } from './routes';
 
 export default function Home() {
-  useShowAnimationContextListener();
+  useScrollContexts();
   return (
     <div>
       <ModalsContainer />
-      <Header sections={sections.slice(1)} />
+      <Header />
       <Section section={sections[0]} className='px-[6rem] bg-custom-green'>
         <Intro />
       </Section>

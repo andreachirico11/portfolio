@@ -6,7 +6,10 @@ interface Props {
 }
 
 export const HeaderLink: React.FC<Props> = ({ section }) => (
-  <a href={'#' + section.id} className='hover:drop-shadow-custom'>
+  <a
+    href={'#' + section.id}
+    className={`hover:drop-shadow-custom ${section.active ? 'text-custom-blue' : ''}`}
+  >
     {section.label}
   </a>
 );

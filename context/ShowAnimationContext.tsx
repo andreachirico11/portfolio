@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useRef, FC, useContext, useEffect } from 'react';
 import { ShowAnimationContextType, RefType, SetType, AnimationType } from '../types';
+import { getIsVisible } from '../utils';
 
 const ShowAnimationContext = createContext<ShowAnimationContextType>(null);
 
@@ -27,7 +28,6 @@ const ShowAnimationContextProvider: FC<{ children: ReactNode; heightToShowElemen
 
 function checkAndReveal(elements: Set<SetType>, heightToShowElement: number) {
   const isVisible = getIsVisible(heightToShowElement);
-  // todo per i vari left right
   elements.forEach(({ ref: { current } }) => {
     if (!!current) {
       if (isVisible(current)) {
@@ -37,13 +37,6 @@ function checkAndReveal(elements: Set<SetType>, heightToShowElement: number) {
       }
     }
   });
-}
-
-function getIsVisible(heightToShowElement: number) {
-  return (current: HTMLElement) => {
-    const elementTop = current.getBoundingClientRect().top;
-    return elementTop < window.innerHeight - heightToShowElement;
-  };
 }
 
 function useShowAnimationContext<T>(type: AnimationType = AnimationType.down) {
@@ -57,14 +50,4 @@ function useShowAnimationContext<T>(type: AnimationType = AnimationType.down) {
   return newRef;
 }
 
-function useShowAnimationContextListener() {
-  const { onScroll } = useContext(ShowAnimationContext)!;
-  useEffect(() => {
-    window.addEventListener('scroll', onScroll);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-    };
-  }, []);
-}
-
-export { useShowAnimationContext, useShowAnimationContextListener, ShowAnimationContextProvider };
+export { ShowAnimationContext, useShowAnimationContext, ShowAnimationContextProvider };
