@@ -49,3 +49,7 @@ export interface FormConfig {
     validators: Validator[];
   };
 }
+
+export class WrongTokenError extends Error {}
+
+export class CorruptedFileError extends Error {}
