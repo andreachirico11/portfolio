@@ -2,9 +2,6 @@ export default class Environments {
   static get IUBENDA_URL() {
     return process.env.NEXT_PUBLIC_IUBENDA_URL || '';
   }
-  static get OWNER_MAIL() {
-    return process.env.NEXT_PUBLIC_OWNER_MAIL || '';
-  }
   static get API_URL() {
     return process.env.NEXT_PUBLIC_API_URL || '';
   }
@@ -20,8 +17,8 @@ export default class Environments {
   static get TOKEN() {
     return process.env.TOKEN || '';
   }
-  static get SENDGRID_API_KEYPERSONAL_MAIL() {
-    return process.env.SENDGRID_API_KEYPERSONAL_MAIL || '';
+  static get SENDGRID_API_KEY() {
+    return process.env.SENDGRID_API_KEY || '';
   }
   static get PERSONAL_MAIL() {
     return process.env.PERSONAL_MAIL || '';

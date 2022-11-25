@@ -5,7 +5,7 @@ import { ModalContext } from '../../context/ModalContext';
 import Environments from '../../environments';
 import { FormState } from '../../myForm';
 import { ModalTypes } from '../../types/modals/Modals';
-import { fetchFile, getErrorStringContent, sendMail } from '../../utils';
+import { fetchFile, getErrorMessages, getErrorStringContent, sendMail } from '../../utils';
 import { EmailForm } from '../forms/EmailForm';
 import { TokenForm } from '../forms/TokenForm';
 
@@ -50,7 +50,7 @@ export const Contacts: React.FC<Props> = () => {
     } catch (error) {
       modals.openModal(ModalTypes.error, {
         title: "There was a problem and the mail wasn't sent",
-        content: !!Environments.OWNER_MAIL ? `Please contact me at ${Environments.OWNER_MAIL}` : '',
+        content: getErrorMessages(error),
       });
     } finally {
       loading.stopLoading();

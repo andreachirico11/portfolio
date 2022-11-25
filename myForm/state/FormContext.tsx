@@ -33,7 +33,6 @@ export default function createFormContext(formState: FormState) {
     const [controlState, setValue] = useState<ControlState>(initialState);
 
     const onChange = (event: ChangeEvent<HtmlInputs>) => {
-      // todo validators
       const value = isACheckBox(event.target) ? event.target.checked : event.target.value;
       let errors: string[] = [];
       if (validators.length) {

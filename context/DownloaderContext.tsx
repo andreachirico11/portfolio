@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useRef } from 'react';
-import { CorruptedFileError } from '../myForm';
+import { CorruptedFileError } from '../types/errors';
 
 const initialCb = (blob: Blob, title: string) => {};
 

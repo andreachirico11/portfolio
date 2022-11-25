@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 interface Props {
   subscriber: (cb: (isLoading: boolean) => any) => void;
@@ -8,6 +8,7 @@ export const LoadBar: FC<Props> = ({ subscriber }) => {
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     subscriber(setIsLoading);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div

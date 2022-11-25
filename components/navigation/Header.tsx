@@ -14,6 +14,7 @@ export const Header: React.FC<Props> = () => {
     return registerToSectionUpdate(() => {
       setSections(getSections());
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

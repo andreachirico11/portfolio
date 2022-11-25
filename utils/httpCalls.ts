@@ -1,18 +1,18 @@
 import Environments from '../environments';
-import { WrongTokenError } from '../myForm';
+import { EmailErrorResponse } from '../types';
+import { WrongTokenError } from '../types/errors';
 
 export async function sendMail(name: string, email: string, message: string, policy: boolean) {
-  const res = await fetch(Environments.API_URL + '/email', {
+  const res = await fetch('api/email', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ name, email, message, policy }),
   });
-  if (res.status === 202) {
-    return;
+  if (!res.ok) {
+    throw (await res.json()) as EmailErrorResponse;
   }
-  throw new Error();
 }
 
 export async function fetchFile(token: string) {
