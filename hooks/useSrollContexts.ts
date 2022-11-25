@@ -1,10 +1,10 @@
 import { useContext, useEffect } from 'react';
-import { ActiveLinkContext } from '../context/ActiveLinkContext';
+import { SectionsContext } from '../context/ActiveLinkContext';
 import { ShowAnimationContext } from '../context/ShowAnimationContext';
 
 export default function useScrollContexts() {
   const { onScroll: animationOnScroll } = useContext(ShowAnimationContext)!;
-  const { onScroll: activeLinknOnScroll } = useContext(ActiveLinkContext)!;
+  const { onScroll: activeLinknOnScroll } = useContext(SectionsContext)!;
   const onScrolls = () => {
     animationOnScroll();
     activeLinknOnScroll();

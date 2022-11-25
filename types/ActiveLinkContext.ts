@@ -1,7 +1,7 @@
 import { ISection } from './ISection';
 import { RefType } from './ShowAnimationContext';
 
-export type ActiveLinkContextType = {
+export type SectionsContextType = {
   subscribe: (ref: RefType) => void;
   onScroll: () => void;
   sections: () => ISection[];

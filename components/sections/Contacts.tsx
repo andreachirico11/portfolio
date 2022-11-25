@@ -28,7 +28,7 @@ export const Contacts: React.FC<Props> = () => {
     } catch (error) {
       modals.openModal(ModalTypes.error, {
         title: 'Something went wrong...',
-        content: getErrorStringContent(error),
+        content: getErrorMessages(error),
       });
     } finally {
       loading.stopLoading();

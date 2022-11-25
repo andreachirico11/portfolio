@@ -1,5 +1,5 @@
-import React, { ReactNode, useContext } from 'react';
-import { ActiveLinkContext, useActiveLinkContext } from '../../context/ActiveLinkContext';
+import React, { ReactNode } from 'react';
+import { useActiveLinkContext } from '../../context/ActiveLinkContext';
 import { ISection } from '../../types';
 
 interface Props extends React.ComponentPropsWithoutRef<'section'> {

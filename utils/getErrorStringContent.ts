@@ -18,11 +18,20 @@ function handleError(error: BaseError) {
       return error.errorMessage || 'The request contains incorrect data';
     case ErrorTypes.EMAIL_API:
       return error.errorMessage || 'There was an error with Email service';
+    case ErrorTypes.UNAUTHORIZED:
+      return 'The password is invalid';
+    case ErrorTypes.GITHUB:
+      return 'There was an error retrieving the file from github';
+    case ErrorTypes.CHEERIO:
+      return 'The provided html in invalid';
+    case ErrorTypes.PARSING:
+      return 'Error during the file parsing';
+    case ErrorTypes.UNKWNOWN:
     default:
       return 'Unkwnown Error';
   }
 }
 
-function isAKnownError(error: unknown): error is BaseError {
+export function isAKnownError(error: unknown): error is BaseError {
   return !!error && !!(error as BaseError).type;
 }

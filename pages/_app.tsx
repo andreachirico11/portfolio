@@ -4,13 +4,20 @@ import Head from 'next/head';
 import { LoadingContextProvider } from '../context/LoadingContext';
 import { ModalContextProvider } from '../context/ModalContext';
 import { ShowAnimationContextProvider } from '../context/ShowAnimationContext';
-import { ActiveLinkContextProvider } from '../context/ActiveLinkContext';
-import { sections } from '../utils/routes';
+import { SectionsProvider } from '../context/ActiveLinkContext';
 import { DownloadingContextProvider } from '../context/DownloaderContext';
+import { ISection } from '../types';
+
+const sections: ISection[] = [
+  { id: 'intro', label: 'intro', active: true },
+  { id: 'works', label: 'works', active: false },
+  { id: 'about', label: 'about', active: false },
+  { id: 'contacts', label: 'contacts', active: false },
+];
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ActiveLinkContextProvider actualSections={sections}>
+    <SectionsProvider actualSections={sections}>
       <ShowAnimationContextProvider>
         <ModalContextProvider>
           <LoadingContextProvider>
@@ -23,6 +30,6 @@ export default function App({ Component, pageProps }: AppProps) {
           </LoadingContextProvider>
         </ModalContextProvider>
       </ShowAnimationContextProvider>
-    </ActiveLinkContextProvider>
+    </SectionsProvider>
   );
 }

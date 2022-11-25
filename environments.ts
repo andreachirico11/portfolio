@@ -2,9 +2,6 @@ export default class Environments {
   static get IUBENDA_URL() {
     return process.env.NEXT_PUBLIC_IUBENDA_URL || '';
   }
-  static get API_URL() {
-    return process.env.NEXT_PUBLIC_API_URL || '';
-  }
   static get CV_TITLE() {
     return process.env.NEXT_PUBLIC_CV_TITLE || '';
   }

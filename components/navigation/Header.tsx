@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ActiveLinkContext } from '../../context/ActiveLinkContext';
+import { SectionsContext } from '../../context/ActiveLinkContext';
 import { ISection } from '../../types';
 import { HeaderLink } from './HeaderLink';
 
 interface Props extends React.ComponentPropsWithoutRef<'nav'> {}
 
 export const Header: React.FC<Props> = () => {
-  const { sections: getSections, registerToSectionUpdate } = useContext(ActiveLinkContext)!;
+  const { sections: getSections, registerToSectionUpdate } = useContext(SectionsContext)!;
   const [sections, setSections] = useState<ISection[]>([]);
 
   useEffect(() => {

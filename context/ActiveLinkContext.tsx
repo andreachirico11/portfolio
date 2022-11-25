@@ -1,10 +1,10 @@
 import { createContext, ReactNode, useRef, FC, useContext, useEffect } from 'react';
-import { ActiveLinkContextType, RefType, ISection } from '../types';
+import { SectionsContextType, RefType, ISection } from '../types';
 import { getIsVisible } from '../utils';
 
-const ActiveLinkContext = createContext<ActiveLinkContextType>(null);
+const SectionsContext = createContext<SectionsContextType>(null);
 
-const ActiveLinkContextProvider: FC<{
+const SectionsProvider: FC<{
   children: ReactNode;
   actualSections: ISection[];
   heightToShowElement?: number;
@@ -40,11 +40,11 @@ const ActiveLinkContextProvider: FC<{
   };
 
   return (
-    <ActiveLinkContext.Provider
+    <SectionsContext.Provider
       value={{ subscribe, onScroll, sections, activeSection, registerToSectionUpdate }}
     >
       {children}
-    </ActiveLinkContext.Provider>
+    </SectionsContext.Provider>
   );
 };
 
@@ -61,7 +61,7 @@ function checkForActiveSection(elements: Set<RefType>, heightToShowElement: numb
 
 function useActiveLinkContext<T>() {
   const newRef = useRef<T & HTMLElement>(null);
-  const { subscribe } = useContext(ActiveLinkContext)!;
+  const { subscribe } = useContext(SectionsContext)!;
   useEffect(() => {
     if (newRef) {
       subscribe(newRef);
@@ -70,4 +70,4 @@ function useActiveLinkContext<T>() {
   return newRef;
 }
 
-export { ActiveLinkContextProvider, ActiveLinkContext, useActiveLinkContext };
+export { SectionsProvider, SectionsContext, useActiveLinkContext };

@@ -3,7 +3,7 @@ import Environments from '../../environments';
 import { EmailRequest } from '../../types';
 import { EmailError, MissingDataError } from '../../types/errors';
 import * as sgMail from '@sendgrid/mail';
-import { emailMessageCreator } from '../../utils/emailMessageCreator';
+import { IEmail } from '../../types/IEmail';
 
 sgMail.setApiKey(Environments.SENDGRID_API_KEY);
 
@@ -42,4 +42,11 @@ function isEmailValid(email: string) {
     '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$'
   );
   return emailReg.test(email);
+}
+function emailMessageCreator(
+  body: IEmail,
+  PERSONAL_TRANSPORT_MAIL: string,
+  PERSONAL_MAIL: string
+): sgMail.MailDataRequired | sgMail.MailDataRequired[] {
+  throw new Error('Function not implemented.');
 }

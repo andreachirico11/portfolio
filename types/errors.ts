@@ -3,6 +3,11 @@ export enum ErrorTypes {
   CORRUPTED_FILE,
   MISSING_DATA,
   EMAIL_API,
+  UNAUTHORIZED,
+  GITHUB,
+  UNKWNOWN,
+  CHEERIO,
+  PARSING,
 }
 
 export abstract class BaseError extends Error {
@@ -32,5 +37,35 @@ export class MissingDataError extends BaseError {
 export class EmailError extends BaseError {
   constructor(public errorMessage?: string) {
     super(ErrorTypes.EMAIL_API, errorMessage);
+  }
+}
+
+export class UnauthorizedError extends BaseError {
+  constructor() {
+    super(ErrorTypes.UNAUTHORIZED);
+  }
+}
+
+export class GithubResponseError extends BaseError {
+  constructor() {
+    super(ErrorTypes.GITHUB);
+  }
+}
+
+export class UnknownError extends BaseError {
+  constructor() {
+    super(ErrorTypes.UNKWNOWN);
+  }
+}
+
+export class CheerioError extends BaseError {
+  constructor() {
+    super(ErrorTypes.CHEERIO);
+  }
+}
+
+export class PdfParsingError extends BaseError {
+  constructor() {
+    super(ErrorTypes.PARSING);
   }
 }
