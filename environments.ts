@@ -29,4 +29,10 @@ export default class Environments {
   static get KEEP_FILE() {
     return process.env.KEEP_FILE || false;
   }
+  static get ERROR_LOGS_OFF() {
+    return process.env.ERROR_LOGS_OFF || false;
+  }
+  static get INFO_LOGS_OFF() {
+    return process.env.INFO_LOGS_OFF || false;
+  }
 }

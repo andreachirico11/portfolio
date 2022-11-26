@@ -6,7 +6,7 @@ export class HtmlFile {
     try {
       writeFileSync(this.path, htmlString);
     } catch (error) {
-      throw new CreatingHtmlError();
+      throw new CreatingHtmlError(error);
     }
   }
   delete() {

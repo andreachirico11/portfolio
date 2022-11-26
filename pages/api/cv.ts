@@ -1,12 +1,15 @@
 import type { NextApiResponse } from 'next';
 import Environments from '../../environments';
-import { CvRequest } from '../../types';
-import { BaseError, MissingDataError, UnauthorizedError, UnknownError } from '../../types/errors';
-import { GithubUtilConnect, htmlParser, HtmlFile, errorLogger } from '../../utils-api';
+import { CvRequest, HttpErrorResponse } from '../../types';
+import { ErrorTypes, MissingDataError, UnauthorizedError, UnknownError } from '../../types/errors';
+import { GithubUtilConnect, htmlParser, HtmlFile, errorLogger, log } from '../../utils-api';
 import { isAKnownError } from '../../utils';
 import { parseHtmlPageToBuffer } from '../../utils-api/parseHtmlPageToBuffer';
 
-export default async function handler(req: CvRequest, res: NextApiResponse<BaseError | {}>) {
+export default async function handler(
+  req: CvRequest,
+  res: NextApiResponse<HttpErrorResponse | {}>
+) {
   const tk = req.headers.token,
     apiLocationUrl = req.headers.referer || 'http://localhost:3000/',
     temporaryHtmlFileName = 'temp.html',
@@ -20,26 +23,26 @@ export default async function handler(req: CvRequest, res: NextApiResponse<BaseE
   try {
     if (!tk) {
       errorStatusCode = 403;
-      throw new MissingDataError();
+      throw new MissingDataError(null);
     }
     if (tk !== Environments.TOKEN) {
       errorStatusCode = 401;
-      throw new UnauthorizedError();
+      throw new UnauthorizedError(null);
     }
-    console.log('token valid');
+    log('token valid');
 
     const githubFile = await github.getCvFileFromGithub(Environments.FILE_URL);
-    console.log('fetched from github');
+    log('fetched from github');
 
     const htmlStringFile = htmlParser(githubFile);
-    console.log('parsed to string');
+    log('parsed to string');
 
     htmlFileRef = new HtmlFile(htmlStringFile, temporaryFileLocation);
     const fileLocation = `${apiLocationUrl}/${temporaryHtmlFileName}`;
-    console.log('temporary html created at the url: ', fileLocation);
+    log('temporary html created at the url: ' + fileLocation);
 
     const buffer = await parseHtmlPageToBuffer(fileLocation);
-    console.log('parsed to buffer');
+    log('parsed to buffer');
 
     res.setHeader('Content-Type', 'application/pdf');
     res.send(buffer);
@@ -47,10 +50,10 @@ export default async function handler(req: CvRequest, res: NextApiResponse<BaseE
     res.status(errorStatusCode);
     if (isAKnownError(error)) {
       errorLogger(error);
-      res.send(error);
+      res.send({ errCode: error.type });
     } else {
-      errorLogger(new UnknownError(), error);
-      res.send(new UnknownError());
+      errorLogger(new UnknownError(error));
+      res.send({ errCode: ErrorTypes.UNKWNOWN });
     }
   } finally {
     if (htmlFileRef && !Environments.KEEP_FILE) htmlFileRef.delete();

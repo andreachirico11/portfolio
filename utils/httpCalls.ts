@@ -1,5 +1,4 @@
-import { EmailErrorResponse } from '../types';
-import { BaseError } from '../types/errors';
+import { HttpErrorResponse } from '../types';
 
 export async function sendMail(name: string, email: string, message: string, policy: boolean) {
   const res = await fetch('api/email', {
@@ -10,14 +9,14 @@ export async function sendMail(name: string, email: string, message: string, pol
     body: JSON.stringify({ name, email, message, policy }),
   });
   if (!res.ok) {
-    throw (await res.json()) as EmailErrorResponse;
+    throw (await res.json()) as HttpErrorResponse;
   }
 }
 
 export async function fetchFile(token: string) {
   const res = await fetch('api/cv', { headers: { token } });
   if (!res.ok) {
-    throw (await res.json()) as BaseError;
+    throw (await res.json()) as HttpErrorResponse;
   }
   return res.blob();
 }

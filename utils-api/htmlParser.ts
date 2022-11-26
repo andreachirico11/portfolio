@@ -7,6 +7,6 @@ export function htmlParser(rawHtml: string | Buffer) {
     const preContent = $('pre').text();
     return load(preContent).html();
   } catch (error) {
-    throw new CheerioError();
+    throw new CheerioError(error);
   }
 }

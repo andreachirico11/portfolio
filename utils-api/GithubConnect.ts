@@ -17,7 +17,7 @@ export class GithubUtilConnect {
       }
       return res.data;
     } catch (error) {
-      new GithubResponseError();
+      new GithubResponseError(error);
       return '';
     }
   }

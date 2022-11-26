@@ -18,7 +18,7 @@ const DownloadingContextProvider: React.FC<{ children: ReactNode }> = ({ childre
         ref.current.click();
       }
     } catch (error) {
-      throw new CorruptedFileError();
+      throw new CorruptedFileError(error);
     } finally {
       if (ref && ref.current) {
         ref.current.href = '';

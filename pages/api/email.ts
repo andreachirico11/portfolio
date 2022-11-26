@@ -1,21 +1,26 @@
 import type { NextApiResponse } from 'next';
 import Environments from '../../environments';
-import { EmailRequest } from '../../types';
-import { EmailError, MissingDataError, UnknownError } from '../../types/errors';
+import { EmailRequest, HttpErrorResponse } from '../../types';
+import { ErrorTypes, MissingDataError, UnknownError } from '../../types/errors';
 import * as sgMail from '@sendgrid/mail';
-import { errorLogger, generateEmailmessage } from '../../utils-api';
+import { errorLogger, generateEmailmessage, log } from '../../utils-api';
 import { isAKnownError, isEmailValid } from '../../utils';
 
 sgMail.setApiKey(Environments.SENDGRID_API_KEY);
 
-export default async function handler(req: EmailRequest, res: NextApiResponse<EmailError | {}>) {
+export default async function handler(
+  req: EmailRequest,
+  res: NextApiResponse<HttpErrorResponse | {}>
+) {
   const { name, email, message, policy } = req.body;
   let errorStatusCode = 500;
   try {
     if (!name || !email || !message || !policy || !isEmailValid(email)) {
       errorStatusCode = 403;
-      throw new MissingDataError();
+      throw new MissingDataError(null);
     }
+
+    log('Seding message trought sendgrid');
     const [response] = await sgMail.send(
       generateEmailmessage(
         req.body,
@@ -23,22 +28,23 @@ export default async function handler(req: EmailRequest, res: NextApiResponse<Em
         Environments.PERSONAL_TRANSPORT_MAIL
       )
     );
+
     if (response.statusCode !== 202) {
-      throw new EmailError(
-        !!Environments.PERSONAL_MAIL
-          ? `Please contact me at the following adress: ${Environments.PERSONAL_MAIL}`
-          : undefined
-      );
+      log('Badly sent message');
+      throw response;
     }
-    return res.status(200).end();
+    log('Message sent succesfully!');
+
+    res.status(200).end();
   } catch (error) {
     res.status(errorStatusCode);
+    const content = `Please contact me at the following adress: ${Environments.PERSONAL_MAIL}`;
     if (isAKnownError(error)) {
       errorLogger(error);
-      res.send(error);
+      res.send({ errCode: error.type, content });
     } else {
-      errorLogger(new UnknownError(), error);
-      res.send(new UnknownError());
+      errorLogger(new UnknownError(error));
+      res.send({ errCode: ErrorTypes.EMAIL_API, content });
     }
   }
 }

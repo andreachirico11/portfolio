@@ -10,6 +10,6 @@ export async function parseHtmlPageToBuffer(temporaryHtmlUrl: string) {
     browser.close();
     return result;
   } catch (e) {
-    throw new PdfParsingError();
+    throw new PdfParsingError(e);
   }
 }

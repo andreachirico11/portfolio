@@ -12,67 +12,67 @@ export enum ErrorTypes {
 }
 
 export abstract class BaseError extends Error {
-  constructor(public type: ErrorTypes, public errorMessage?: string) {
+  constructor(public type: ErrorTypes, public originalError: any) {
     super();
   }
 }
 
 export class WrongTokenError extends BaseError {
-  constructor() {
-    super(ErrorTypes.WRONG_TOKEN);
+  constructor(originalError: any) {
+    super(ErrorTypes.WRONG_TOKEN, originalError);
   }
 }
 
 export class CorruptedFileError extends BaseError {
-  constructor() {
-    super(ErrorTypes.CORRUPTED_FILE);
+  constructor(originalError: any) {
+    super(ErrorTypes.CORRUPTED_FILE, originalError);
   }
 }
 
 export class MissingDataError extends BaseError {
-  constructor(public errorMessage?: string) {
-    super(ErrorTypes.MISSING_DATA, errorMessage);
+  constructor(originalError: any) {
+    super(ErrorTypes.MISSING_DATA, originalError);
   }
 }
 
 export class EmailError extends BaseError {
-  constructor(public errorMessage?: string) {
-    super(ErrorTypes.EMAIL_API, errorMessage);
+  constructor(originalError: any) {
+    super(ErrorTypes.EMAIL_API, originalError);
   }
 }
 
 export class UnauthorizedError extends BaseError {
-  constructor() {
-    super(ErrorTypes.UNAUTHORIZED);
+  constructor(originalError: any) {
+    super(ErrorTypes.UNAUTHORIZED, originalError);
   }
 }
 
 export class GithubResponseError extends BaseError {
-  constructor() {
-    super(ErrorTypes.GITHUB);
+  constructor(originalError: any) {
+    super(ErrorTypes.GITHUB, originalError);
   }
 }
 
 export class UnknownError extends BaseError {
-  constructor() {
-    super(ErrorTypes.UNKWNOWN);
+  constructor(originalError: any) {
+    super(ErrorTypes.UNKWNOWN, originalError);
   }
 }
 
 export class CheerioError extends BaseError {
-  constructor() {
-    super(ErrorTypes.CHEERIO);
+  constructor(originalError: any) {
+    super(ErrorTypes.CHEERIO, originalError);
   }
 }
 
 export class PdfParsingError extends BaseError {
-  constructor() {
-    super(ErrorTypes.PARSING);
+  constructor(originalError: any) {
+    super(ErrorTypes.PARSING, originalError);
   }
 }
 
 export class CreatingHtmlError extends BaseError {
-  constructor() {
-    super(ErrorTypes.HTML_CREATION);
+  constructor(originalError: any) {
+    super(ErrorTypes.HTML_CREATION, originalError);
   }
 }
