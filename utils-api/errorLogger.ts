@@ -34,13 +34,11 @@ export function errorLogger(error: BaseError) {
 }
 
 function printErr(e: string, sys?: unknown) {
-  console.log('\n\n>------------------------------');
-  console.log('\n\n\n');
+  console.log('\n\n>------------------------------\n');
   console.log(e);
   if (sys) {
     console.log('\n');
     console.log(sys);
   }
-  console.log('\n\n\n');
-  console.log('------------------------------<\n\n');
+  console.log('\n------------------------------<');
 }

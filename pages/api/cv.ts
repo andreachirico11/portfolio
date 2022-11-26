@@ -2,7 +2,7 @@ import type { NextApiResponse } from 'next';
 import Environments from '../../environments';
 import { CvRequest, HttpErrorResponse } from '../../types';
 import { ErrorTypes, MissingDataError, UnauthorizedError, UnknownError } from '../../types/errors';
-import { GithubUtilConnect, htmlParser, HtmlFile, errorLogger, log } from '../../utils-api';
+import { GithubUtilConnect, htmlParser, errorLogger, log } from '../../utils-api';
 import { isAKnownError } from '../../utils';
 import { parseHtmlPageToBuffer } from '../../utils-api/parseHtmlPageToBuffer';
 
@@ -11,14 +11,8 @@ export default async function handler(
   res: NextApiResponse<HttpErrorResponse | {}>
 ) {
   const tk = req.headers.token,
-    apiLocationUrl = req.headers.referer || 'http://localhost:3000/',
-    temporaryHtmlFileName = 'temp.html',
-    temporaryFileLocation = Environments.PRODUCTION
-      ? temporaryHtmlFileName
-      : 'public/' + temporaryHtmlFileName,
     github = new GithubUtilConnect(Environments.GITHUB_TOKEN);
-  let htmlFileRef: HtmlFile | null = null,
-    errorStatusCode = 500;
+  let errorStatusCode = 500;
 
   try {
     if (!tk) {
@@ -37,11 +31,7 @@ export default async function handler(
     const htmlStringFile = htmlParser(githubFile);
     log('parsed to string');
 
-    htmlFileRef = new HtmlFile(htmlStringFile, temporaryFileLocation);
-    const fileLocation = `${apiLocationUrl}/${temporaryHtmlFileName}`;
-    log('temporary html created at the url: ' + fileLocation);
-
-    const buffer = await parseHtmlPageToBuffer(fileLocation);
+    const buffer = await parseHtmlPageToBuffer(htmlStringFile);
     log('parsed to buffer');
 
     res.setHeader('Content-Type', 'application/pdf');
@@ -55,7 +45,5 @@ export default async function handler(
       errorLogger(new UnknownError(error));
       res.send({ errCode: ErrorTypes.UNKWNOWN });
     }
-  } finally {
-    if (htmlFileRef && !Environments.KEEP_FILE) htmlFileRef.delete();
   }
 }
