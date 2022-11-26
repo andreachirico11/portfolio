@@ -8,6 +8,7 @@ export enum ErrorTypes {
   UNKWNOWN,
   CHEERIO,
   PARSING,
+  HTML_CREATION,
 }
 
 export abstract class BaseError extends Error {
@@ -67,5 +68,11 @@ export class CheerioError extends BaseError {
 export class PdfParsingError extends BaseError {
   constructor() {
     super(ErrorTypes.PARSING);
+  }
+}
+
+export class CreatingHtmlError extends BaseError {
+  constructor() {
+    super(ErrorTypes.HTML_CREATION);
   }
 }

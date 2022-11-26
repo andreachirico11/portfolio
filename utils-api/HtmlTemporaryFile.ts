@@ -1,5 +1,5 @@
 import { unlinkSync, writeFileSync } from 'fs';
-import { PdfParsingError } from '../types/errors';
+import { CreatingHtmlError, PdfParsingError } from '../types/errors';
 
 export class HtmlFile {
   private pathTitle: string;
@@ -8,7 +8,7 @@ export class HtmlFile {
       this.pathTitle = publicFolder + '/' + fileName;
       writeFileSync(this.pathTitle, htmlString);
     } catch (error) {
-      throw new PdfParsingError();
+      throw new CreatingHtmlError();
     }
   }
   delete() {
