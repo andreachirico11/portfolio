@@ -23,4 +23,10 @@ export default class Environments {
   static get PERSONAL_TRANSPORT_MAIL() {
     return process.env.PERSONAL_TRANSPORT_MAIL || '';
   }
+  static get PRODUCTION() {
+    return process.env.PRODUCTION || false;
+  }
+  static get KEEP_FILE() {
+    return process.env.KEEP_FILE || false;
+  }
 }

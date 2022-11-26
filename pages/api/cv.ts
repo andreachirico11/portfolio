@@ -10,9 +10,13 @@ export default async function handler(req: CvRequest, res: NextApiResponse<BaseE
   const tk = req.headers.token,
     apiLocationUrl = req.headers.referer || 'http://localhost:3000/',
     temporaryHtmlFileName = 'temp.html',
+    temporaryFileLocation = Environments.PRODUCTION
+      ? temporaryHtmlFileName
+      : 'public/' + temporaryHtmlFileName,
     github = new GithubUtilConnect(Environments.GITHUB_TOKEN);
   let htmlFileRef: HtmlFile | null = null,
     errorStatusCode = 500;
+
   try {
     if (!tk) {
       errorStatusCode = 403;
@@ -22,10 +26,21 @@ export default async function handler(req: CvRequest, res: NextApiResponse<BaseE
       errorStatusCode = 401;
       throw new UnauthorizedError();
     }
+    console.log('token valid');
+
     const githubFile = await github.getCvFileFromGithub(Environments.FILE_URL);
+    console.log('fetched from github');
+
     const htmlStringFile = htmlParser(githubFile);
-    htmlFileRef = new HtmlFile(htmlStringFile, temporaryHtmlFileName);
-    const buffer = await parseHtmlPageToBuffer(`${apiLocationUrl}/${temporaryHtmlFileName}`);
+    console.log('parsed to string');
+
+    htmlFileRef = new HtmlFile(htmlStringFile, temporaryFileLocation);
+    const fileLocation = `${apiLocationUrl}/${temporaryHtmlFileName}`;
+    console.log('temporary html created at the url: ', fileLocation);
+
+    const buffer = await parseHtmlPageToBuffer(fileLocation);
+    console.log('parsed to buffer');
+
     res.setHeader('Content-Type', 'application/pdf');
     res.send(buffer);
   } catch (error) {
@@ -38,6 +53,6 @@ export default async function handler(req: CvRequest, res: NextApiResponse<BaseE
       res.send(new UnknownError());
     }
   } finally {
-    if (htmlFileRef) htmlFileRef.delete();
+    if (htmlFileRef && !Environments.KEEP_FILE) htmlFileRef.delete();
   }
 }

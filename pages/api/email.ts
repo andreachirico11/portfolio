@@ -3,8 +3,8 @@ import Environments from '../../environments';
 import { EmailRequest } from '../../types';
 import { EmailError, MissingDataError, UnknownError } from '../../types/errors';
 import * as sgMail from '@sendgrid/mail';
-import { errorLogger, generateEmailmessage, isEmailValid } from '../../utils-api';
-import { isAKnownError } from '../../utils';
+import { errorLogger, generateEmailmessage } from '../../utils-api';
+import { isAKnownError, isEmailValid } from '../../utils';
 
 sgMail.setApiKey(Environments.SENDGRID_API_KEY);
 

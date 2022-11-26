@@ -25,6 +25,7 @@ function handleError(error: BaseError) {
     case ErrorTypes.CHEERIO:
       return 'The provided html in invalid';
     case ErrorTypes.PARSING:
+    case ErrorTypes.HTML_CREATION:
       return 'Error during the file parsing';
     case ErrorTypes.UNKWNOWN:
     default:
