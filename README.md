@@ -1,6 +1,6 @@
 <h1>
   <br>
-My coloured <b>FULL STACK</b> portfolio!!!
+My coloured Next JS <b>FULL STACK</b> portfolio!!!
   <br>
 </h1>
 <h2><a href="https://www.andreachirico.com" target="_blank">Have a look!</a></h2>
