@@ -20,3 +20,11 @@ export async function fetchFile(token: string) {
   }
   return res.blob();
 }
+
+export async function fetchFileWithoutToken() {
+  const res = await fetch('api/cv');
+  if (!res.ok) {
+    throw (await res.json()) as HttpErrorResponse;
+  }
+  return res.blob();
+}

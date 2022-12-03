@@ -8,9 +8,14 @@ import { Intro } from '../components/sections/Intro';
 import { ModalsContainer } from '../components/sections/ModalsContainer';
 import { Works } from '../components/sections/Works';
 import { SectionsContext } from '../context/ActiveLinkContext';
+import Environments from '../environments';
 import useScrollContexts from '../hooks/useSrollContexts';
 
-export default function Home() {
+type HomeProps = {
+  isCvProtected: boolean;
+};
+
+export default function Home({ isCvProtected }: HomeProps) {
   useScrollContexts();
   const { sections } = useContext(SectionsContext)!;
   return (
@@ -34,10 +39,18 @@ export default function Home() {
         section={sections()[3]}
         className='py-[5rem] lg:flex-row lg:justify-evenly bg-custom-blue'
       >
-        <Contacts />
+        <Contacts isCvProtected={isCvProtected} />
       </Section>
       <Footer />
       <a id='downloadAnchor' className='hidden'></a>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      isCvProtected: Environments.PROTECTED_CV,
+    },
+  };
 }

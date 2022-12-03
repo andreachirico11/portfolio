@@ -15,15 +15,17 @@ export default async function handler(
   let errorStatusCode = 500;
 
   try {
-    if (!tk) {
-      errorStatusCode = 403;
-      throw new MissingDataError(null);
+    if (Environments.PROTECTED_CV) {
+      if (!tk) {
+        errorStatusCode = 403;
+        throw new MissingDataError(null);
+      }
+      if (tk !== Environments.TOKEN) {
+        errorStatusCode = 401;
+        throw new UnauthorizedError(null);
+      }
+      log('token valid');
     }
-    if (tk !== Environments.TOKEN) {
-      errorStatusCode = 401;
-      throw new UnauthorizedError(null);
-    }
-    log('token valid');
 
     const githubFile = await github.getCvFileFromGithub(Environments.FILE_URL);
     log('fetched from github');

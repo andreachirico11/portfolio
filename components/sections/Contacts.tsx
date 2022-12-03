@@ -5,24 +5,24 @@ import { ModalContext } from '../../context/ModalContext';
 import Environments from '../../environments';
 import { FormState } from '../../myForm';
 import { ModalTypes } from '../../types/modals/Modals';
-import { fetchFile, getModalErrorContent, sendMail } from '../../utils';
+import { fetchFile, fetchFileWithoutToken, getModalErrorContent, sendMail } from '../../utils';
 import { EmailForm } from '../forms/EmailForm';
+import { EmptyForm } from '../forms/EmptyForm';
 import { TokenForm } from '../forms/TokenForm';
 
-interface Props extends React.ComponentPropsWithoutRef<'section'> {}
+interface Props extends React.ComponentPropsWithoutRef<'section'> {
+  isCvProtected: boolean;
+}
 
-export const Contacts: React.FC<Props> = (props) => {
+export const Contacts: React.FC<Props> = ({ isCvProtected }) => {
   const loading = useContext(LoadingContext);
   const modals = useContext(ModalContext);
   const download = useContext(DownloadingContext);
 
-  console.log(props);
-
-  const onTokenSubmit = async (formState: FormState) => {
+  const fileDownloadShared = async (fetchCb: () => Promise<Blob>) => {
     try {
       loading.startLoading();
-      const { passcode } = formState;
-      const fileBlob = await fetchFile(passcode.value);
+      const fileBlob = await fetchCb();
       download(fileBlob, Environments.CV_TITLE);
     } catch (error) {
       modals.openModal(ModalTypes.error, {
@@ -32,6 +32,17 @@ export const Contacts: React.FC<Props> = (props) => {
     } finally {
       loading.stopLoading();
     }
+  };
+
+  const onTokenSubmit = async (formState: FormState) => {
+    fileDownloadShared(() => {
+      const { passcode } = formState;
+      return fetchFile(passcode.value);
+    });
+  };
+
+  const onUnprotectedSubmit = async () => {
+    fileDownloadShared(fetchFileWithoutToken);
   };
 
   const onEmailSubmit = async (formState: FormState) => {
@@ -55,7 +66,11 @@ export const Contacts: React.FC<Props> = (props) => {
 
   return (
     <>
-      <TokenForm onSubmit={onTokenSubmit} />
+      {isCvProtected ? (
+        <TokenForm onSubmit={onTokenSubmit} />
+      ) : (
+        <EmptyForm onSubmit={onUnprotectedSubmit} />
+      )}
       <EmailForm onSubmit={onEmailSubmit} />
     </>
   );
