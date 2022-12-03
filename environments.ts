@@ -1,3 +1,7 @@
+function booleanValue(value: string | undefined) {
+  return value === '1';
+}
+
 export default class Environments {
   static get IUBENDA_URL() {
     return process.env.NEXT_PUBLIC_IUBENDA_URL || '';
@@ -23,16 +27,17 @@ export default class Environments {
   static get PERSONAL_TRANSPORT_MAIL() {
     return process.env.PERSONAL_TRANSPORT_MAIL || '';
   }
+  // SETTINGS
   static get PRODUCTION() {
-    return process.env.PRODUCTION || false;
-  }
-  static get KEEP_FILE() {
-    return process.env.KEEP_FILE || false;
+    return booleanValue(process.env.PRODUCTION);
   }
   static get ERROR_LOGS_OFF() {
-    return process.env.ERROR_LOGS_OFF || false;
+    return booleanValue(process.env.ERROR_LOGS_OFF);
   }
   static get INFO_LOGS_OFF() {
-    return process.env.INFO_LOGS_OFF || false;
+    return booleanValue(process.env.INFO_LOGS_OFF);
+  }
+  static get PROTECTED_CV() {
+    return booleanValue(process.env.PROTECTED_CV);
   }
 }
