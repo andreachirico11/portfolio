@@ -17,10 +17,14 @@ export const Textarea: FC<Props> = ({
   if (!useFormContext) {
     throw new Error('no context');
   }
-  const [{ value, errors, isOnError }, onChange] = useFormContext(name, initialState!, validators);
+  const [{ value, errors, isOnError, touched }, onChange] = useFormContext(
+    name,
+    initialState!,
+    validators
+  );
   const { ref, onFocus, onBlur } = useFocusBorderRef<HTMLDivElement>();
   return (
-    <ErrorWrapper errors={errors} isOnError={isOnError}>
+    <ErrorWrapper errors={errors} isOnError={isOnError && touched}>
       <div
         ref={ref}
         onMouseEnter={onFocus}

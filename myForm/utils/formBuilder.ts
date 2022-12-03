@@ -7,7 +7,8 @@ export function formStateBuilder(config: FormConfig): FormState {
     output[k] = {
       value: config[k].initialvalue,
       errors: [],
-      isOnError: false,
+      isOnError: true,
+      touched: false,
     };
   });
   return output;

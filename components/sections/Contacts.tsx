@@ -11,10 +11,12 @@ import { TokenForm } from '../forms/TokenForm';
 
 interface Props extends React.ComponentPropsWithoutRef<'section'> {}
 
-export const Contacts: React.FC<Props> = () => {
+export const Contacts: React.FC<Props> = (props) => {
   const loading = useContext(LoadingContext);
   const modals = useContext(ModalContext);
   const download = useContext(DownloadingContext);
+
+  console.log(props);
 
   const onTokenSubmit = async (formState: FormState) => {
     try {
@@ -58,3 +60,11 @@ export const Contacts: React.FC<Props> = () => {
     </>
   );
 };
+
+export async function getStaticProps() {
+  return {
+    props: {
+      protectedCv: Environments.PROTECTED_CV,
+    },
+  };
+}

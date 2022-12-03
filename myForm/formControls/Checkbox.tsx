@@ -26,14 +26,18 @@ export const Checkbox: FC<Props> = ({
   }
   const inputRef = useRef<HTMLInputElement>(null);
   const { ref, onFocus, onBlur } = useFocusBorderRef<HTMLDivElement>();
-  const [{ value, errors, isOnError }, onChange] = useFormContext(name, initialState!, validators);
+  const [{ value, errors, isOnError, touched }, onChange] = useFormContext(
+    name,
+    initialState!,
+    validators
+  );
   const toggle = (e: MouseEvent) => {
     e.preventDefault();
     inputRef.current?.click();
   };
 
   return (
-    <ErrorWrapper errors={errors} isOnError={isOnError}>
+    <ErrorWrapper errors={errors} isOnError={isOnError && touched}>
       <div className='flex items-center w-full px-3 text-inherit'>
         <label className='flex items-center'>
           <div

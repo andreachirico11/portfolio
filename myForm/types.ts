@@ -10,6 +10,7 @@ export type FormState = {
 export type ControlState = {
   value: any;
   isOnError: boolean;
+  touched: boolean;
   errors: string[];
 };
 

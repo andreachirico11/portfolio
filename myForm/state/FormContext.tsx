@@ -43,7 +43,7 @@ export default function createFormContext(formState: FormState) {
           }
         });
       }
-      formState.set(fieldName, { errors, value, isOnError: errors.length > 0 });
+      formState.set(fieldName, { errors, value, isOnError: errors.length > 0, touched: true });
     };
 
     useEffect(() => {

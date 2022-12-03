@@ -11,10 +11,14 @@ export const Input: FC<Props> = ({ useFormContext, name, initialState, validator
   if (!useFormContext) {
     throw new Error('no context');
   }
-  const [{ value, errors, isOnError }, onChange] = useFormContext(name, initialState!, validators);
+  const [{ value, errors, isOnError, touched }, onChange] = useFormContext(
+    name,
+    initialState!,
+    validators
+  );
   const { ref, onFocus, onBlur } = useFocusBorderRef<HTMLInputElement>();
   return (
-    <ErrorWrapper errors={errors} isOnError={isOnError}>
+    <ErrorWrapper errors={errors} isOnError={isOnError && touched}>
       <input
         className={`
       w-full px-3 py-2 text-xs 
