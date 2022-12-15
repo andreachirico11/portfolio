@@ -7,13 +7,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        tablet: '834px',
+        desktop: '1500px',
+      },
       colors: {
-        'custom-red': '#F76C58',
-        'custom-green': '#16A078',
-        'custom-white': '#FFFFFF',
-        'custom-blue': '#2C313D',
-        'custom-yellow': '#FFFA87',
-        'custom-grey': '#6F778A',
+        green: '#1EA896',
+        white: '#FFFFFF',
+        gray: '#4C5454',
       },
       borderRadius: {
         custom: '46px',
@@ -22,8 +23,8 @@ module.exports = {
         custom: '3px 3px 0 rgb(0 0 0 / 0.25)',
       },
       fontFamily: {
-        code: ['Source Code Pro', 'monospace'],
-        os: ['Open Sans', 'sans-serif'],
+        mono: ['Courier Prime', 'monospace'],
+        sans: ['Montserrat', 'sans-serif'],
       },
       keyframes: {
         loading: {

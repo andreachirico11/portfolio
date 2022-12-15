@@ -22,26 +22,23 @@ export default function Home({ isCvProtected }: HomeProps) {
     <div>
       <ModalsContainer />
       <Header />
-      <Section section={sections()[0]} className='px-[6rem] bg-custom-green'>
+      <Section section={sections()[0]} className='px-[6rem] bg-green'>
         <Intro />
       </Section>
       <Section
         section={sections()[1]}
         justify='between'
-        className='px-5 py-[5rem] lg:py-[8rem] bg-custom-blue'
+        className='px-5 py-[5rem] lg:py-[8rem] bg-white'
       >
         <Works />
       </Section>
-      <Section section={sections()[2]} className='px-10 py-20 lg:flex-row-reverse bg-custom-yellow'>
+      <Section section={sections()[2]} className='px-10 py-20 lg:flex-row-reverse bg-green'>
         <About />
       </Section>
-      <Section
-        section={sections()[3]}
-        className='py-[5rem] lg:flex-row lg:justify-evenly bg-custom-blue'
-      >
+      <Section section={sections()[3]} className='py-[5rem] lg:flex-row lg:justify-evenly bg-gray'>
         <Contacts isCvProtected={isCvProtected} />
       </Section>
-      <Footer />
+      {/* <Footer /> */}
       <a id='downloadAnchor' className='hidden'></a>
     </div>
   );

@@ -2,6 +2,39 @@
 @tailwind components; 
 @tailwind utilities;
 
+@layer components {
+  .h1 {
+    @apply font-sans text-[50px] tablet:text-[60px] desktop:text-[96px] font-bold;
+  }
+  .h2 {
+    @apply font-sans text-[30px] tablet:text-[30px] desktop:text-[48px] font-bold;
+  }
+  .h3 {
+    @apply font-sans text-[28px] tablet:text-[28px] desktop:text-[38px] font-normal;
+  }
+  .h4 {
+    @apply font-sans text-[22px] tablet:text-[22px] desktop:text-[28px] font-bold;
+  }
+  .nav-text {
+    @apply font-mono text-[18px] tablet:text-[18px] desktop:text-[26px] font-bold;
+  }
+  .p-sm {
+    @apply font-mono text-[14px] tablet:text-[14px] desktop:text-[16px] font-bold;
+  }
+  .p-m {
+    @apply font-mono text-[16px] tablet:text-[16px] desktop:text-[20px] font-bold;
+  }
+  .p-lg {
+    @apply font-mono text-[18px] tablet:text-[18px] desktop:text-[24px] font-bold;
+  }
+  .p-link {
+    @apply font-mono text-[18px] tablet:text-[18px] desktop:text-[20px] font-bold;
+  }
+  .btn-text {
+    @apply font-sans text-[18px] tablet:text-[18px] desktop:text-[28px] font-bold;
+  }
+}
+
 
 ::-webkit-scrollbar {
   width: 6px;
