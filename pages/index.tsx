@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { Section } from '../components/layouts/Section';
-import { Footer } from '../components/navigation/Footer';
 import { Header } from '../components/navigation/Header';
 import { About } from '../components/sections/About';
 import { Contacts } from '../components/sections/Contacts';
@@ -22,7 +21,7 @@ export default function Home({ isCvProtected }: HomeProps) {
     <div>
       <ModalsContainer />
       <Header />
-      <Section section={sections()[0]} className='px-[6rem] bg-green'>
+      <Section section={sections()[0]} className='!block bg-green'>
         <Intro />
       </Section>
       <Section

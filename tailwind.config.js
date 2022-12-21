@@ -17,10 +17,7 @@ module.exports = {
         gray: '#4C5454',
       },
       borderRadius: {
-        custom: '46px',
-      },
-      dropShadow: {
-        custom: '3px 3px 0 rgb(0 0 0 / 0.25)',
+        custom: '16px',
       },
       fontFamily: {
         mono: ['Courier Prime', 'monospace'],

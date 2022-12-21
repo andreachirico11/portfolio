@@ -1,14 +1,17 @@
 import React from 'react';
+import { Button } from '../utils/Button';
 
 interface Props {}
 
 export const Intro: React.FC<Props> = () => (
   <>
-    <h1 className='mb-5 text-center uppercase h1 md:mb-10 text-custom-yellow drop-shadow-custom'>
-      andrea chirico
-    </h1>
-    <h4 className='text-xl text-center capitalize sm:text-3xl md:text-4xl font-os text-custom-white drop-shadow-custom'>
-      software developer
-    </h4>
+    <div className='flex flex-col justify-end h-[50vh] mb-20'>
+      <h1 className='ml-8 text-white h1'>Hello There !</h1>
+      <h2 className='ml-8 h2 text-gray mt-11'>I&apos;m Andrea Chirico</h2>
+      <p className='ml-8 text-white mt-14 p-lg'>
+        A passionate software developer with a love for clean code{' '}
+      </p>
+    </div>
+    <Button className='ml-5'>Check out my work</Button>
   </>
 );
