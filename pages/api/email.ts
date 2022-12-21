@@ -1,10 +1,11 @@
 import type { NextApiResponse } from 'next';
 import Environments from '../../environments';
 import { EmailRequest, HttpErrorResponse } from '../../types';
-import { ErrorTypes, MissingDataError, UnknownError } from '../../types/errors';
+import { MissingDataError, UnknownError } from '../../types/errors';
 import * as sgMail from '@sendgrid/mail';
 import { errorLogger, generateEmailmessage, log } from '../../utils-api';
 import { isAKnownError, isEmailValid } from '../../utils';
+import { ErrorTypes } from '../../enums';
 
 sgMail.setApiKey(Environments.SENDGRID_API_KEY);
 

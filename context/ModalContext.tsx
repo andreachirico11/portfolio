@@ -7,8 +7,8 @@ import {
   useRef,
   useState,
 } from 'react';
+import { ModalTypes } from '../enums';
 import { ModalConfig } from '../types';
-import { ModalTypes } from '../types/modals/Modals';
 
 type Subscriber = (config: ModalConfig) => void;
 

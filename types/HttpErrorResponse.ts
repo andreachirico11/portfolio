@@ -1,4 +1,4 @@
-import { ErrorTypes } from './errors';
+import { ErrorTypes } from '../enums';
 
 export interface HttpErrorResponse {
   errCode: ErrorTypes;

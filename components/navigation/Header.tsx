@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { SectionsContext } from '../../context/ActiveLinkContext';
+import { Sections } from '../../enums';
 import { ISection } from '../../types';
+import getSectionColorCombination from '../../types/Colors';
 import { HeaderLink } from './HeaderLink';
 
 interface Props extends React.ComponentPropsWithoutRef<'nav'> {}
@@ -8,6 +10,11 @@ interface Props extends React.ComponentPropsWithoutRef<'nav'> {}
 export const Header: React.FC<Props> = () => {
   const { sections: getSections, registerToSectionUpdate } = useContext(SectionsContext)!;
   const [sections, setSections] = useState<ISection[]>([]);
+  let sectionColors = getSectionColorCombination(Sections.intro),
+    activeSection = sections.find((s) => s.active);
+  if (activeSection) {
+    sectionColors = getSectionColorCombination(activeSection.id);
+  }
 
   useEffect(() => {
     setSections(getSections());
@@ -18,9 +25,14 @@ export const Header: React.FC<Props> = () => {
   }, []);
 
   return (
-    <nav className='fixed top-0 z-10 flex justify-between min-w-full p-5 text-sm tracking-widest uppercase xl:py-8 lg:text-2xl sm:justify-evenly sm:text-base md:text-lg bg-custom-red font-os text-custom-white drop-shadow-custom'>
-      {sections.slice(1).map((section) => (
-        <HeaderLink key={section.id + section.label} section={section} />
+    <nav className='fixed top-0 z-10 flex justify-end min-w-full px-6 py-4 tracking-widest uppercase nav-text'>
+      {sections.slice(1).map((section, i, sections) => (
+        <HeaderLink
+          key={section.id + section.label}
+          section={section}
+          colors={sectionColors}
+          className={`${sections.length - 1 !== i ? 'mr-5' : ''}`}
+        />
       ))}
     </nav>
   );

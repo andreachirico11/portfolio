@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useModalContext } from '../../context/ModalContext';
-import { ModalTypes } from '../../types/modals/Modals';
+import { ModalTypes } from '../../enums';
 import { ModalLayout } from '../layouts/ModalLayout';
 
 interface Props {}

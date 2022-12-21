@@ -12,7 +12,7 @@ module.exports = {
         desktop: '1500px',
       },
       colors: {
-        green: '#1EA896',
+        goodGreen: '#1EA896',
         white: '#FFFFFF',
         gray: '#4C5454',
       },

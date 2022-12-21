@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useRef, FC, useContext, useEffect } from 'react';
-import { ShowAnimationContextType, RefType, SetType, AnimationType } from '../types';
+import { AnimationType } from '../enums';
+import { ShowAnimationContextType, RefType, SetType } from '../types';
 import { getIsVisible } from '../utils';
 
 const ShowAnimationContext = createContext<ShowAnimationContextType>(null);

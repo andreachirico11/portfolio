@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useShowAnimationContext } from '../../context/ShowAnimationContext';
+import { AnimationType } from '../../enums';
 import { FormState, MyForm, Input, Validators } from '../../myForm';
-import { AnimationType } from '../../types';
 
 interface Props {
   onSubmit: (formState: FormState) => void;

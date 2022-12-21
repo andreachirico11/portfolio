@@ -1,10 +1,11 @@
 import type { NextApiResponse } from 'next';
 import Environments from '../../environments';
 import { CvRequest, HttpErrorResponse } from '../../types';
-import { ErrorTypes, MissingDataError, UnauthorizedError, UnknownError } from '../../types/errors';
+import { MissingDataError, UnauthorizedError, UnknownError } from '../../types/errors';
 import { GithubUtilConnect, htmlParser, errorLogger, log } from '../../utils-api';
 import { isAKnownError } from '../../utils';
 import { parseHtmlPageToBuffer } from '../../utils-api/parseHtmlPageToBuffer';
+import { ErrorTypes } from '../../enums';
 
 export default async function handler(
   req: CvRequest,

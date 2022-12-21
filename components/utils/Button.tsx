@@ -7,7 +7,7 @@ interface Props extends ComponentPropsWithoutRef<'button'> {
 export const Button: React.FC<Props> = ({ children, className, ...props }) => (
   <button
     {...props}
-    className={`py-3 bg-white border-4 px-7 border-green rounded-custom text-gray btn-text
+    className={`py-3 bg-white border-4 px-7 border-goodGreen rounded-custom text-gray btn-text
       ${className}
       `}
   >

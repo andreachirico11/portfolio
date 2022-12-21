@@ -1,5 +1,7 @@
+import { Sections } from '../enums';
+
 export interface ISection {
-  id: string;
+  id: Sections;
   label: string;
   active: boolean;
 }

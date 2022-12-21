@@ -1,8 +1,8 @@
 import React from 'react';
 import { useShowAnimationContext } from '../../context/ShowAnimationContext';
+import { AnimationType } from '../../enums';
 import Environments from '../../environments';
 import { Checkbox, FormState, Input, MyForm, Textarea, Validators } from '../../myForm';
-import { AnimationType } from '../../types';
 import { Anchor } from '../utils/Anchor';
 
 interface Props {

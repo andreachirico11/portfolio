@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import { useShowAnimationContext } from '../../context/ShowAnimationContext';
-import { AnimationType } from '../../types';
+import { AnimationType } from '../../enums';
 
 interface Props {}
 

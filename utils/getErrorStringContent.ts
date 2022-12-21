@@ -1,5 +1,6 @@
+import { ErrorTypes } from '../enums';
 import { HttpErrorResponse } from '../types';
-import { BaseError, ErrorTypes } from '../types/errors';
+import { BaseError } from '../types/errors';
 
 export function getModalErrorContent(error: unknown | HttpErrorResponse) {
   if (isAnHttpError(error)) {

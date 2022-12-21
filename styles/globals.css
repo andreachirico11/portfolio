@@ -16,7 +16,7 @@
     @apply font-sans text-[22px] tablet:text-[22px] desktop:text-[28px] font-bold;
   }
   .nav-text {
-    @apply font-mono text-[18px] tablet:text-[18px] desktop:text-[26px] font-bold;
+    @apply font-mono text-[18px] tablet:text-[18px] desktop:text-[26px] font-semibold;
   }
   .p-sm {
     @apply font-mono text-[14px] tablet:text-[14px] desktop:text-[16px] font-bold;

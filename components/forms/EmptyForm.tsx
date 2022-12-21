@@ -1,6 +1,6 @@
 import { FC, FormEvent } from 'react';
 import { useShowAnimationContext } from '../../context/ShowAnimationContext';
-import { AnimationType } from '../../types';
+import { AnimationType } from '../../enums';
 
 interface Props {
   onSubmit: () => void;

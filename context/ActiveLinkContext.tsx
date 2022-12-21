@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useRef, FC, useContext, useEffect } from 'react';
 import { SectionsContextType, RefType, ISection } from '../types';
-import { getIsVisible } from '../utils';
+import { getIsVisible, getIsVisibleFullHeight } from '../utils';
 
 const SectionsContext = createContext<SectionsContextType>(null);
 
@@ -8,19 +8,20 @@ const SectionsProvider: FC<{
   children: ReactNode;
   actualSections: ISection[];
   heightToShowElement?: number;
-}> = ({ children, heightToShowElement = 300, actualSections }) => {
+}> = ({ children, actualSections, heightToShowElement }) => {
   const subscribers = new Set<RefType>([]);
   const _sections = useRef<ISection[]>([...actualSections]);
   const sections = () => _sections.current!.map((s) => ({ ...s })) as ISection[];
-  const activeSection = () => _sections.current!.find((s) => s.active)!;
+  const activeSection = () => _sections.current!.find((s) => s.active);
   const setActiveSection = (toActivateId: string) => {
     _sections.current = _sections.current!.map((s) => ({ ...s, active: toActivateId === s.id }));
   };
   let sectionUpdate: (() => void) | null = null;
 
   const onScroll = () => {
-    const actualVisibleId = checkForActiveSection(subscribers, heightToShowElement);
-    if (activeSection().id !== actualVisibleId) {
+    const actualVisibleId = checkForActiveSection(subscribers, heightToShowElement),
+      activeS = activeSection();
+    if (activeS && activeS.id !== actualVisibleId) {
       setActiveSection(actualVisibleId);
       if (sectionUpdate) {
         sectionUpdate();
@@ -41,15 +42,22 @@ const SectionsProvider: FC<{
 
   return (
     <SectionsContext.Provider
-      value={{ subscribe, onScroll, sections, activeSection, registerToSectionUpdate }}
+      value={{
+        subscribe,
+        onScroll,
+        sections,
+        registerToSectionUpdate,
+      }}
     >
       {children}
     </SectionsContext.Provider>
   );
 };
 
-function checkForActiveSection(elements: Set<RefType>, heightToShowElement: number) {
-  const isVisible = getIsVisible(heightToShowElement);
+function checkForActiveSection(elements: Set<RefType>, heightToShowElement?: number) {
+  const isVisible = heightToShowElement
+    ? getIsVisible(heightToShowElement)
+    : getIsVisibleFullHeight();
   let outputId: string = '';
   elements.forEach(({ current }) => {
     if (!!current && isVisible(current)) {

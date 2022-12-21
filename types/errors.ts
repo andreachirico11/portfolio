@@ -1,15 +1,4 @@
-export enum ErrorTypes {
-  WRONG_TOKEN,
-  CORRUPTED_FILE,
-  MISSING_DATA,
-  EMAIL_API,
-  UNAUTHORIZED,
-  GITHUB,
-  UNKWNOWN,
-  CHEERIO,
-  PARSING,
-  HTML_CREATION,
-}
+import { ErrorTypes } from '../enums';
 
 export abstract class BaseError extends Error {
   constructor(public type: ErrorTypes, public originalError: any) {

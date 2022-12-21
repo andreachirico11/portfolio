@@ -7,12 +7,13 @@ import { ShowAnimationContextProvider } from '../context/ShowAnimationContext';
 import { SectionsProvider } from '../context/ActiveLinkContext';
 import { DownloadingContextProvider } from '../context/DownloaderContext';
 import { ISection } from '../types';
+import { Sections } from '../enums';
 
 const sections: ISection[] = [
-  { id: 'intro', label: 'intro', active: true },
-  { id: 'works', label: 'works', active: false },
-  { id: 'about', label: 'about', active: false },
-  { id: 'contacts', label: 'contacts', active: false },
+  { id: Sections.intro, label: Sections.intro, active: true },
+  { id: Sections.works, label: Sections.works, active: false },
+  { id: Sections.about, label: Sections.about, active: false },
+  { id: Sections.contacts, label: Sections.contacts, active: false },
 ];
 
 export default function App({ Component, pageProps }: AppProps) {

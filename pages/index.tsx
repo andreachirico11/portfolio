@@ -21,7 +21,7 @@ export default function Home({ isCvProtected }: HomeProps) {
     <div>
       <ModalsContainer />
       <Header />
-      <Section section={sections()[0]} className='!block bg-green'>
+      <Section section={sections()[0]} className='!block bg-goodGreen'>
         <Intro />
       </Section>
       <Section
@@ -31,7 +31,7 @@ export default function Home({ isCvProtected }: HomeProps) {
       >
         <Works />
       </Section>
-      <Section section={sections()[2]} className='px-10 py-20 lg:flex-row-reverse bg-green'>
+      <Section section={sections()[2]} className='px-10 py-20 lg:flex-row-reverse bg-goodGreen'>
         <About />
       </Section>
       <Section section={sections()[3]} className='py-[5rem] lg:flex-row lg:justify-evenly bg-gray'>
