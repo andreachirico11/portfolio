@@ -1,5 +1,4 @@
 import React, { ComponentPropsWithoutRef, FC, ReactNode } from 'react';
-import { ErrorSpan } from './ErrorSpan';
 
 interface Props extends ComponentPropsWithoutRef<'span'> {
   children: ReactNode;
@@ -9,9 +8,13 @@ interface Props extends ComponentPropsWithoutRef<'span'> {
 
 export const ErrorWrapper: FC<Props> = ({ children, isOnError, errors = [] }) => {
   return (
-    <div className={`pb-1`}>
+    <div className={`flex flex-col ${isOnError ? '' : 'mb-[14px]'}`}>
       {children}
-      {isOnError ? <ErrorSpan content={errors[0]} /> : <span className='block h-3 mt-2'></span>}
+      {isOnError && (
+        <span className={`text-white p-sm text-[10px] leading-[10px] block mt-[4px]`}>
+          {errors[0]}
+        </span>
+      )}
     </div>
   );
 };

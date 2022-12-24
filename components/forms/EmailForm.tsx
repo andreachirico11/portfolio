@@ -3,19 +3,19 @@ import { useShowAnimationContext } from '../../context/ShowAnimationContext';
 import { AnimationType } from '../../enums';
 import Environments from '../../environments';
 import { Checkbox, FormState, Input, MyForm, Textarea, Validators } from '../../myForm';
-import { Anchor } from '../utils/Anchor';
 
 interface Props {
   onSubmit: (formState: FormState) => void;
+  className?: string;
 }
 
-export const EmailForm: React.FC<Props> = ({ onSubmit }) => {
+export const EmailForm: React.FC<Props> = ({ onSubmit, className = '' }) => {
   const animationRef = useShowAnimationContext<HTMLDivElement>(AnimationType.left);
   return (
-    <div className='w-3/4 max-w-xl lg:w-96' ref={animationRef}>
+    <div className={className} ref={animationRef}>
       <MyForm
         title='Contact Me!'
-        buttonLabel='Send!'
+        buttonLabel='Send'
         config={{
           name: {
             initialvalue: '',
@@ -42,13 +42,13 @@ export const EmailForm: React.FC<Props> = ({ onSubmit }) => {
         }}
         onSubmit={onSubmit}
       >
-        <Input placeholder='Your Name' name='name' />
-        <Input type='email' placeholder='Your Email' name='email' />
-        <Textarea name='message' placeholder='Your Message' />
+        <Input label='Name' name='name' />
+        <Input type='email' label='Email' name='email' />
+        <Textarea name='message' label='Message' />
         <Checkbox name='privacy'>
-          <Anchor href={Environments.IUBENDA_URL} title='Privacy Policy '>
+          <a href={Environments.IUBENDA_URL} className='p-m'>
             Accept Privacy Policy
-          </Anchor>
+          </a>
         </Checkbox>
       </MyForm>
     </div>

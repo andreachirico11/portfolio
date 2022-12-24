@@ -11,7 +11,7 @@ export const FormLayout: FC<Props> = ({
   useFormContextMaster,
   useFormContextInvalidState,
   onSubmit,
-  className,
+  className = '',
   ...formProps
 }) => {
   const getWholeState = useFormContextMaster();
@@ -20,10 +20,8 @@ export const FormLayout: FC<Props> = ({
     onSubmit(getWholeState());
   };
   return (
-    <form {...formProps} className={`w-100 ${className}`} onSubmit={submit}>
-      <h4 className='text-xl text-center mb-7 font-code text-custom-yellow sm:text-3xl md:text-4xl'>
-        {title}
-      </h4>
+    <form {...formProps} className={`grid ${className}`} onSubmit={submit}>
+      <h4 className='mb-2 h4'>{title}</h4>
       {children}
       <SubmitButton
         useFormContextInvalidState={useFormContextInvalidState}

@@ -1,14 +1,13 @@
 import React, { ComponentPropsWithoutRef } from 'react';
 
 interface Props extends ComponentPropsWithoutRef<'a'> {
-  children: string;
+  url: string;
+  label: string;
+  className?: string;
 }
 
-export const Anchor: React.FC<Props> = ({ children, ...props }) => (
-  <a
-    {...props}
-    className='text-xs tracking-widest text-center iubenda-white iubenda-noiframe iubenda-embed sm:text-sm font-os text-custom-grey focus:outline-none hover:text-custom-yellow focus:text-custom-yellow '
-  >
-    {children}
+export const Anchor: React.FC<Props> = ({ label, url, className = '' }) => (
+  <a href={url} className={`underline capitalize p-link ${className}`}>
+    {label}
   </a>
 );

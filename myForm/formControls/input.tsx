@@ -1,13 +1,22 @@
 import React, { ComponentPropsWithoutRef, FC } from 'react';
 import { FormFieldBaseProps } from '../types';
-import useFocusBorderRef from '../utils/useFocusBorderRef';
 import { ErrorWrapper } from '../utils/ErrorWrapper';
+import useFocusBorderRef from '../utils/useFocusBorderRef';
 
 interface Props
   extends Omit<ComponentPropsWithoutRef<'input'>, 'onChange' | 'name'>,
-    FormFieldBaseProps {}
+    FormFieldBaseProps {
+  label: string;
+}
 
-export const Input: FC<Props> = ({ useFormContext, name, initialState, validators, ...props }) => {
+export const Input: FC<Props> = ({
+  useFormContext,
+  name,
+  initialState,
+  validators,
+  label,
+  ...props
+}) => {
   if (!useFormContext) {
     throw new Error('no context');
   }
@@ -16,18 +25,17 @@ export const Input: FC<Props> = ({ useFormContext, name, initialState, validator
     initialState!,
     validators
   );
-  const { ref, onFocus, onBlur } = useFocusBorderRef<HTMLInputElement>();
+  const { ref, onFocus, onBlur } = useFocusBorderRef<HTMLInputElement>(
+    'border-goodGreen',
+    'border-white'
+  );
   return (
     <ErrorWrapper errors={errors} isOnError={isOnError && touched}>
+      <label className='p-m' htmlFor={props.id}>
+        {label}
+      </label>
       <input
-        className={`
-      w-full px-3 py-2 text-xs 
-      bg-transparent border outline-none 
-      sm:text-sm md:text-base border-custom-grey 
-      font-os text-custom-white placeholder-custom-grey 
-      rounded-custom
-      outline-dotted
-      `}
+        className='pl-1 bg-transparent border-4 border-white outline-none p-sm rounded-custom'
         {...props}
         onChange={onChange}
         value={value}

@@ -25,7 +25,7 @@ export const Header: React.FC<Props> = () => {
   }, []);
 
   return (
-    <nav className='fixed top-0 z-10 flex justify-end min-w-full px-6 py-4 tracking-widest uppercase nav-text'>
+    <nav className='fixed top-0 z-10 flex justify-end min-w-full py-4 pr-5 tracking-widest uppercase nav-text'>
       {sections.slice(1).map((section, i, sections) => (
         <HeaderLink
           key={section.id + section.label}

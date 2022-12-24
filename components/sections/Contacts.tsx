@@ -2,13 +2,15 @@ import React, { useContext } from 'react';
 import { DownloadingContext } from '../../context/DownloaderContext';
 import { LoadingContext } from '../../context/LoadingContext';
 import { ModalContext } from '../../context/ModalContext';
-import { ModalTypes } from '../../enums';
+import { useShowAnimationContext } from '../../context/ShowAnimationContext';
+import { AnimationType, ModalTypes } from '../../enums';
 import Environments from '../../environments';
 import { FormState } from '../../myForm';
 import { fetchFile, fetchFileWithoutToken, getModalErrorContent, sendMail } from '../../utils';
 import { EmailForm } from '../forms/EmailForm';
 import { EmptyForm } from '../forms/EmptyForm';
 import { TokenForm } from '../forms/TokenForm';
+import { AnchorWithIcon } from '../utils/AnchorWithIcon';
 
 interface Props extends React.ComponentPropsWithoutRef<'section'> {
   isCvProtected: boolean;
@@ -18,6 +20,7 @@ export const Contacts: React.FC<Props> = ({ isCvProtected }) => {
   const loading = useContext(LoadingContext);
   const modals = useContext(ModalContext);
   const download = useContext(DownloadingContext);
+  const animationRef = useShowAnimationContext<HTMLDivElement>(AnimationType.right);
 
   const fileDownloadShared = async (fetchCb: () => Promise<Blob>) => {
     try {
@@ -66,12 +69,30 @@ export const Contacts: React.FC<Props> = ({ isCvProtected }) => {
 
   return (
     <>
+      <EmailForm className='w-3/5 text-white' onSubmit={onEmailSubmit} />
+      <div className='grid w-3/5 gap-4 my-12' ref={animationRef}>
+        <h4 className='text-white h4'>You can find me on</h4>
+        <AnchorWithIcon
+          href='https://www.linkedin.com/in/andrea-chirico-b5b98b143/'
+          label='LinkedIn'
+          src='/assets/linkedin.png'
+        />
+        <AnchorWithIcon
+          href='https://github.com/andreachirico11'
+          label='Github'
+          src='/assets/github.png'
+        />
+        <AnchorWithIcon
+          href='https://www.facebook.com/andrea.chirico.927'
+          label='Facebook'
+          src='/assets/facebook.png'
+        />
+      </div>
       {isCvProtected ? (
         <TokenForm onSubmit={onTokenSubmit} />
       ) : (
-        <EmptyForm onSubmit={onUnprotectedSubmit} />
+        <EmptyForm className='w-3/5 text-white' onSubmit={onUnprotectedSubmit} />
       )}
-      <EmailForm onSubmit={onEmailSubmit} />
     </>
   );
 };

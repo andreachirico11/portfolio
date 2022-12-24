@@ -5,13 +5,16 @@ import useFocusBorderRef from '../utils/useFocusBorderRef';
 
 interface Props
   extends Omit<ComponentPropsWithoutRef<'textarea'>, 'onChange' | 'name'>,
-    FormFieldBaseProps {}
+    FormFieldBaseProps {
+  label: string;
+}
 
 export const Textarea: FC<Props> = ({
   useFormContext,
   name,
   initialState,
   validators,
+  label,
   ...props
 }) => {
   if (!useFormContext) {
@@ -22,14 +25,20 @@ export const Textarea: FC<Props> = ({
     initialState!,
     validators
   );
-  const { ref, onFocus, onBlur } = useFocusBorderRef<HTMLDivElement>();
+  const { ref, onFocus, onBlur } = useFocusBorderRef<HTMLDivElement>(
+    'border-goodGreen',
+    'border-white'
+  );
   return (
     <ErrorWrapper errors={errors} isOnError={isOnError && touched}>
+      <label className='p-m' htmlFor={props.id}>
+        {label}
+      </label>
       <div
         ref={ref}
         onMouseEnter={onFocus}
         onMouseLeave={onBlur}
-        className='w-full px-3 py-6 border border-custom-grey rounded-custom'
+        className='w-full px-1 py-3 border-4 border-white rounded-custom'
       >
         <textarea
           {...props}
@@ -37,7 +46,7 @@ export const Textarea: FC<Props> = ({
           value={value}
           onFocus={onFocus}
           onBlur={onBlur}
-          className='w-full text-xs bg-transparent outline-none resize-none placeholder-custom-grey font-os md:text-base sm:text-sm text-custom-white'
+          className='w-full text-xs bg-transparent outline-none resize-none placeholder-custom-grey p-sm text-custom-white'
         ></textarea>
       </div>
     </ErrorWrapper>

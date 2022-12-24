@@ -28,6 +28,7 @@ export enum AnimationType {
   down = 'down',
   left = 'left',
   right = 'right',
+  off = 'off',
 }
 
 export enum ModalTypes {

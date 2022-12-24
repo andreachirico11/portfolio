@@ -1,24 +1,34 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useShowAnimationContext } from '../../context/ShowAnimationContext';
+import { AnimationType } from '../../enums';
+import { Button } from './Button';
 
 interface Props {
   href: string;
   label: string;
+  className?: string;
+  animationOff?: boolean;
 }
 
-export const AnchorButton: React.FC<Props> = ({ href, label }) => {
-  const animationRef = useShowAnimationContext<HTMLDivElement>();
+export const AnchorButton: React.FC<Props> = ({
+  href,
+  label,
+  className = '',
+  animationOff = false,
+}) => {
+  const animationRef = useShowAnimationContext<HTMLDivElement>(
+    animationOff ? AnimationType.off : AnimationType.down
+  );
+  const r = useRef<HTMLAnchorElement>(null);
+  const onClick = () => {
+    r.current!.click();
+  };
   return (
-    <div
-      className='flex items-center justify-center py-2 border bg-custom-grey rounded-custom px-7 border-custom-yellow'
-      ref={animationRef}
-    >
-      <a
-        href={href}
-        className='text-xs tracking-widest text-center sm:text-sm font-os text-custom-white focus:outline-none hover:text-custom-yellow focus:text-custom-yellow '
-      >
+    <div className='' ref={animationRef}>
+      <a ref={r} href={href} className='hidden' />
+      <Button onclick={onClick} className={className}>
         {label}
-      </a>
+      </Button>
     </div>
   );
 };

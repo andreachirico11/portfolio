@@ -10,7 +10,7 @@ interface Props
   stringLabel?: string;
 }
 
-const DefaultCheckMark: FC = () => <div className='w-3/5 rounded-full h-3/5 bg-custom-grey' />;
+const DefaultCheckMark: FC = () => <div className='w-3/5 rounded-full h-3/5 bg-goodGreen' />;
 
 export const Checkbox: FC<Props> = ({
   children,
@@ -25,7 +25,10 @@ export const Checkbox: FC<Props> = ({
     throw new Error('no context');
   }
   const inputRef = useRef<HTMLInputElement>(null);
-  const { ref, onFocus, onBlur } = useFocusBorderRef<HTMLDivElement>();
+  const { ref, onFocus, onBlur } = useFocusBorderRef<HTMLDivElement>(
+    'border-goodGreen',
+    'border-white'
+  );
   const [{ value, errors, isOnError, touched }, onChange] = useFormContext(
     name,
     initialState!,
@@ -38,14 +41,14 @@ export const Checkbox: FC<Props> = ({
 
   return (
     <ErrorWrapper errors={errors} isOnError={isOnError && touched}>
-      <div className='flex items-center w-full px-3 text-inherit'>
+      <div className='flex items-center w-full text-inherit'>
         <label className='flex items-center'>
           <div
             ref={ref}
             onClick={toggle}
             onMouseEnter={onFocus}
             onMouseLeave={onBlur}
-            className='flex items-center cursor-pointer justify-center w-[1em] text-center rounded-full h-[1em] border-[0.1em] border-custom-grey mr-2'
+            className='flex items-center cursor-pointer justify-center w-[1em] text-center rounded-full h-[1em] border-[0.1em] border-white mr-2'
           >
             {value && <DefaultCheckMark />}
           </div>

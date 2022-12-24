@@ -8,6 +8,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
+        mobile: '390px',
         tablet: '834px',
         desktop: '1500px',
       },
@@ -17,7 +18,7 @@ module.exports = {
         gray: '#4C5454',
       },
       borderRadius: {
-        custom: '16px',
+        custom: '12px',
       },
       fontFamily: {
         mono: ['Courier Prime', 'monospace'],

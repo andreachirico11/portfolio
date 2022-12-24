@@ -1,6 +1,9 @@
 import { useRef } from 'react';
 
-export default function useFocusBorderRef<T extends HTMLElement>() {
+export default function useFocusBorderRef<T extends HTMLElement>(
+  accentClass: string,
+  nonAccentClass: string
+) {
   const ref = useRef<T>(null);
   const getCurrentClasslist = () => {
     if (!ref.current) {
@@ -9,12 +12,12 @@ export default function useFocusBorderRef<T extends HTMLElement>() {
     return ref.current.classList;
   };
   const onFocus = () => {
-    getCurrentClasslist().remove('border-custom-grey');
-    getCurrentClasslist().add('border-custom-yellow');
+    getCurrentClasslist().remove(nonAccentClass);
+    getCurrentClasslist().add(accentClass);
   };
   const onBlur = () => {
-    getCurrentClasslist().remove('border-custom-yellow');
-    getCurrentClasslist().add('border-custom-grey');
+    getCurrentClasslist().remove(accentClass);
+    getCurrentClasslist().add(nonAccentClass);
   };
   return { ref, onFocus, onBlur };
 }

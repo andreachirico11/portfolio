@@ -6,7 +6,7 @@ interface Props {}
 
 export const Works: React.FC<Props> = () => {
   return (
-    <>
+    <div className='grid px-5 gap-14'>
       <WorkCard
         title='students manager'
         description='A full-stack web app for managing students lessons, print receipts and so on...'
@@ -21,17 +21,11 @@ export const Works: React.FC<Props> = () => {
         website='https://www.eredicasassa.com/'
         src='/assets/demo-casassa.png'
       />
-      <WorkCard
-        title='my portfolio'
-        description='Who says that portfolios are always static websites? This one has backend too'
-        github='https://github.com/andreachirico11/portfolio'
-        website='https://www.andreachirico.com/'
-        src='/assets/demo-portfolio.png'
-      />
       <AnchorButton
         href='https://github.com/andreachirico11'
-        label='And many more on my Github page'
+        label='More of my work on Github ->'
+        className='w-full px-0'
       />
-    </>
+    </div>
   );
 };
