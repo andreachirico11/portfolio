@@ -11,7 +11,6 @@ export const FormLayout: FC<Props> = ({
   useFormContextMaster,
   useFormContextInvalidState,
   onSubmit,
-  className = '',
   ...formProps
 }) => {
   const getWholeState = useFormContextMaster();
@@ -20,7 +19,7 @@ export const FormLayout: FC<Props> = ({
     onSubmit(getWholeState());
   };
   return (
-    <form {...formProps} className={`grid ${className}`} onSubmit={submit}>
+    <form {...formProps} className='grid tablet:gap-3' onSubmit={submit}>
       <h4 className='mb-2 h4'>{title}</h4>
       {children}
       <SubmitButton

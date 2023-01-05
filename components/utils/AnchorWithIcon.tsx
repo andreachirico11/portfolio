@@ -8,9 +8,11 @@ interface Props extends ComponentPropsWithoutRef<'span'> {
 }
 
 export const AnchorWithIcon: React.FC<Props> = ({ label, href, src }) => (
-  <span className='flex text-white p-sm'>
-    <Image width={20} height={20} src={src} alt={label} />
-    <a href={href} className='ml-6'>
+  <span className='flex items-center text-white '>
+    <div className='w-[20px] h-[20px] tablet:w-[50px] tablet:h-[50px] relative'>
+      <Image fill={true} src={src} alt={label} sizes='60px' />
+    </div>
+    <a href={href} className='ml-6 p-sm tablet:p-m leading-0'>
       {label}
     </a>
   </span>

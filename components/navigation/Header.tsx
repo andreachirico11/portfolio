@@ -31,7 +31,7 @@ export const Header: React.FC<Props> = () => {
           key={section.id + section.label}
           section={section}
           colors={sectionColors}
-          className={`${sections.length - 1 !== i ? 'mr-5' : ''}`}
+          className={`${sections.length - 1 !== i ? 'mr-5 tablet:mr-10' : ''}`}
         />
       ))}
     </nav>

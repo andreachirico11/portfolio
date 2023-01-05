@@ -16,18 +16,20 @@ export const WorkCard: React.FC<Props> = ({ title, description, github, website,
   const animationRef = useShowAnimationContext<HTMLDivElement>();
   return (
     <div
-      className='py-5 text-center border-4 text-gray border-goodGreen rounded-custom'
+      className='max-w-3xl overflow-hidden border-4 text-gray border-goodGreen rounded-custom tablet:flex'
       ref={animationRef}
     >
-      <div className='flex flex-col justify-center'>
+      <div className='flex flex-col items-center py-5 tablet:pl-10 tablet:items-start tablet:w-2/3'>
         <h4 className='capitalize h3'>{title}</h4>
-        <p className='px-10 my-5 p-sm'>{description}</p>
-        <div className='flex px-10 justify-evenly'>
+        <p className='my-5 text-center max-w-1/2 p-sm tablet:text-left max-w-[70%] tablet:max-w-none'>
+          {description}
+        </p>
+        <div className='flex justify-evenly'>
           <Anchor label='website' url={website} className='mr-2' />
           <Anchor label='github' url={github} />
         </div>
       </div>
-      <div className='hidden'>
+      <div className='hidden w-1/3 tablet:block'>
         <Image width={560} height={467} src={src} alt={title} className='w-auto h-full' />
       </div>
     </div>

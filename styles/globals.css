@@ -4,34 +4,34 @@
 
 @layer components {
   .h1 {
-    @apply font-sans text-[44px] mobile:text-[50px] tablet:text-[60px] desktop:text-[96px] font-bold;
+    @apply font-sans text-[44px] mobile:text-[50px] tablet:text-[96px] desktop:text-[96px] font-bold;
   }
   .h2 {
-    @apply font-sans text-[24px] mobile:text-[30px] tablet:text-[30px] desktop:text-[48px] font-bold;
+    @apply font-sans text-[24px] mobile:text-[30px] tablet:text-[48px] desktop:text-[48px] font-bold;
   }
   .h3 {
-    @apply font-sans text-[28px] mobile:text-[28px] tablet:text-[28px] desktop:text-[38px] font-normal;
+    @apply font-sans text-[28px] mobile:text-[28px] tablet:text-[38px] desktop:text-[38px] font-normal;
   }
   .h4 {
-    @apply font-sans text-[14px] mobile:text-[22px] tablet:text-[22px] desktop:text-[28px] font-bold;
+    @apply font-sans text-[14px] mobile:text-[22px] tablet:text-[28px] desktop:text-[28px] font-bold;
   }
   .nav-text {
-    @apply font-mono text-[16px] mobile:text-[18px] tablet:text-[18px] desktop:text-[26px] font-semibold;
+    @apply font-mono text-[16px] mobile:text-[18px] tablet:text-[26px] desktop:text-[26px] font-semibold;
   }
   .p-sm {
-    @apply font-mono text-[14px] mobile:text-[14px] tablet:text-[14px] desktop:text-[16px] font-normal;
+    @apply font-mono text-[14px] mobile:text-[14px] tablet:text-[16px] desktop:text-[16px] font-normal;
   }
   .p-m {
-    @apply font-mono text-[14px] mobile:text-[16px] tablet:text-[16px] desktop:text-[20px] font-normal;
+    @apply font-mono text-[14px] mobile:text-[16px] tablet:text-[20px] desktop:text-[20px] font-normal;
   }
   .p-lg {
-    @apply font-mono text-[14px] mobile:text-[18px] tablet:text-[18px] desktop:text-[24px] font-bold;
+    @apply font-mono text-[14px] mobile:text-[18px] tablet:text-[24px] desktop:text-[24px] font-bold;
   }
   .p-link {
-    @apply font-mono text-[14px] mobile:text-[18px] tablet:text-[18px] desktop:text-[20px] font-normal;
+    @apply font-mono text-[14px] mobile:text-[18px] tablet:text-[20px] desktop:text-[20px] font-normal;
   }
   .btn-text {
-    @apply font-sans text-[14px] mobile:text-[18px] tablet:text-[18px] desktop:text-[28px] font-bold;
+    @apply font-sans text-[14px] mobile:text-[18px] tablet:text-[28px] desktop:text-[28px] font-bold;
   }
 }
 

@@ -24,7 +24,7 @@ export const AnchorButton: React.FC<Props> = ({
     r.current!.click();
   };
   return (
-    <div className='' ref={animationRef}>
+    <div ref={animationRef}>
       <a ref={r} href={href} className='hidden' />
       <Button onclick={onClick} className={className}>
         {label}

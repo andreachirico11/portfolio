@@ -13,7 +13,8 @@ export const SubmitButton: FC<Props> = ({ buttonLabel, useFormContextInvalidStat
       disabled={isFormInvalid}
       className={`
       py-1 text-center btn-text text-gray
-      px-4 rounded-custom bg-white w-fit 
+      px-4 rounded-custom bg-white w-fit
+      tablet:px-8 
 
       transition duration-300 ease-in-out 
       

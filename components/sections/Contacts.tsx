@@ -69,7 +69,7 @@ export const Contacts: React.FC<Props> = ({ isCvProtected }) => {
 
   return (
     <>
-      <EmailForm className='w-3/5 text-white' onSubmit={onEmailSubmit} />
+      <EmailForm className='w-3/5 text-white ' onSubmit={onEmailSubmit} />
       <div className='grid w-3/5 gap-4 my-12' ref={animationRef}>
         <h4 className='text-white h4'>You can find me on</h4>
         <AnchorWithIcon

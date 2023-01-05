@@ -12,7 +12,7 @@ export const About: React.FC<Props> = () => {
 
   return (
     <>
-      <div className='w-2/3 max-w-xs' ref={animationRefImg}>
+      <div className='w-2/3 max-w-sm tablet:mr-auto' ref={animationRefImg}>
         <Image
           width={1080}
           height={441}
@@ -21,8 +21,8 @@ export const About: React.FC<Props> = () => {
           className='rounded-custom w-100'
         />
       </div>
-      <div className='text-center text-white' ref={animationRefContent}>
-        <h4 className='my-10 h1'>Hey</h4>
+      <div className='text-center text-white tablet:text-left' ref={animationRefContent}>
+        <h4 className='my-10 h1 tablet:my-6'>Hey</h4>
         <p className='p-m'>
           I write code and it&#39;s what I love to do.
           <br />

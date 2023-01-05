@@ -5,7 +5,7 @@ import { ISection } from '../../types';
 interface Props extends React.ComponentPropsWithoutRef<'section'> {
   children: ReactNode;
   section: ISection;
-  justify?: 'center' | 'between';
+  justify?: 'center' | 'between' | 'left';
 }
 
 export const Section: React.FC<Props> = ({ children, className, section, justify = 'center' }) => {

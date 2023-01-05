@@ -21,17 +21,20 @@ export default function Home({ isCvProtected }: HomeProps) {
     <div>
       <ModalsContainer />
       <Header />
-      <Section section={sections()[0]} className='!block bg-goodGreen pl-8 pr-2'>
+      <Section section={sections()[0]} className='!block bg-goodGreen pl-8 pr-2 tablet:px-20'>
         <Intro />
       </Section>
       <Section
         section={sections()[1]}
         justify='center'
-        className='px-5 py-[5rem] lg:py-[8rem] bg-white'
+        className='px-5 py-[5rem] lg:py-[8rem] bg-white  tablet:px-20'
       >
         <Works />
       </Section>
-      <Section section={sections()[2]} className='px-10 py-20 lg:flex-row-reverse bg-goodGreen'>
+      <Section
+        section={sections()[2]}
+        className='px-10 py-20 tablet:pl-40 tablet:items-start bg-goodGreen'
+      >
         <About />
       </Section>
       <Section section={sections()[3]} className='pt-[4rem] bg-gray pb-4'>
