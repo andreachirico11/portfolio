@@ -21,7 +21,10 @@ export default function Home({ isCvProtected }: HomeProps) {
     <div>
       <ModalsContainer />
       <Header />
-      <Section section={sections()[0]} className='!block bg-goodGreen pl-8 pr-2 tablet:px-20'>
+      <Section
+        section={sections()[0]}
+        className='!block bg-goodGreen pl-8 pr-2 tablet:px-20 desktop:pl-[20%]'
+      >
         <Intro />
       </Section>
       <Section
@@ -33,11 +36,14 @@ export default function Home({ isCvProtected }: HomeProps) {
       </Section>
       <Section
         section={sections()[2]}
-        className='px-10 py-20 tablet:pl-40 tablet:items-start bg-goodGreen'
+        className='px-10 py-20 bg-goodGreen desktop:flex-row-reverse desktop:items-center desktop:pl-10'
       >
         <About />
       </Section>
-      <Section section={sections()[3]} className='pt-[4rem] bg-gray pb-4'>
+      <Section
+        section={sections()[3]}
+        className='pt-[4rem] bg-gray pb-4 desktop:grid desktop:grid-cols-2 desktop:justify-items-center desktop:gap-x-40 desktop:gap-y-14'
+      >
         <Contacts isCvProtected={isCvProtected} />
       </Section>
       <a id='downloadAnchor' className='hidden'></a>

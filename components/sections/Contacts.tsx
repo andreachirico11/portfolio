@@ -69,8 +69,14 @@ export const Contacts: React.FC<Props> = ({ isCvProtected }) => {
 
   return (
     <>
-      <EmailForm className='w-3/5 text-white ' onSubmit={onEmailSubmit} />
-      <div className='grid w-3/5 gap-4 my-12' ref={animationRef}>
+      <EmailForm
+        className='w-3/5 text-white desktop:max-w-lg desktop:row-span-2 desktop:ml-auto'
+        onSubmit={onEmailSubmit}
+      />
+      <div
+        className='grid w-3/5 gap-4 my-12 desktop:mr-auto desktop:mt-auto desktop:mb-0 desktop:gap-8'
+        ref={animationRef}
+      >
         <h4 className='text-white h4'>You can find me on</h4>
         <AnchorWithIcon
           href='https://www.linkedin.com/in/andrea-chirico-b5b98b143/'
@@ -91,7 +97,10 @@ export const Contacts: React.FC<Props> = ({ isCvProtected }) => {
       {isCvProtected ? (
         <TokenForm onSubmit={onTokenSubmit} />
       ) : (
-        <EmptyForm className='w-3/5 text-white' onSubmit={onUnprotectedSubmit} />
+        <EmptyForm
+          className='w-3/5 text-white desktop:mr-auto desktop:mb-auto'
+          onSubmit={onUnprotectedSubmit}
+        />
       )}
     </>
   );

@@ -10,7 +10,7 @@ module.exports = {
       screens: {
         mobile: '390px',
         tablet: '834px',
-        desktop: '1500px',
+        desktop: '1200px',
       },
       colors: {
         goodGreen: '#1EA896',

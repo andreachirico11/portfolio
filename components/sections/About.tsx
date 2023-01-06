@@ -12,7 +12,7 @@ export const About: React.FC<Props> = () => {
 
   return (
     <>
-      <div className='w-2/3 max-w-sm tablet:mr-auto' ref={animationRefImg}>
+      <div className='w-2/3 max-w-sm' ref={animationRefImg}>
         <Image
           width={1080}
           height={441}
@@ -21,9 +21,9 @@ export const About: React.FC<Props> = () => {
           className='rounded-custom w-100'
         />
       </div>
-      <div className='text-center text-white tablet:text-left' ref={animationRefContent}>
-        <h4 className='my-10 h1 tablet:my-6'>Hey</h4>
-        <p className='p-m'>
+      <div className='text-center text-white desktop:text-left' ref={animationRefContent}>
+        <h4 className='my-10 h1 tablet:my-6 desktop:mt-0'>Hey</h4>
+        <p className='p-m max-w-[584px] desktop:mr-24'>
           I write code and it&#39;s what I love to do.
           <br />
           Frontend developer based in Italy passionate about cars, Nordic countries and backend

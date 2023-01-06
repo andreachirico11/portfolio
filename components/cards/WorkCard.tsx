@@ -2,7 +2,6 @@ import Image from 'next/image';
 import React from 'react';
 import { useShowAnimationContext } from '../../context/ShowAnimationContext';
 import { Anchor } from '../utils/Anchor';
-import { IconLink } from '../utils/IconLink';
 
 interface Props {
   title: string;
@@ -25,7 +24,7 @@ export const WorkCard: React.FC<Props> = ({ title, description, github, website,
           {description}
         </p>
         <div className='flex justify-evenly'>
-          <Anchor label='website' url={website} className='mr-2' />
+          <Anchor label='website' url={website} className='mr-2 tablet:mr-10' />
           <Anchor label='github' url={github} />
         </div>
       </div>
