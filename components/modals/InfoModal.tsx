@@ -13,10 +13,7 @@ export const InfoModal: FC<Props> = () => {
   } = useModalContext(ModalTypes.info);
   return (
     <ModalLayout title={title || ''} onClose={close} show={show}>
-      <p
-        id='modal-message'
-        className='my-3 text-xs tracking-widest text-center md:text-base sm:my-6 sm:text-sm sm:text-left font-os text-custom-white'
-      >
+      <p id='modal-message' className='my-10 p-lg'>
         {content || ''}
       </p>
     </ModalLayout>

@@ -6,6 +6,7 @@ import {
   EmailError,
   GithubResponseError,
   MissingDataError,
+  MissingEnvironmentError,
   PdfParsingError,
   UnauthorizedError,
 } from '../types/errors';
@@ -17,6 +18,8 @@ export function errorLogger(error: BaseError) {
       printErr('Missing data in the request', sysError);
     } else if (error instanceof EmailError) {
       printErr('Sendgrid error', sysError);
+    } else if (error instanceof MissingEnvironmentError) {
+      printErr('Missing Environments', sysError);
     } else if (error instanceof UnauthorizedError) {
       printErr('Wrong Credentials', sysError);
     } else if (error instanceof GithubResponseError) {

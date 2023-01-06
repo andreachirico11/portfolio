@@ -53,7 +53,7 @@ export const Contacts: React.FC<Props> = ({ isCvProtected }) => {
       loading.startLoading();
       const { name, email, message, privacy } = formState;
       await sendMail(name.value, email.value, message.value, privacy.value);
-      modals.openModal(ModalTypes.error, {
+      modals.openModal(ModalTypes.info, {
         title: 'Thank you',
         content: "I'll answer ASAP!!!",
       });

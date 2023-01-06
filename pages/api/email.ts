@@ -1,7 +1,7 @@
 import type { NextApiResponse } from 'next';
 import Environments from '../../environments';
 import { EmailRequest, HttpErrorResponse } from '../../types';
-import { MissingDataError, UnknownError } from '../../types/errors';
+import { MissingDataError, MissingEnvironmentError, UnknownError } from '../../types/errors';
 import * as sgMail from '@sendgrid/mail';
 import { errorLogger, generateEmailmessage, log } from '../../utils-api';
 import { isAKnownError, isEmailValid } from '../../utils';
@@ -16,6 +16,14 @@ export default async function handler(
   const { name, email, message, policy } = req.body;
   let errorStatusCode = 500;
   try {
+    if (
+      !Environments.PERSONAL_MAIL ||
+      !Environments.PERSONAL_TRANSPORT_MAIL ||
+      !Environments.SENDGRID_API_KEY
+    ) {
+      throw new MissingEnvironmentError(null);
+    }
+
     if (!name || !email || !message || !policy || !isEmailValid(email)) {
       errorStatusCode = 403;
       throw new MissingDataError(null);

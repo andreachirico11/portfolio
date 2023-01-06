@@ -1,7 +1,12 @@
 import type { NextApiResponse } from 'next';
 import Environments from '../../environments';
 import { CvRequest, HttpErrorResponse } from '../../types';
-import { MissingDataError, UnauthorizedError, UnknownError } from '../../types/errors';
+import {
+  MissingDataError,
+  MissingEnvironmentError,
+  UnauthorizedError,
+  UnknownError,
+} from '../../types/errors';
 import { GithubUtilConnect, htmlParser, errorLogger, log } from '../../utils-api';
 import { isAKnownError } from '../../utils';
 import { parseHtmlPageToBuffer } from '../../utils-api/parseHtmlPageToBuffer';
@@ -28,8 +33,14 @@ export default async function handler(
       log('token valid');
     }
 
+    if (!Environments.FILE_URL || !Environments.GITHUB_TOKEN) {
+      errorStatusCode = 500;
+      throw new MissingEnvironmentError(null);
+    }
+
     const githubFile = await github.getCvFileFromGithub(Environments.FILE_URL);
     log('fetched from github');
+    log(Environments.FILE_URL);
 
     const htmlStringFile = htmlParser(githubFile);
     log('parsed to string');

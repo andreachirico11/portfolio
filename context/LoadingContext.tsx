@@ -24,6 +24,7 @@ const LoadingContextProvider: React.FC<{ children: ReactNode }> = ({ children })
   const stopLoading = () => {
     barStateRef.current!(false);
   };
+
   return (
     <LoadingContext.Provider value={{ startLoading, stopLoading }}>
       <>

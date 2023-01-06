@@ -22,6 +22,7 @@ export enum ErrorTypes {
   CHEERIO,
   PARSING,
   HTML_CREATION,
+  MISSING_ENV,
 }
 
 export enum AnimationType {

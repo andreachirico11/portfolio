@@ -24,6 +24,12 @@ export class MissingDataError extends BaseError {
   }
 }
 
+export class MissingEnvironmentError extends BaseError {
+  constructor(originalError: any) {
+    super(ErrorTypes.MISSING_ENV, originalError);
+  }
+}
+
 export class EmailError extends BaseError {
   constructor(originalError: any) {
     super(ErrorTypes.EMAIL_API, originalError);

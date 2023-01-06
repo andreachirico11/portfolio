@@ -8,14 +8,14 @@ import { ModalsContainer } from '../components/sections/ModalsContainer';
 import { Works } from '../components/sections/Works';
 import { SectionsContext } from '../context/ActiveLinkContext';
 import Environments from '../environments';
-import useScrollContexts from '../hooks/useSrollContexts';
+import useScrollCtx from '../hooks/useScrollContexts';
 
 type HomeProps = {
   isCvProtected: boolean;
 };
 
 export default function Home({ isCvProtected }: HomeProps) {
-  useScrollContexts();
+  useScrollCtx();
   const { sections } = useContext(SectionsContext)!;
   return (
     <div>

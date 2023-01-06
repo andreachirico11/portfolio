@@ -20,7 +20,7 @@ export const TokenForm: FC<Props> = ({ onSubmit }) => {
         }}
         onSubmit={onSubmit}
       >
-        <Input placeholder='Passcode' name='passcode' />
+        <Input label='token' placeholder='Passcode' name='passcode' />
       </MyForm>
     </div>
   );

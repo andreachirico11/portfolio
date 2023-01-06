@@ -18,6 +18,8 @@ export function getModalErrorContent(error: unknown | HttpErrorResponse) {
       case ErrorTypes.PARSING:
       case ErrorTypes.HTML_CREATION:
         return 'Error during the file parsing';
+      case ErrorTypes.MISSING_ENV:
+        return 'Missing Environments';
       case ErrorTypes.UNKWNOWN:
       default:
         return 'Unkwnown Error';
