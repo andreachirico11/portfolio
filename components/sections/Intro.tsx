@@ -11,8 +11,7 @@ export const Intro: React.FC<Props> = () => {
         <h1 className='text-white h1'>Hello There !</h1>
         <h2 className='mt-8 h2 text-gray mobile:mt-11'>I&apos;m Andrea Chirico</h2>
         <p className='mt-10 text-white desktop:mt-6 mobile:mt-14 p-lg tablet:w-2/3'>
-          A passionate software developer <br className='hidden desktop:inline' /> with a love for
-          clean code
+          A passionate software developer <br /> with a love for clean code
         </p>
       </div>
       <AnchorButton

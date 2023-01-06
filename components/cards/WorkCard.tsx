@@ -15,7 +15,7 @@ export const WorkCard: React.FC<Props> = ({ title, description, github, website,
   const animationRef = useShowAnimationContext<HTMLDivElement>();
   return (
     <div
-      className='max-w-3xl overflow-hidden border-4 text-gray border-goodGreen rounded-custom tablet:flex'
+      className='max-w-3xl overflow-hidden bg-white border-4 text-gray border-goodGreen rounded-custom tablet:flex'
       ref={animationRef}
     >
       <div className='flex flex-col items-center py-5 tablet:pl-10 tablet:items-start tablet:w-2/3'>

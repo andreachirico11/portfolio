@@ -11,12 +11,9 @@ module.exports = {
         mobile: '390px',
         tablet: '834px',
         desktop: '1200px',
+        xlDesktop: '2561px',
       },
-      colors: {
-        goodGreen: '#1EA896',
-        white: '#FFFFFF',
-        gray: '#4C5454',
-      },
+      colors: { goodGreen: '#1EA896', white: '#FFFFFF', gray: '#4C5454' },
       borderRadius: {
         custom: '12px',
       },
@@ -43,5 +40,4 @@ module.exports = {
       },
     },
   },
-  plugins: [],
 };

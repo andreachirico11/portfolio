@@ -7,6 +7,7 @@ import { Intro } from '../components/sections/Intro';
 import { ModalsContainer } from '../components/sections/ModalsContainer';
 import { Works } from '../components/sections/Works';
 import { SectionsContext } from '../context/ActiveLinkContext';
+import { Sections } from '../enums';
 import Environments from '../environments';
 import useScrollCtx from '../hooks/useScrollContexts';
 
@@ -16,41 +17,44 @@ type HomeProps = {
 
 export default function Home({ isCvProtected }: HomeProps) {
   useScrollCtx();
-  const { sections } = useContext(SectionsContext)!;
+  const { sectionById } = useContext(SectionsContext)!;
   return (
     <div>
       <ModalsContainer />
       <Header />
       <Section
-        section={sections()[0]}
-        className='!block bg-goodGreen pl-8 pr-2 tablet:px-20 desktop:pl-[20%]'
+        section={sectionById(Sections.intro)}
+        className='!block pl-8 pr-2 tablet:px-20 desktop:pl-[10%] xlDesktop:pl-[15%]'
+        hasCurve
       >
         <Intro />
       </Section>
       <Section
-        section={sections()[1]}
-        justify='center'
-        className='px-5 py-[5rem] lg:py-[8rem] bg-white  tablet:px-20'
+        section={sectionById(Sections.works)}
+        className='px-5 py-[5rem] lg:py-[8rem] tablet:px-20'
+        hasCurve
       >
         <Works />
       </Section>
       <Section
-        section={sections()[2]}
-        className='px-10 py-20 bg-goodGreen desktop:flex-row-reverse desktop:items-center desktop:pl-10'
+        section={sectionById(Sections.about)}
+        className='px-10 py-20 desktop:flex-row-reverse desktop:items-center desktop:pl-10'
+        hasCurve
       >
         <About />
       </Section>
       <Section
-        section={sections()[3]}
-        className='pt-[4rem] bg-gray pb-4 desktop:grid desktop:grid-cols-2 desktop:justify-items-center desktop:gap-x-40 desktop:gap-y-14'
+        section={sectionById(Sections.contacts)}
+        className='pt-[4rem] pb-4 desktop:grid desktop:grid-cols-2 desktop:justify-items-center desktop:gap-x-40 desktop:gap-y-14'
+        hasCurve
       >
         <Contacts isCvProtected={isCvProtected} />
       </Section>
       <a id='downloadAnchor' className='hidden'></a>
       {/* workaround because sometimes tailwind does not compile colors */}
-      <span className='hidden text-goodGreen'></span>
+      {/* <span className='hidden text-goodGreen'></span>
       <span className='hidden text-gray'></span>
-      <span className='hidden text-white'></span>
+      <span className='hidden text-white'></span> */}
     </div>
   );
 }

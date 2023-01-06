@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { SectionsContext } from '../../context/ActiveLinkContext';
 import { Sections } from '../../enums';
 import { ISection } from '../../types';
-import getSectionColorCombination from '../../types/Colors';
+import { getSectionColorCombination } from '../../types/Colors';
 import { HeaderLink } from './HeaderLink';
 
 interface Props extends React.ComponentPropsWithoutRef<'nav'> {}

@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useRef, FC, useContext, useEffect } from 'react';
+import { Sections } from '../enums';
 import { SectionsContextType, RefType, ISection } from '../types';
 import { getIsVisible, getIsVisibleFullHeight } from '../utils';
 
@@ -11,7 +12,8 @@ const SectionsProvider: FC<{
 }> = ({ children, actualSections, heightToShowElement }) => {
   const subscribers = new Set<RefType>([]);
   const _sections = useRef<ISection[]>([...actualSections]);
-  const sections = () => _sections.current!.map((s) => ({ ...s })) as ISection[];
+  const sections = () => _sections.current!.map((s) => ({ ...s } as ISection));
+  const sectionById = (id: Sections) => _sections.current!.find((s) => s.id === id)!;
   const activeSection = () => _sections.current!.find((s) => s.active);
   const setActiveSection = (toActivateId: string) => {
     _sections.current = _sections.current!.map((s) => ({ ...s, active: toActivateId === s.id }));
@@ -46,6 +48,7 @@ const SectionsProvider: FC<{
         subscribe,
         onScroll,
         sections,
+        sectionById,
         registerToSectionUpdate,
       }}
     >
