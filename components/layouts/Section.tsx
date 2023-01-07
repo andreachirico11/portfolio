@@ -19,7 +19,7 @@ export const Section: React.FC<Props> = ({ children, className, section, hasCurv
       id={section.id}
       className={`relative z-0 min-h-screen overflow-hidden bg-${background}`}
     >
-      {hasCurve && <Curve colorId={curve} />}
+      <Curve colorId={curve} />
       <div
         className={`min-h-screen relative z-1 flex flex-col items-center justify-center ${className} `}
       >

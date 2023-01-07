@@ -8,10 +8,10 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        mobile: '390px',
-        tablet: '834px',
-        desktop: '1200px',
-        xlDesktop: '2561px',
+        mobile: { raw: '(min-height: 500px) and (min-width: 350px)' },
+        tablet: { raw: '(min-height: 601px) and (min-width: 962px)' },
+        desktop: { raw: '(min-height: 1000px) and (min-width: 1440px)' },
+        xlDesktop: { raw: '(min-height: 1440px) and (min-width: 2560px)' },
       },
       colors: { goodGreen: '#1EA896', white: '#FFFFFF', gray: '#4C5454' },
       borderRadius: {

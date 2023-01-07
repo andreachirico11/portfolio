@@ -32,7 +32,6 @@ export default function Home({ isCvProtected }: HomeProps) {
       <Section
         section={sectionById(Sections.works)}
         className='px-5 py-[5rem] lg:py-[8rem] tablet:px-20'
-        hasCurve
       >
         <Works />
       </Section>
@@ -46,15 +45,10 @@ export default function Home({ isCvProtected }: HomeProps) {
       <Section
         section={sectionById(Sections.contacts)}
         className='pt-[4rem] pb-4 desktop:grid desktop:grid-cols-2 desktop:justify-items-center desktop:gap-x-40 desktop:gap-y-14'
-        hasCurve
       >
         <Contacts isCvProtected={isCvProtected} />
       </Section>
       <a id='downloadAnchor' className='hidden'></a>
-      {/* workaround because sometimes tailwind does not compile colors */}
-      {/* <span className='hidden text-goodGreen'></span>
-      <span className='hidden text-gray'></span>
-      <span className='hidden text-white'></span> */}
     </div>
   );
 }
