@@ -1,8 +1,9 @@
 import React from 'react';
 import { useShowAnimationContext } from '../../context/ShowAnimationContext';
-import { AnimationType } from '../../enums';
+import { AnimationType, AvailableColors } from '../../enums';
 import Environments from '../../environments';
 import { Checkbox, FormState, Input, MyForm, Textarea, Validators } from '../../myForm';
+import { SpanFillAnimated } from '../utils/TextFillAnimation';
 
 interface Props {
   onSubmit: (formState: FormState) => void;
@@ -47,7 +48,7 @@ export const EmailForm: React.FC<Props> = ({ onSubmit, className = '' }) => {
         <Textarea name='message' label='Message' />
         <Checkbox name='privacy'>
           <a href={Environments.IUBENDA_URL} className='p-m'>
-            Accept Privacy Policy
+            {<SpanFillAnimated label=' Accept Privacy Policy' color={AvailableColors.goodGreen} />}
           </a>
         </Checkbox>
       </MyForm>

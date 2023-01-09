@@ -1,0 +1,28 @@
+.down {
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 1s all ease;
+  }
+  
+  .left {
+    transform: translateX(-50px);
+    opacity: 0;
+    transition: 1s all ease;
+  }
+  
+  .right {
+    transform: translateX(50px);
+    opacity: 0;
+    transition: 1s all ease;
+  }
+  
+  .down.show,
+  .left.show,
+  .right.show {
+    transform: translateY(0) !important;
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+  }
+  
+  
+  

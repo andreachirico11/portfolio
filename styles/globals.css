@@ -1,81 +1,23 @@
 @tailwind base; 
-@tailwind components; 
 @tailwind utilities;
 
-@layer components {
-  .h1 {
-    @apply font-sans font-bold text-[44px] mobile:text-[44px] tablet:text-[96px] desktop:text-[96px] xlDesktop:text-[120px];
-  }
-  .h2 {
-    @apply font-sans font-bold text-[24px] mobile:text-[24px] tablet:text-[48px] desktop:text-[48px] xlDesktop:text-[52px];
-  }
-  .h3 {
-    @apply font-sans font-normal text-[28px] mobile:text-[28px] tablet:text-[38px] desktop:text-[38px] xlDesktop:text-[44px] ;
-  }
-  .h4 {
-    @apply font-sans font-bold text-[14px] mobile:text-[14px] tablet:text-[28px] desktop:text-[28px] xlDesktop:text-[36px];
-  }
-  .nav-text {
-    @apply font-mono font-semibold text-[16px] mobile:text-[16px] tablet:text-[26px] desktop:text-[26px] xlDesktop:text-[36px];
-  }
-  .p-sm {
-    @apply font-mono font-normal text-[14px] mobile:text-[14px] tablet:text-[16px] desktop:text-[16px] xlDesktop:text-[20px];
-  }
-  .p-m {
-    @apply font-mono font-normal text-[14px] mobile:text-[14px] tablet:text-[20px] desktop:text-[20px] xlDesktop:text-[24px];
-  }
-  .p-lg {
-    @apply font-mono font-bold text-[14px] mobile:text-[14px] tablet:text-[24px] desktop:text-[24px] xlDesktop:text-[30px];
-  }
-  .p-link {
-    @apply font-mono font-normal text-[14px] mobile:text-[14px] tablet:text-[20px] desktop:text-[20px]  xlDesktop:text-[24px];
-  }
-  .btn-text {
-    @apply font-sans font-bold text-[14px] mobile:text-[14px] tablet:text-[28px] desktop:text-[28px] xlDesktop:text-[32px];
-  }
-}
+/* 
+     .x {
+            position: relative;
+        }
+  
+        .x::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: green;
+            overflow: hidden;
+            width: 0%;
+            transition: 1s;
 
-
-::-webkit-scrollbar {
-  width: 6px;
-  background-color: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #2C313D;
-  border-radius: 20px;
-}
-
-html {
-  scrollbar-width: thin;
-  scrollbar-color: #2C313D transparent;
-}
-
-
-
-/* scrolling animations  */
-.down {
-  transform: translateY(150px);
-  opacity: 0;
-  transition: 1s all ease;
-}
-
-.left {
-  transform: translateX(-50px);
-  opacity: 0;
-  transition: 1s all ease;
-}
-
-.right {
-  transform: translateX(50px);
-  opacity: 0;
-  transition: 1s all ease;
-}
-
-.down.show,
-.left.show,
-.right.show {
-  transform: translateY(0) !important;
-  transform: translateX(0) !important;
-  opacity: 1 !important;
-}
+        }
+  
+        .x:hover::before {
+            width: 100%;
+        } */

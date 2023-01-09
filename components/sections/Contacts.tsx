@@ -3,7 +3,7 @@ import { DownloadingContext } from '../../context/DownloaderContext';
 import { LoadingContext } from '../../context/LoadingContext';
 import { ModalContext } from '../../context/ModalContext';
 import { useShowAnimationContext } from '../../context/ShowAnimationContext';
-import { AnimationType, ModalTypes } from '../../enums';
+import { AnimationType, AvailableColors, ModalTypes } from '../../enums';
 import Environments from '../../environments';
 import { FormState } from '../../myForm';
 import { fetchFile, fetchFileWithoutToken, getModalErrorContent, sendMail } from '../../utils';
@@ -11,6 +11,7 @@ import { EmailForm } from '../forms/EmailForm';
 import { EmptyForm } from '../forms/EmptyForm';
 import { TokenForm } from '../forms/TokenForm';
 import { AnchorWithIcon } from '../utils/AnchorWithIcon';
+import { SpanFillAnimated } from '../utils/TextFillAnimation';
 
 interface Props extends React.ComponentPropsWithoutRef<'section'> {
   isCvProtected: boolean;
@@ -80,17 +81,17 @@ export const Contacts: React.FC<Props> = ({ isCvProtected }) => {
         <h4 className='text-white h4'>You can find me on</h4>
         <AnchorWithIcon
           href='https://www.linkedin.com/in/andrea-chirico-b5b98b143/'
-          label='LinkedIn'
+          label={<SpanFillAnimated label='LinkedIn' color={AvailableColors.goodGreen} />}
           src='/assets/linkedin.png'
         />
         <AnchorWithIcon
           href='https://github.com/andreachirico11'
-          label='Github'
+          label={<SpanFillAnimated label='Github' color={AvailableColors.goodGreen} />}
           src='/assets/github.png'
         />
         <AnchorWithIcon
           href='https://www.facebook.com/andrea.chirico.927'
-          label='Facebook'
+          label={<SpanFillAnimated label='Facebook' color={AvailableColors.goodGreen} />}
           src='/assets/facebook.png'
         />
       </div>

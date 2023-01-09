@@ -14,7 +14,7 @@ const SECTION_COLORS: {
 } = {
   intro: {
     color: AvailableColors.gray,
-    activeColor: AvailableColors.gray,
+    activeColor: AvailableColors.white,
     background: AvailableColors.goodGreen,
     curve: AvailableColors.white,
   },

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ISection } from '../../types';
 import { SectionColors } from '../../types/Colors';
+import { SpanFillAnimated } from '../utils/TextFillAnimation';
 
 interface Props {
   section: ISection;
@@ -16,9 +17,10 @@ export const HeaderLink: React.FC<Props> = ({
   return (
     <a
       href={'#' + section.id}
-      className={`text-${section.active ? activeColor : color} ${className}`}
+      data-text={section.label}
+      className={`text-${section.active ? activeColor : color}  ${className}`}
     >
-      {section.label}
+      <SpanFillAnimated label={section.label} color={activeColor} />
     </a>
   );
 };

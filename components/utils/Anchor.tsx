@@ -2,7 +2,7 @@ import React, { ComponentPropsWithoutRef } from 'react';
 
 interface Props extends ComponentPropsWithoutRef<'a'> {
   url: string;
-  label: string;
+  label: string | JSX.Element;
   className?: string;
 }
 

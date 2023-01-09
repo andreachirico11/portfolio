@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import React from 'react';
 import { useShowAnimationContext } from '../../context/ShowAnimationContext';
+import { AvailableColors } from '../../enums';
 import { Anchor } from '../utils/Anchor';
+import { SpanFillAnimated } from '../utils/TextFillAnimation';
 
 interface Props {
   title: string;
@@ -24,8 +26,15 @@ export const WorkCard: React.FC<Props> = ({ title, description, github, website,
           {description}
         </p>
         <div className='flex justify-evenly'>
-          <Anchor label='website' url={website} className='mr-2 tablet:mr-10' />
-          <Anchor label='github' url={github} />
+          <Anchor
+            label={<SpanFillAnimated label='Website' color={AvailableColors.goodGreen} underline />}
+            url={website}
+            className='mr-2 tablet:mr-10'
+          />
+          <Anchor
+            label={<SpanFillAnimated label='Github' color={AvailableColors.goodGreen} underline />}
+            url={github}
+          />
         </div>
       </div>
       <div className='hidden w-1/3 tablet:block'>
