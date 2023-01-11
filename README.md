@@ -1,17 +1,15 @@
 <h1>
   <br>
-My coloured Next JS <b>FULL STACK</b> portfolio!!!
+My Next JS <b>FULL STACK</b> portfolio!!!
   <br>
 </h1>
 <h2><a href="https://www.andreachirico.com" target="_blank">Have a look!</a></h2>
 
 ## Features
 
-- Colors
-- Javascript animations
-- More colors
-- Get my html resume from a private github repo and parses it in pdf
-- Even more colors
+- Nice Javascript animations
+- Modern Look
+- Parses and download my resume
 - Sends Email
 
 ---
