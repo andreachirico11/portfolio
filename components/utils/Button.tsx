@@ -5,14 +5,21 @@ interface Props extends ComponentPropsWithoutRef<'button'> {
   onclick?: () => void;
 }
 
-export const Button: React.FC<Props> = ({ children, className, onclick, ...props }) => (
-  <button
-    {...props}
-    onClick={onclick}
-    className={`py-3 bg-white border-4 px-2 border-goodGreen rounded-custom text-gray btn-text
+export const Button: React.FC<Props> = ({ children, className, onclick, ...props }) => {
+  return (
+    <>
+      <button
+        {...props}
+        onClick={onclick}
+        className={`
+        py-3 bg-white border-4 px-2 rounded-custom text-gray btn-text
+        relative border-goodGreen overflow-hidden
+        animated-btn
       ${className}
       `}
-  >
-    {children}
-  </button>
-);
+      >
+        {children}
+      </button>
+    </>
+  );
+};

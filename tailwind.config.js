@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      transitionProperty: {
+        height: 'height',
+      },
       screens: {
         mobile: { raw: '(min-height: 500px) and (min-width: 350px)' },
         tablet: { raw: '(min-height: 601px) and (min-width: 962px)' },

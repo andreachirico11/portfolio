@@ -47,8 +47,8 @@ export const EmailForm: React.FC<Props> = ({ onSubmit, className = '' }) => {
         <Input type='email' label='Email' name='email' />
         <Textarea name='message' label='Message' />
         <Checkbox name='privacy'>
-          <a href={Environments.IUBENDA_URL} className='p-m'>
-            {<SpanFillAnimated label=' Accept Privacy Policy' color={AvailableColors.goodGreen} />}
+          <a href={Environments.IUBENDA_URL} className='p-m hover:text-goodGreen'>
+            Accept Privacy Policy
           </a>
         </Checkbox>
       </MyForm>

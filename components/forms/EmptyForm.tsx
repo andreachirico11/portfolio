@@ -20,12 +20,7 @@ export const EmptyForm: FC<Props> = ({ onSubmit, className = '' }) => {
           py-2 text-center btn-text text-gray
           px-2 rounded-custom bg-white 
           tablet:px-8 
-
-
-          transition duration-300 ease-in-out 
-          enabled:focus:outline-none 
-          enabled:hover:text-goodGreen 
-          enabled:focus:text-goodGreen 
+          animated-btn
       `}
         >
           Download My Resume

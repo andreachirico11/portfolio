@@ -12,16 +12,10 @@ export const SubmitButton: FC<Props> = ({ buttonLabel, useFormContextInvalidStat
       type='submit'
       disabled={isFormInvalid}
       className={`
+      ${isFormInvalid ? '' : 'animated-btn'}
       py-1 text-center btn-text text-gray
       px-4 rounded-custom bg-white w-fit
       tablet:px-8 
-
-      transition duration-300 ease-in-out 
-      
-      enabled:focus:outline-none
-      enabled:hover:tracking-widest 
-      enabled:focus:tracking-widest
-
       disabled:opacity-50
     `}
     >

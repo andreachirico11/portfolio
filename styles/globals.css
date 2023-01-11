@@ -1,23 +1,2 @@
 @tailwind base; 
 @tailwind utilities;
-
-/* 
-     .x {
-            position: relative;
-        }
-  
-        .x::before {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            color: green;
-            overflow: hidden;
-            width: 0%;
-            transition: 1s;
-
-        }
-  
-        .x:hover::before {
-            width: 100%;
-        } */

@@ -2,6 +2,7 @@ import '../styles/globals.css';
 import '../styles/typography.css';
 import '../styles/scrollbar.css';
 import '../styles/scrolling-animations.css';
+import '../styles/button-animations.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { LoadingContextProvider } from '../context/LoadingContext';
