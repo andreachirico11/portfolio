@@ -1,7 +1,6 @@
 import React from 'react';
 import { AvailableColors } from '../../enums';
 import { getColorValue } from '../../types/Colors';
-import { Screens } from '../../types/Screens';
 
 const debug = false;
 
@@ -9,23 +8,11 @@ interface Props {
   colorId: AvailableColors;
 }
 
-const getClass = (showOn: Screens) => {
-  return Object.keys(Screens).reduce((classStr, currentBreakPoint) => {
-    return (
-      classStr +
-      ' ' +
-      currentBreakPoint +
-      ':' +
-      (showOn === (currentBreakPoint as unknown as Screens) ? 'block' : 'hidden')
-    );
-  }, 'absolute bottom-0 hidden z-[-10]');
-};
-
 export const Curve: React.FC<Props> = ({ colorId }) => {
   const xlDesktopCurve = (fill: string) => (
     <svg
       key='0'
-      className={getClass(Screens.xlDesktop)}
+      className='absolute bottom-0 hidden mobile:hidden tablet:hidden desktop:hidden xlDesktop:block'
       xmlns='http://www.w3.org/2000/svg'
       width='5102'
       height='1586'
@@ -51,7 +38,7 @@ export const Curve: React.FC<Props> = ({ colorId }) => {
   const desktopCurve = (fill: string) => (
     <svg
       key='1'
-      className={getClass(Screens.desktop)}
+      className='absolute bottom-0 hidden mobile:hidden tablet:hidden desktop:block xlDesktop:hidden'
       xmlns='http://www.w3.org/2000/svg'
       width='3480'
       height='1100'
@@ -77,7 +64,7 @@ export const Curve: React.FC<Props> = ({ colorId }) => {
   const tabletCurve = (fill: string) => (
     <svg
       key='2'
-      className={getClass(Screens.tablet)}
+      className='absolute bottom-0 hidden mobile:hidden tablet:block desktop:hidden xlDesktop:hidden'
       xmlns='http://www.w3.org/2000/svg'
       width='3615'
       height='692'
@@ -111,7 +98,7 @@ export const Curve: React.FC<Props> = ({ colorId }) => {
   const mobileCurve = (fill: string) => (
     <svg
       key='3'
-      className={getClass(Screens.mobile)}
+      className='absolute bottom-0 hidden mobile:block tablet:hidden desktop:hidden xlDesktop:hidden'
       xmlns='http://www.w3.org/2000/svg'
       width='1322'
       height='692'

@@ -1,9 +1,8 @@
 import React from 'react';
 import { useShowAnimationContext } from '../../context/ShowAnimationContext';
-import { AnimationType, AvailableColors } from '../../enums';
+import { AnimationType } from '../../enums';
 import Environments from '../../environments';
 import { Checkbox, FormState, Input, MyForm, Textarea, Validators } from '../../myForm';
-import { SpanFillAnimated } from '../utils/TextFillAnimation';
 
 interface Props {
   onSubmit: (formState: FormState) => void;
