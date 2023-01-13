@@ -16,6 +16,9 @@
     .nav-text {
       @apply font-mono font-semibold text-[16px] mobile:text-[16px] tablet:text-[26px] desktop:text-[26px] xlDesktop:text-[36px];
     }
+    .p-error {
+      @apply font-mono font-normal text-[10px] desktop:text-[12px];
+    }
     .p-sm {
       @apply font-mono font-normal text-[14px] mobile:text-[14px] tablet:text-[16px] desktop:text-[16px] xlDesktop:text-[20px];
     }

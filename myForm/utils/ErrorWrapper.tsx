@@ -11,7 +11,13 @@ export const ErrorWrapper: FC<Props> = ({ children, isOnError, errors = [] }) =>
     <div className={`flex flex-col ${isOnError ? '' : 'mb-[14px]'}`}>
       {children}
       {isOnError && (
-        <span className={`text-white p-sm text-[10px] leading-[10px] block mt-[4px]`}>
+        <span
+          className={`
+        text-goodGreen p-error
+          leading-[10px] desktop:leading-[12px] 
+          block mt-[4px]
+        `}
+        >
           {errors[0]}
         </span>
       )}

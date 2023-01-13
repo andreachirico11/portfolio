@@ -20,23 +20,20 @@ export const EmailForm: React.FC<Props> = ({ onSubmit, className = '' }) => {
           name: {
             initialvalue: '',
             validators: [
-              Validators.required('Required Field'),
-              Validators.minLenght(4, 'The name is too short'),
+              Validators.required('The Field is Required'),
+              Validators.minLenght(2, 'The name is too short'),
             ],
           },
           email: {
             initialvalue: '',
             validators: [
-              Validators.required('Required Field'),
+              Validators.required('The Field is Required'),
               Validators.email('The mail format is invalid'),
             ],
           },
           message: {
             initialvalue: '',
-            validators: [
-              Validators.required('Required Field'),
-              Validators.minLenght(20, 'Please write something more!'),
-            ],
+            validators: [Validators.required('The Field is Required')],
           },
           privacy: { initialvalue: false, validators: [Validators.required('Required Field')] },
         }}
@@ -46,7 +43,7 @@ export const EmailForm: React.FC<Props> = ({ onSubmit, className = '' }) => {
         <Input type='email' label='Email' name='email' />
         <Textarea name='message' label='Message' />
         <Checkbox name='privacy'>
-          <a href={Environments.IUBENDA_URL} className='p-m hover:text-goodGreen'>
+          <a tabIndex={-1} href={Environments.IUBENDA_URL} className='p-m hover:text-goodGreen'>
             Accept Privacy Policy
           </a>
         </Checkbox>

@@ -23,7 +23,7 @@ export const Works: React.FC<Props> = () => {
       />
       <AnchorButton
         href='https://github.com/andreachirico11'
-        label='More of my work on Github ->'
+        label='More on Github ->'
         className='w-full px-0 tablet:w-fit tablet:px-10'
       />
     </div>
