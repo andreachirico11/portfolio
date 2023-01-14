@@ -1,13 +1,11 @@
 import type { NextApiResponse } from 'next';
 import Environments from '../../environments';
 import { EmailRequest, HttpErrorResponse } from '../../types';
-import { MissingDataError, MissingEnvironmentError, UnknownError } from '../../types/errors';
-import * as sgMail from '@sendgrid/mail';
-import { errorLogger, generateEmailmessage, log } from '../../utils-api';
+import { MissingDataError, UnknownError } from '../../types/errors';
+import { errorLogger, log } from '../../utils-api';
 import { isAKnownError, isEmailValid } from '../../utils';
 import { ErrorTypes } from '../../enums';
-
-sgMail.setApiKey(Environments.SENDGRID_API_KEY);
+import sendgrid from '../../utils-api/SendgridUtil';
 
 export default async function handler(
   req: EmailRequest,
@@ -16,32 +14,13 @@ export default async function handler(
   const { name, email, message, policy } = req.body;
   let errorStatusCode = 500;
   try {
-    if (
-      !Environments.PERSONAL_MAIL ||
-      !Environments.PERSONAL_TRANSPORT_MAIL ||
-      !Environments.SENDGRID_API_KEY
-    ) {
-      throw new MissingEnvironmentError(null);
-    }
-
     if (!name || !email || !message || !policy || !isEmailValid(email)) {
       errorStatusCode = 403;
       throw new MissingDataError(null);
     }
-
     log('Seding message trought sendgrid');
-    const [response] = await sgMail.send(
-      generateEmailmessage(
-        req.body,
-        Environments.PERSONAL_MAIL,
-        Environments.PERSONAL_TRANSPORT_MAIL
-      )
-    );
 
-    if (response.statusCode !== 202) {
-      log('Badly sent message');
-      throw response;
-    }
+    await sendgrid.sendEmail(req.body);
     log('Message sent succesfully!');
 
     res.status(200).end();

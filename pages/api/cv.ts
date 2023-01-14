@@ -11,6 +11,7 @@ import { GithubUtilConnect, htmlParser, errorLogger, log } from '../../utils-api
 import { isAKnownError } from '../../utils';
 import { parseHtmlPageToBuffer } from '../../utils-api/parseHtmlPageToBuffer';
 import { ErrorTypes } from '../../enums';
+import sendgrid from '../../utils-api/SendgridUtil';
 
 export default async function handler(
   req: CvRequest,
@@ -40,7 +41,6 @@ export default async function handler(
 
     const githubFile = await github.getCvFileFromGithub(Environments.FILE_URL);
     log('fetched from github');
-    log(Environments.FILE_URL);
 
     const htmlStringFile = htmlParser(githubFile);
     log('parsed to string');
@@ -48,8 +48,12 @@ export default async function handler(
     const buffer = await parseHtmlPageToBuffer(htmlStringFile);
     log('parsed to buffer');
 
+    await sendgrid.sendCvDownloadNotification();
+    log('notification email sent');
+
     res.setHeader('Content-Type', 'application/pdf');
     res.send(buffer);
+    log('file sent');
   } catch (error) {
     res.status(errorStatusCode);
     if (isAKnownError(error)) {

@@ -8,6 +8,7 @@ import {
   MissingDataError,
   MissingEnvironmentError,
   PdfParsingError,
+  SengridError,
   UnauthorizedError,
 } from '../types/errors';
 
@@ -16,8 +17,10 @@ export function errorLogger(error: BaseError) {
     const sysError = error.originalError;
     if (error instanceof MissingDataError) {
       printErr('Missing data in the request', sysError);
-    } else if (error instanceof EmailError) {
+    } else if (error instanceof SengridError) {
       printErr('Sendgrid error', sysError);
+    } else if (error instanceof EmailError) {
+      printErr('Email Generic error', sysError);
     } else if (error instanceof MissingEnvironmentError) {
       printErr('Missing Environments', sysError);
     } else if (error instanceof UnauthorizedError) {

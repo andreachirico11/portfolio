@@ -14,3 +14,12 @@ export function generateEmailmessage({ name, email, message }: IEmail, to: strin
         `,
   };
 }
+
+export function generateDownloadedCvNotification(to: string, from: string) {
+  return {
+    to,
+    from,
+    subject: 'Someone downloaded your cv',
+    html: '<body></body>',
+  };
+}

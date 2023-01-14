@@ -36,6 +36,12 @@ export class EmailError extends BaseError {
   }
 }
 
+export class SengridError extends BaseError {
+  constructor(originalError: any) {
+    super(ErrorTypes.EMAIL_API, originalError);
+  }
+}
+
 export class UnauthorizedError extends BaseError {
   constructor(originalError: any) {
     super(ErrorTypes.UNAUTHORIZED, originalError);
