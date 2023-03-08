@@ -29,7 +29,7 @@ export default class Environments {
   }
   // SETTINGS
   static get PRODUCTION() {
-    return booleanValue(process.env.PRODUCTION);
+    return process.env.NODE_ENV === 'production';
   }
   static get ERROR_LOGS_OFF() {
     return booleanValue(process.env.ERROR_LOGS_OFF);
@@ -38,6 +38,9 @@ export default class Environments {
     return booleanValue(process.env.INFO_LOGS_OFF);
   }
   static get PROTECTED_CV() {
+    return booleanValue(process.env.PROTECTED_CV);
+  }
+  static get DOWNLOAD_NOTIFICATION() {
     return booleanValue(process.env.PROTECTED_CV);
   }
 }

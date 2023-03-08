@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/92742c0e-75e5-495e-899e-c6aeb39f35ae/deploy-status)](https://app.netlify.com/sites/futureportfolio/deploys)
+
 <h1>
   <br>
 My Next JS <b>FULL STACK</b> portfolio!!!!

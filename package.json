@@ -19,14 +19,16 @@
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.2",
     "next": "13.0.2",
-    "puppeteer": "18.0.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "4.8.4"
+    "typescript": "4.8.4",
+    "@sparticuz/chromium": "^107.0.0",
+    "puppeteer-core": "^19.1.1"
   },
   "devDependencies": {
     "@types/cheerio": "^0.22.31",
     "postcss-preset-env": "^7.8.2",
-    "tailwindcss": "^3.2.2"
+    "tailwindcss": "^3.2.2",
+    "puppeteer": "^19.1.1"
   }
 }

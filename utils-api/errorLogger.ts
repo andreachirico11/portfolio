@@ -1,6 +1,7 @@
 import Environments from '../environments';
 import {
   BaseError,
+  BrowserLaunchError,
   CheerioError,
   CreatingHtmlError,
   EmailError,
@@ -33,6 +34,8 @@ export function errorLogger(error: BaseError) {
       printErr('Error parsing pdf', sysError);
     } else if (error instanceof CreatingHtmlError) {
       printErr('Error generating html', sysError);
+    } else if (error instanceof BrowserLaunchError) {
+      printErr('Error launching browser', sysError);
     } else {
       printErr('Unknown Error', sysError);
     }

@@ -17,6 +17,7 @@ export function getModalErrorContent(error: unknown | HttpErrorResponse) {
         return 'The provided html in invalid';
       case ErrorTypes.PARSING:
       case ErrorTypes.HTML_CREATION:
+      case ErrorTypes.PUPPETTEER_LAUNCH:
         return 'Error during the file parsing';
       case ErrorTypes.MISSING_ENV:
         return 'Missing Environments';

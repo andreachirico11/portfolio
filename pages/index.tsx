@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useContext } from 'react';
 import { Section } from '../components/layouts/Section';
 import { Header } from '../components/navigation/Header';
@@ -15,11 +16,16 @@ type HomeProps = {
   isCvProtected: boolean;
 };
 
+const VERSION = '1.1.1'; // TODO find a better way to show version
+
 export default function Home({ isCvProtected }: HomeProps) {
   useScrollCtx();
   const { sectionById } = useContext(SectionsContext)!;
   return (
     <div>
+      <Head>
+        <meta name='version' content={VERSION}></meta>
+      </Head>
       <ModalsContainer />
       <Header />
       <Section

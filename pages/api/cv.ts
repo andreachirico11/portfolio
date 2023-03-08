@@ -9,7 +9,7 @@ import {
 } from '../../types/errors';
 import { GithubUtilConnect, htmlParser, errorLogger, log } from '../../utils-api';
 import { isAKnownError } from '../../utils';
-import { parseHtmlPageToBuffer } from '../../utils-api/parseHtmlPageToBuffer';
+import { PdfParser } from '../../utils-api/parseHtmlPageToBuffer';
 import { ErrorTypes } from '../../enums';
 import sendgrid from '../../utils-api/SendgridUtil';
 
@@ -45,11 +45,17 @@ export default async function handler(
     const htmlStringFile = htmlParser(githubFile);
     log('parsed to string');
 
-    const buffer = await parseHtmlPageToBuffer(htmlStringFile);
-    log('parsed to buffer');
+    log('starting parser');
+    const pdfParser = await PdfParser.init();
+    log('parser successfully started');
 
-    await sendgrid.sendCvDownloadNotification();
-    log('notification email sent');
+    const buffer = await pdfParser.parseAndClose(htmlStringFile);
+    log('file converted to buffer');
+
+    if (Environments.DOWNLOAD_NOTIFICATION) {
+      await sendgrid.sendCvDownloadNotification();
+      log('notification email sent');
+    }
 
     res.setHeader('Content-Type', 'application/pdf');
     res.send(buffer);

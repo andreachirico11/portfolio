@@ -72,6 +72,12 @@ export class PdfParsingError extends BaseError {
   }
 }
 
+export class BrowserLaunchError extends BaseError {
+  constructor(originalError: any) {
+    super(ErrorTypes.PUPPETTEER_LAUNCH, originalError);
+  }
+}
+
 export class CreatingHtmlError extends BaseError {
   constructor(originalError: any) {
     super(ErrorTypes.HTML_CREATION, originalError);

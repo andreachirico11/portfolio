@@ -24,6 +24,7 @@ export enum ErrorTypes {
   PARSING,
   HTML_CREATION,
   MISSING_ENV,
+  PUPPETTEER_LAUNCH,
 }
 
 export enum AnimationType {
