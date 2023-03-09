@@ -19,13 +19,13 @@ export const Intro: React.FC<Props> = () => {
           animationOff={true}
           href={'#' + Sections.works}
           label='Check out my work'
-          className='text-white mr-14 px-7 bg-gray border-gray'
+          className='text-white mr-14 px-7 !bg-gray border-gray'
         />
         <AnchorButton
           animationOff={true}
           href={'#' + Sections.contacts}
           label='Download my Resume'
-          className='hidden text-white px-7 bg-gray border-gray tablet:block'
+          className='hidden text-white px-7 !bg-gray border-gray tablet:block'
         />
       </div>
     </>

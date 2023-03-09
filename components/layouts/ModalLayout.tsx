@@ -20,7 +20,7 @@ export const ModalLayout: FC<Props> = ({ title, children, onClose, show }) => (
             {title}
           </h4>
           {children}
-          <Button onclick={onClose} className='w-1/2 text-white border-white bg-gray'>
+          <Button onclick={onClose} className='w-1/2 text-white border-white !bg-gray'>
             Close
           </Button>
         </div>
