@@ -29,7 +29,7 @@ export default class Environments {
   }
   // SETTINGS
   static get PRODUCTION() {
-    return process.env.NODE_ENV === 'production';
+    return  booleanValue(process.env.PRODUCTION);
   }
   static get ERROR_LOGS_OFF() {
     return booleanValue(process.env.ERROR_LOGS_OFF);

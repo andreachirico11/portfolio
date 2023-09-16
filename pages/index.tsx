@@ -14,17 +14,19 @@ import useScrollCtx from '../hooks/useScrollContexts';
 
 type HomeProps = {
   isCvProtected: boolean;
+  production: boolean;
 };
 
-const VERSION = '1.1.1'; // TODO find a better way to show version
+const VERSION = '1.1.4'; // TODO find a better way to show version
 
-export default function Home({ isCvProtected }: HomeProps) {
+export default function Home({ isCvProtected, production }: HomeProps) {
   useScrollCtx();
   const { sectionById } = useContext(SectionsContext)!;
   return (
     <div>
       <Head>
         <meta name='version' content={VERSION}></meta>
+        {!production && <meta name='description' content='development' />}
       </Head>
       <ModalsContainer />
       <Header />
@@ -60,9 +62,12 @@ export default function Home({ isCvProtected }: HomeProps) {
 }
 
 export async function getStaticProps() {
+  const production =  Environments.PRODUCTION;
+  console.info("PRODUCTION ---------> ", production )
   return {
     props: {
       isCvProtected: Environments.PROTECTED_CV,
+      production
     },
   };
 }
