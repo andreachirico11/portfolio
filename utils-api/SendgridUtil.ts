@@ -1,15 +1,18 @@
 import * as sgMail from '@sendgrid/mail';
-import Environments from '../environments';
 import { EmailError, MissingEnvironmentError, SengridError } from '../types/errors';
 import { IEmail } from '../types/IEmail';
 import { generateDownloadedCvNotification, generateEmailmessage } from './generateEmailMessage';
 
 class _SendgridUtil {
-  constructor(apikey: string, private personalMail: string, private personalTransportMail: string) {
-    if (!apikey || !personalMail || !personalTransportMail) {
+  private constructor(apikey: string, private personalMail: string, private personalTransportMail: string) {
+    if (!!!apikey || !!! personalMail || !!!personalTransportMail) {
       throw new MissingEnvironmentError(null);
     }
     sgMail.setApiKey(apikey);
+  }
+
+  static configure(apikey: string,  personalMail: string,  personalTransportMail: string) {
+    return new _SendgridUtil(apikey, personalMail,personalTransportMail);
   }
 
   async sendEmail(body: IEmail) {
@@ -40,8 +43,5 @@ class _SendgridUtil {
   }
 }
 
-export default new _SendgridUtil(
-  Environments.SENDGRID_API_KEY,
-  Environments.PERSONAL_MAIL,
-  Environments.PERSONAL_TRANSPORT_MAIL
-);
+export default _SendgridUtil;
+

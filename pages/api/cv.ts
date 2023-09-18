@@ -39,7 +39,12 @@ export default async function handler(
       throw new MissingEnvironmentError(null);
     }
 
-    const githubFile = await github.getCvFileFromGithub(Environments.FILE_URL);
+    let fetchLog = 'fetching from url: ' + Environments.FILE_URL;
+    if (!!Environments.CV_BRANCH) {
+      fetchLog = fetchLog + ` on branch: ${Environments.CV_BRANCH}`; 
+    } 
+    log(fetchLog);
+    const githubFile = await github.getCvFileFromGithub(Environments.FILE_URL, Environments.CV_BRANCH);
     log('fetched from github');
 
     const htmlStringFile = htmlParser(githubFile);
@@ -53,7 +58,12 @@ export default async function handler(
     log('file converted to buffer');
 
     if (Environments.DOWNLOAD_NOTIFICATION) {
-      await sendgrid.sendCvDownloadNotification();
+      const sendgridUtil = sendgrid.configure(
+        Environments.SENDGRID_API_KEY,
+        Environments.PERSONAL_MAIL,
+        Environments.PERSONAL_TRANSPORT_MAIL
+      )
+      await sendgridUtil.sendCvDownloadNotification();
       log('notification email sent');
     }
 

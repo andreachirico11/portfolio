@@ -11,16 +11,24 @@ export default async function handler(
   req: EmailRequest,
   res: NextApiResponse<HttpErrorResponse | {}>
 ) {
+
   const { name, email, message, policy } = req.body;
   let errorStatusCode = 500;
   try {
+    const sendgridUtil = sendgrid.configure(
+      Environments.SENDGRID_API_KEY,
+      Environments.PERSONAL_MAIL,
+      Environments.PERSONAL_TRANSPORT_MAIL
+    )
+
+
     if (!name || !email || !message || !policy || !isEmailValid(email)) {
       errorStatusCode = 403;
       throw new MissingDataError(null);
     }
     log('Seding message trought sendgrid');
 
-    await sendgrid.sendEmail(req.body);
+    await sendgridUtil.sendEmail(req.body);
     log('Message sent succesfully!');
 
     res.status(200).end();

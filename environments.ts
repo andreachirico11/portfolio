@@ -12,6 +12,9 @@ export default class Environments {
   static get FILE_URL() {
     return process.env.FILE_URL || '';
   }
+  static get CV_BRANCH() {
+    return process.env.CV_BRANCH || '';
+  }
   static get GITHUB_TOKEN() {
     return process.env.GITHUB_TOKEN || '';
   }
