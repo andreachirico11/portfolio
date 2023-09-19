@@ -13,6 +13,27 @@ import {
   UnauthorizedError,
 } from '../types/errors';
 
+
+export function log(message: string) {
+  if (!Environments.INFO_LOGS_OFF) {
+    console.log('\n\n>>>>> I N F O <<<<<\n');
+    console.log(message);
+    console.log('\n>>>>> ------- <<<<<');
+  }
+}
+
+export function spacer() {
+  if (!Environments.INFO_LOGS_OFF) {
+    let i = 0;
+    while (i < 100) {
+      console.log();
+      i++;
+    }
+    console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
+  }
+}
+
+
 export function errorLogger(error: BaseError) {
   if (!Environments.ERROR_LOGS_OFF) {
     const sysError = error.originalError;
@@ -51,3 +72,4 @@ function printErr(e: string, sys?: unknown) {
   }
   console.log('\n------------------------------<');
 }
+

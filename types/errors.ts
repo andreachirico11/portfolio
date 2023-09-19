@@ -83,3 +83,9 @@ export class CreatingHtmlError extends BaseError {
     super(ErrorTypes.HTML_CREATION, originalError);
   }
 }
+
+export class FetchingFromLocalError extends BaseError {
+  constructor(originalError: any) {
+    super(ErrorTypes.LOCAL_FETCHING, originalError);
+  }
+}

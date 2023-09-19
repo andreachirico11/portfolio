@@ -2,7 +2,7 @@ import type { NextApiResponse } from 'next';
 import Environments from '../../environments';
 import { EmailRequest, HttpErrorResponse } from '../../types';
 import { MissingDataError, UnknownError } from '../../types/errors';
-import { errorLogger, log } from '../../utils-api';
+import { errorLogger, log, spacer } from '../../utils-api';
 import { isAKnownError, isEmailValid } from '../../utils';
 import { ErrorTypes } from '../../enums';
 import sendgrid from '../../utils-api/SendgridUtil';
@@ -11,6 +11,7 @@ export default async function handler(
   req: EmailRequest,
   res: NextApiResponse<HttpErrorResponse | {}>
 ) {
+  spacer()
 
   const { name, email, message, policy } = req.body;
   let errorStatusCode = 500;

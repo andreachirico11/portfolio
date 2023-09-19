@@ -18,6 +18,9 @@ export default class Environments {
   static get GITHUB_TOKEN() {
     return process.env.GITHUB_TOKEN || '';
   }
+  static get LOCAL_CV_PATH() {
+    return process.env.LOCAL_CV_PATH || '';
+  }
   static get TOKEN() {
     return process.env.TOKEN || '';
   }
