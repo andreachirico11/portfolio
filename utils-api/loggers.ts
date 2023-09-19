@@ -26,7 +26,7 @@ export function spacer() {
   if (!Environments.INFO_LOGS_OFF) {
     let i = 0;
     while (i < 100) {
-      console.log();
+      console.log('');
       i++;
     }
     console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');

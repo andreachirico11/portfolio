@@ -47,6 +47,6 @@ export default class Environments {
     return booleanValue(process.env.PROTECTED_CV);
   }
   static get DOWNLOAD_NOTIFICATION() {
-    return booleanValue(process.env.PROTECTED_CV);
+    return booleanValue(process.env.DOWNLOAD_NOTIFICATION);
   }
 }

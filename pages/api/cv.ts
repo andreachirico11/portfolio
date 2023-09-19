@@ -10,10 +10,8 @@ import {
 import { GithubUtilConnect, htmlParser, errorLogger, log, spacer } from '../../utils-api';
 import { isAKnownError } from '../../utils';
 import { PdfParser } from '../../utils-api/parseHtmlPageToBuffer';
-import { ErrorTypes } from '../../enums';
 import sendgrid from '../../utils-api/SendgridUtil';
 import { FsUtil } from '../../utils-api/FsUtil';
-
 
 export default async function handler(
   req: CvRequest,
@@ -29,16 +27,14 @@ export default async function handler(
     SENDGRID_API_KEY,
     PERSONAL_MAIL,
     PERSONAL_TRANSPORT_MAIL,
-    DOWNLOAD_NOTIFICATION
+    DOWNLOAD_NOTIFICATION,
   } = Environments;
 
   spacer();
 
-  let errorStatusCode = 500;
-
   try {
     if (PROTECTED_CV) {
-      checkForCvToken(req.headers.token, TOKEN)
+      checkForCvToken(req.headers.token, TOKEN);
     }
 
     const stringFile = await (!!LOCAL_CV_PATH
@@ -66,30 +62,22 @@ export default async function handler(
     res.setHeader('Content-Type', 'application/pdf');
     res.send(buffer);
     log('file sent');
-    
   } catch (error) {
-    res.status(errorStatusCode);
-    if (isAKnownError(error)) {
-      errorLogger(error);
-      res.send({ errCode: error.type });
-    } else {
-      errorLogger(new UnknownError(error));
-      res.send({ errCode: ErrorTypes.UNKWNOWN });
-    }
+    const parsed = isAKnownError(error) ? error : new UnknownError(error);
+    errorLogger(parsed);
+    res.status(parsed.errCode);
+    res.send({ errCode: parsed.type });
   }
 }
 
-
 function checkForCvToken(tk: string, TOKEN: string) {
-    if (!tk) {
-      // errorStatusCode = 403;
-      throw new MissingDataError(null);
-    }
-    if (tk !== TOKEN) {
-      // errorStatusCode = 401;
-      throw new UnauthorizedError(null);
-    }
-    log('token valid');
+  if (!tk) {
+    throw new MissingDataError(null);
+  }
+  if (tk !== TOKEN) {
+    throw new UnauthorizedError(null);
+  }
+  log('token valid');
 }
 
 function fetchFromLocalFile(LOCAL_CV_PATH: string) {
@@ -99,7 +87,6 @@ function fetchFromLocalFile(LOCAL_CV_PATH: string) {
 
 async function fetchFromGithub(FILE_URL: string, GITHUB_TOKEN: string, CV_BRANCH: string) {
   const github = new GithubUtilConnect(GITHUB_TOKEN);
-  let stringFile;
   if (!FILE_URL || !GITHUB_TOKEN) {
     throw new MissingEnvironmentError(null);
   }
@@ -108,7 +95,9 @@ async function fetchFromGithub(FILE_URL: string, GITHUB_TOKEN: string, CV_BRANCH
     fetchLog = fetchLog + ` on branch: ${CV_BRANCH}`;
   }
   log(fetchLog);
-  stringFile = await github.getCvFileFromGithub(FILE_URL, CV_BRANCH);
+  const file = await github.getCvFileFromGithub(FILE_URL, CV_BRANCH);
   log('fetched from github');
+  const stringFile = htmlParser(file);
+  log('parsed to html string');
   return stringFile;
 }
