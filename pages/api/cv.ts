@@ -35,6 +35,7 @@ export default async function handler(
   try {
     if (PROTECTED_CV) {
       checkForCvToken(req.headers.token, TOKEN);
+      log('cv token is valid');
     }
 
     const stringFile = await (!!LOCAL_CV_PATH
@@ -50,23 +51,20 @@ export default async function handler(
     log('file converted to buffer');
 
     if (DOWNLOAD_NOTIFICATION) {
-      const sendgridUtil = sendgrid.configure(
-        SENDGRID_API_KEY,
-        PERSONAL_MAIL,
-        PERSONAL_TRANSPORT_MAIL
-      );
-      await sendgridUtil.sendCvDownloadNotification();
-      log('notification email sent');
+      await sendNotificationEmail(SENDGRID_API_KEY, PERSONAL_MAIL, PERSONAL_TRANSPORT_MAIL);
     }
 
     res.setHeader('Content-Type', 'application/pdf');
     res.send(buffer);
     log('file sent');
+    
   } catch (error) {
+
     const parsed = isAKnownError(error) ? error : new UnknownError(error);
     errorLogger(parsed);
     res.status(parsed.errCode);
     res.send({ errCode: parsed.type });
+
   }
 }
 
@@ -77,7 +75,6 @@ function checkForCvToken(tk: string, TOKEN: string) {
   if (tk !== TOKEN) {
     throw new UnauthorizedError(null);
   }
-  log('token valid');
 }
 
 function fetchFromLocalFile(LOCAL_CV_PATH: string) {
@@ -100,4 +97,23 @@ async function fetchFromGithub(FILE_URL: string, GITHUB_TOKEN: string, CV_BRANCH
   const stringFile = htmlParser(file);
   log('parsed to html string');
   return stringFile;
+}
+
+async function sendNotificationEmail( SENDGRID_API_KEY: string,
+  PERSONAL_MAIL: string,
+  PERSONAL_TRANSPORT_MAIL: string) {
+  // SEPARATED ERROR HANDLING BECAUSE OF RANDOM ERRORS WHICH SOMETIMS
+  // BLOCK CV DOWNLOAD
+  try {
+    const sendgridUtil = sendgrid.configure(
+      SENDGRID_API_KEY,
+      PERSONAL_MAIL,
+      PERSONAL_TRANSPORT_MAIL
+    );
+    await sendgridUtil.sendCvDownloadNotification();
+    log('notification email sent');
+  } catch (error) {
+    errorLogger('Unable to send notification email');
+  }
+
 }

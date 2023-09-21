@@ -34,8 +34,11 @@ export function spacer() {
 }
 
 
-export function errorLogger(error: BaseError) {
+export function errorLogger(error: BaseError | string) {
   if (!Environments.ERROR_LOGS_OFF) {
+    if (typeof error === 'string') {
+      return printErr(error);
+    }
     const sysError = error.originalError;
     if (error instanceof MissingDataError) {
       printErr('Missing data in the request', sysError);
