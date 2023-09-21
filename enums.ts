@@ -38,4 +38,5 @@ export enum AnimationType {
 export enum ModalTypes {
   info = 'info',
   error = 'error',
+  multipleChoice = 'multipleChoice'
 }

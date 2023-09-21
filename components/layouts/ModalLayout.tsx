@@ -1,14 +1,12 @@
 import { FC, ReactNode } from 'react';
-import { Button } from '../utils/Button';
 
 interface Props {
   title: string;
   children: ReactNode;
-  onClose: () => void;
   show: boolean;
 }
 
-export const ModalLayout: FC<Props> = ({ title, children, onClose, show }) => (
+export const ModalLayout: FC<Props> = ({ title, children, show }) => (
   <>
     {show && (
       <div
@@ -20,9 +18,6 @@ export const ModalLayout: FC<Props> = ({ title, children, onClose, show }) => (
             {title}
           </h4>
           {children}
-          <Button onclick={onClose} className='w-1/2 text-white border-white !bg-gray'>
-            Close
-          </Button>
         </div>
       </div>
     )}

@@ -6,47 +6,59 @@ import { useShowAnimationContext } from '../../context/ShowAnimationContext';
 import { AnimationType, AvailableColors, ModalTypes } from '../../enums';
 import Environments from '../../environments';
 import { FormState } from '../../myForm';
-import { fetchFile, fetchFileWithoutToken, getModalErrorContent, sendMail } from '../../utils';
+import { fetchCv, getModalErrorContent, sendMail } from '../../utils';
 import { EmailForm } from '../forms/EmailForm';
 import { EmptyForm } from '../forms/EmptyForm';
 import { TokenForm } from '../forms/TokenForm';
 import { AnchorWithIcon } from '../utils/AnchorWithIcon';
 import { SpanFillAnimated } from '../utils/TextFillAnimation';
+import { ModalConfigChoice } from '../../types/modals/ModalConfigChoice';
+import { AppSettingsContext } from '../../context/AppSettingsContext';
 
 interface Props extends React.ComponentPropsWithoutRef<'section'> {
-  isCvProtected: boolean;
 }
 
-export const Contacts: React.FC<Props> = ({ isCvProtected }) => {
+export const Contacts: React.FC<Props> = () => {
   const loading = useContext(LoadingContext);
   const modals = useContext(ModalContext);
   const download = useContext(DownloadingContext);
   const animationRef = useShowAnimationContext<HTMLDivElement>(AnimationType.right);
-
-  const fileDownloadShared = async (fetchCb: () => Promise<Blob>) => {
-    try {
-      loading.startLoading();
-      const fileBlob = await fetchCb();
-      download(fileBlob, Environments.CV_TITLE);
-    } catch (error) {
-      modals.openModal(ModalTypes.error, {
-        title: 'Something went wrong...',
-        content: getModalErrorContent(error),
-      });
-    } finally {
-      loading.stopLoading();
-    }
-  };
+  const {isCvProtected, availableLocales} = useContext(AppSettingsContext);
+  const choices: ModalConfigChoice[] = availableLocales.map(({label, value}) => ({label, value}));  
 
   const onTokenSubmit = async (formState: FormState) => {
-    fileDownloadShared(() => {
+    fileDownloadShared((locale: string) => {
       const { passcode } = formState;
-      return fetchFile(passcode.value);
+      return fetchCv(locale, passcode.value);
     });
   };
 
   const onUnprotectedSubmit = async () => {
-    fileDownloadShared(fetchFileWithoutToken);
+    fileDownloadShared((locale: string) => {
+      return fetchCv(locale);
+    });
+  };
+  
+
+  const fileDownloadShared = async (fetchCb: (locale: string) => Promise<Blob>) => {
+    modals.openModal(ModalTypes.multipleChoice, {
+      title: 'Choose Language',
+      choices,
+      onSelectedChoice: async ({value}: ModalConfigChoice) => {
+        try {
+          loading.startLoading();
+          const fileBlob = await fetchCb(value);
+          download(fileBlob, Environments.CV_TITLE);
+        } catch (error) {
+          modals.openModal(ModalTypes.error, {
+            title: 'Something went wrong...',
+            content: getModalErrorContent(error),
+          });
+        } finally {
+          loading.stopLoading();
+        }
+      },
+    });
   };
 
   const onEmailSubmit = async (formState: FormState) => {

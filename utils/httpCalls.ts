@@ -13,16 +13,9 @@ export async function sendMail(name: string, email: string, message: string, pol
   }
 }
 
-export async function fetchFile(token: string) {
-  const res = await fetch('api/cv', { headers: { token } });
-  if (!res.ok) {
-    throw (await res.json()) as HttpErrorResponse;
-  }
-  return res.blob();
-}
 
-export async function fetchFileWithoutToken() {
-  const res = await fetch('api/cv');
+export async function fetchCv(locale: string, token?: string) {
+  const res = await fetch('api/cv', { headers: {locale, ...token && {token} } });
   if (!res.ok) {
     throw (await res.json()) as HttpErrorResponse;
   }

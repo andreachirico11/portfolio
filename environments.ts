@@ -1,3 +1,5 @@
+import { Locale } from "./types/Locale";
+
 function booleanValue(value: string | undefined) {
   return value === '1';
 }
@@ -32,6 +34,13 @@ export default class Environments {
   }
   static get PERSONAL_TRANSPORT_MAIL() {
     return process.env.PERSONAL_TRANSPORT_MAIL || '';
+  }
+  static get AVAILABLE_LOCALES() {
+    if (!!!process.env.AVAILABLE_LOCALES) return [];
+    const parsed = JSON.parse(process.env.AVAILABLE_LOCALES);
+    return Object.keys(parsed).map(value => {
+      const output: Locale = {value, label: parsed[value]};
+      return output;})
   }
   // SETTINGS
   static get PRODUCTION() {

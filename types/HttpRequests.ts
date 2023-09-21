@@ -8,6 +8,7 @@ export interface EmailRequest extends NextApiRequest {
 
 interface TokenHeaders extends IncomingHttpHeaders {
   token: string;
+  locale: string;
 }
 
 export interface CvRequest extends NextApiRequest {

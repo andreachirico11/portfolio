@@ -31,16 +31,20 @@ export default async function handler(
   } = Environments;
 
   spacer();
+  const {token, locale} = req.headers;
 
   try {
+    
     if (PROTECTED_CV) {
-      checkForCvToken(req.headers.token, TOKEN);
+      checkForCvToken(token, TOKEN);
       log('cv token is valid');
     }
+    
+    log(`Getting the cv for locale: ${locale} ${PROTECTED_CV ? 'and with token: ' + token : ''}`);
 
     const stringFile = await (!!LOCAL_CV_PATH
-      ? fetchFromLocalFile(LOCAL_CV_PATH)
-      : fetchFromGithub(FILE_URL, GITHUB_TOKEN, CV_BRANCH));
+      ? fetchFromLocalFile(LOCAL_CV_PATH, locale)
+      : fetchFromGithub(FILE_URL, GITHUB_TOKEN, CV_BRANCH, locale));
     log('File Fetched');
 
     log('starting parser');
@@ -77,22 +81,24 @@ function checkForCvToken(tk: string, TOKEN: string) {
   }
 }
 
-function fetchFromLocalFile(LOCAL_CV_PATH: string) {
-  log('fetching file from local path: ' + LOCAL_CV_PATH);
-  return FsUtil.fetcCvFile(LOCAL_CV_PATH);
+function fetchFromLocalFile(LOCAL_CV_PATH: string, locale: string) {
+  const url = LOCAL_CV_PATH  + locale + '.html';
+  log('fetching file from local path: ' + url);
+  return FsUtil.fetcCvFile(url);
 }
 
-async function fetchFromGithub(FILE_URL: string, GITHUB_TOKEN: string, CV_BRANCH: string) {
-  const github = new GithubUtilConnect(GITHUB_TOKEN);
+async function fetchFromGithub(FILE_URL: string, GITHUB_TOKEN: string, CV_BRANCH: string, locale: string) {
   if (!FILE_URL || !GITHUB_TOKEN) {
     throw new MissingEnvironmentError(null);
   }
-  let fetchLog = 'fetching from url: ' + FILE_URL;
+  const url = FILE_URL + locale + '.html';
+  let fetchLog = 'fetching from url: ' + url;
   if (!!CV_BRANCH) {
     fetchLog = fetchLog + ` on branch: ${CV_BRANCH}`;
   }
   log(fetchLog);
-  const file = await github.getCvFileFromGithub(FILE_URL, CV_BRANCH);
+  const github = new GithubUtilConnect(GITHUB_TOKEN);
+  const file = await github.getCvFileFromGithub(url, CV_BRANCH);
   log('fetched from github');
   const stringFile = htmlParser(file);
   log('parsed to html string');

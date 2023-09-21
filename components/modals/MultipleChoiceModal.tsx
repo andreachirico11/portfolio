@@ -6,18 +6,15 @@ import { ModalActions } from '../utils/ModalActions';
 
 interface Props {}
 
-export const InfoModal: FC<Props> = () => {
+export const MultipleChoiceModal: FC<Props> = () => {
   const {
     show,
     close,
-    config: { title, content },
-  } = useModalContext(ModalTypes.info);
+    config: { title, choices, onSelectedChoice },
+  } = useModalContext(ModalTypes.multipleChoice);
   return (
-    <ModalLayout title={title || ''} show={show}>
-      <p id='modal-message' className='my-10 p-lg'>
-        {content || ''}
-      </p>
-      <ModalActions onClose={close} />
+    <ModalLayout title={title || ''}  show={show}>
+      <ModalActions onClose={close} choices={choices} onSelectedChoice={onSelectedChoice} />
     </ModalLayout>
   );
 };

@@ -11,22 +11,18 @@ import { SectionsContext } from '../context/ActiveLinkContext';
 import { Sections } from '../enums';
 import Environments from '../environments';
 import useScrollCtx from '../hooks/useScrollContexts';
-
-type HomeProps = {
-  isCvProtected: boolean;
-  production: boolean;
-};
+import { AppSettingsContextProvider, IAppSettings } from '../context/AppSettingsContext';
 
 const VERSION = '1.1.4'; // TODO find a better way to show version
 
-export default function Home({ isCvProtected, production }: HomeProps) {
+export default function Home({appSettings}: {appSettings: IAppSettings}) {
   useScrollCtx();
   const { sectionById } = useContext(SectionsContext)!;
   return (
-    <div>
+    <AppSettingsContextProvider appSettings={appSettings}>
       <Head>
         <meta name='version' content={VERSION}></meta>
-        {!production && <meta name='description' content='development' />}
+        {!appSettings.production && <meta name='description' content='development' />}
       </Head>
       <ModalsContainer />
       <Header />
@@ -54,20 +50,25 @@ export default function Home({ isCvProtected, production }: HomeProps) {
         section={sectionById(Sections.contacts)}
         className='pt-[4rem] pb-4 desktop:grid desktop:grid-cols-2 desktop:justify-items-center desktop:gap-x-40 desktop:gap-y-14'
       >
-        <Contacts isCvProtected={isCvProtected} />
+        <Contacts/>
       </Section>
       <a id='downloadAnchor' className='hidden'></a>
-    </div>
+    </AppSettingsContextProvider>
   );
 }
 
 export async function getStaticProps() {
-  const production =  Environments.PRODUCTION;
-  console.info("PRODUCTION ---------> ", production )
+  const {
+    PRODUCTION: production,
+    PROTECTED_CV: isCvProtected,
+    AVAILABLE_LOCALES: availableLocales,
+  } = Environments;
+  console.log('\n');
+  const locales = availableLocales.reduce((acc, { label }) => acc + label + ' ', '');
+  console.table({ production, isCvProtected, locales});
+  console.log('\n');
+  const appSettings: IAppSettings = { production, isCvProtected, availableLocales };
   return {
-    props: {
-      isCvProtected: Environments.PROTECTED_CV,
-      production
-    },
+    props: { appSettings },
   };
 }
